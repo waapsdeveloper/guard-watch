@@ -1,0 +1,7 @@
+{
+  "name": "guard-watch",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
