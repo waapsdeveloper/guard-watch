@@ -1,0 +1,23 @@
+<ion-content class="login-page-content ion-padding" [fullscreen]="true" [scrollY]="true">
+
+  <div class="form-body-outer">
+    <div class="hb-with-flag">
+      <h2>Login with Phone</h2>
+      <app-country-selection-box></app-country-selection-box>
+    </div>
+
+    <app-input-box></app-input-box>
+    <app-input-box></app-input-box>
+    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="login()">
+      <span *ngIf="!isLoading">Sign In</span>
+      <ion-spinner *ngIf="isLoading"></ion-spinner>
+    </ion-button>
+    <ion-button class="createaccount text-transform-non" fill="clear" color="primary" expand="full"
+          (click)="switchToForgetPassword()">Forgot Password? Click Here</ion-button>
+  </div>
+
+</ion-content>
+<ion-footer color="light">
+  <ion-button class="text-transform-non" (click)="switchToSignUp()" fill="clear" color="primary" expand="full">
+    Not a Member? &nbsp;&nbsp;<strong class="createaccount">Create Account</strong></ion-button>
+</ion-footer>

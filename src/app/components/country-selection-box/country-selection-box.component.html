@@ -1,0 +1,9 @@
+<div class="country-box-outer">
+
+  <div class="flag-item-li" (click)="openCountries()">
+    <span class="fi fi-{{item.code | lowercase}}"></span>
+    <div>{{item.dial_code}}</div>
+    <ion-icon name="chevron-down-outline" size="small"></ion-icon>
+  </div>
+
+</div>

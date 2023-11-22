@@ -1,0 +1,21 @@
+<ion-content class="ion-padding" [fullscreen]="true" [scrollY]="true">
+
+  <div class="form-body-outer">
+    <div class="hb-with-flag">
+      <h2>Signup with Phone</h2>
+    </div>
+
+    <app-input-box></app-input-box>
+    <app-input-box></app-input-box>
+    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="submit()">
+      <span *ngIf="!isLoading">Sign Up</span>
+      <ion-spinner *ngIf="isLoading"></ion-spinner>
+    </ion-button>
+
+  </div>
+
+</ion-content>
+<ion-footer color="light">
+  <ion-button class="text-transform-non" (click)="login()" fill="clear" color="primary" expand="full">
+    Already a Member? &nbsp;&nbsp;<strong class="createaccount">Login here</strong></ion-button>
+</ion-footer>
