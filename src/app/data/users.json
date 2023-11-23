@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "age": 23,
+    "name": "Alice Johnson",
+    "email": "alice@email.com",
+    "password": "Password123",
+    "first_name": "Alice",
+    "last_name": "Johnson",
+    "dial_code": "+92",
+    "phone_number": "555-1234",
+    "dob": "1992-03-10",
+    "gender": "Female",
+    "verified": true,
+    "latitude": 34.052235,
+    "longitude": -118.243683,
+    "city": "Los Angeles",
+    "country": "USA",
+    "profile_pic": "https://play-lh.googleusercontent.com/C9CAt9tZr8SSi4zKCxhQc9v4I6AOTqRmnLchsu1wVDQL0gsQ3fmbCVgQmOVM1zPru8UH=w240-h480-rw"
+  }
+]

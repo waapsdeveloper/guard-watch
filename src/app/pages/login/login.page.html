@@ -6,8 +6,9 @@
       <app-country-selection-box></app-country-selection-box>
     </div>
 
-    <app-input-box></app-input-box>
-    <app-input-box></app-input-box>
+    <app-input-box  (valueChanged)="onEmailChange($event)" placeholder="Email" ></app-input-box>
+    <app-input-box (valueChanged)="onPasswordChange($event)" placeholder="Password" type="password"></app-input-box>
+  
     <ion-button shape="round" expand="full" color="primary" type="submit" (click)="login()">
       <span *ngIf="!isLoading">Sign In</span>
       <ion-spinner *ngIf="isLoading"></ion-spinner>

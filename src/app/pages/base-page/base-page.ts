@@ -8,7 +8,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 */
 import { SqliteService } from 'src/app/services/sqlite.service';
 import { NavService } from './../../services/nav.service';
+
 import { ModalService } from 'src/app/services/basic/modal.service';
+import { DatumService } from 'src/app/services/datum.service';
 // import { NetworkService } from 'src/app/services/network.service';
 // import { UtilityService } from 'src/app/services/utility.service';
 // import { EventsService } from 'src/app/services/events.service';
@@ -24,9 +26,11 @@ export abstract class BasePage {
     public platform: Platform;
     public formBuilder: FormBuilder;
     public domSanitizer: DomSanitizer;
+
     /*
       Custom Services
     */
+    public datum: DatumService
     public sqlite: SqliteService;
     public nav: NavService;
     public modals: ModalService;
@@ -51,6 +55,7 @@ export abstract class BasePage {
         this.sqlite = injector.get(SqliteService);
         this.nav = injector.get(NavService);
         this.modals = injector.get(ModalService);
+        this.datum = injector.get(DatumService);
         // this.users = injector.get(UserService);
         // this.network = injector.get(NetworkService);
         // this.utility = injector.get(UtilityService);
