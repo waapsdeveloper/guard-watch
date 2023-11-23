@@ -15,7 +15,7 @@ import { PassValidityModule } from 'src/app/components/pass-validity/pass-validi
 import { EndDateModule } from 'src/app/components/end-date/end-date.module';
 import { AddressModule } from 'src/app/components/address/address.module';
 import { PassTimeModule } from 'src/app/components/pass-time/pass-time.module';
-
+import { QRCodeModule } from 'angularx-qrcode';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +23,7 @@ import { PassTimeModule } from 'src/app/components/pass-time/pass-time.module';
     IonicModule,
     CreatePassPageRoutingModule,
     PassDateModule,
+    QRCodeModule,
     PassTypeModule,
     PassEventModule,
     VisitorTypeModule,
