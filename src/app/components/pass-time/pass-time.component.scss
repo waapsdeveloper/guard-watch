@@ -7,13 +7,13 @@
     display: flex;
     padding: 16px 16px;
     flex-direction: row;
-    // justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
   
     .txt {
       display: flex;
       align-items: centre;
-
+      width: 30%;
       float: right;
     }
   
@@ -37,6 +37,7 @@
       justify-content: center;
       display: flex;
       align-items: center;
+      // width: 50%;
       border-radius: 10px;
     }
   
@@ -46,5 +47,6 @@
       display: flex;
       align-items: center;
       border-radius: 10px;
+      // width: 50%;
     }
   }
