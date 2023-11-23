@@ -8,47 +8,81 @@
 </ion-header>
 
 <ion-content >
-  <div class="ion-padding ion-text-center">
+  <div class="ion-padding ion-text-center qrcode-div">
     <qrcode [qrdata]="'Your data string'" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
   </div>
   <div class="highlight ion-padding">
     <h2 class="ion-text-uppercase">Event Name</h2>
     <div class="time-box-outer">
 
+      <div class="time-slots">
+        <h2>Start Time</h2>
+        <div class="left-slot">
+          <div class="left-53543">
+            <div>2013-01-03</div>
+            <div>10:30 AM</div>
+          </div>
+          <ion-icon class="clo1" name="time-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="time-slots">
+        <h2>End Time</h2>
+        <div class="left-slot">
+          <div class="left-53543">
+            <div>2013-01-03</div>
+            <div>10:30 AM</div>
+          </div>
+          <ion-icon class="clo1" name="time-outline"></ion-icon>
+        </div>
+      </div>
+
     </div>
+
   </div>
-  <ion-grid class="highlight">
-
-    <ion-row>
-      <ion-col size="12">
-        <!-- <ion-icon item-start name="archive"></ion-icon> -->
-        <h2 class="text-uppercase">Event Name</h2>
-        <!-- <span>validity: {{item.validity}} hours</span> -->
-      </ion-col>
-      <ion-col size="6">
-        <ion-row>
-          <ion-col class="col-78">
-            <!-- | date: 'd MMMM yyyy' -->
-
-            <span>Start Time</span>
-            <span class="dt1 text-uppercase">2013-01-03</span>
-            <span class="tm1 text-uppercase">10:30 AM</span>
-            <ion-icon class="clo1" name="time-outline"></ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-      <ion-col size="6">
-        <ion-row>
-          <ion-col class="col-78">
-            <span>Expires</span>
-            <span class="dt1 text-uppercase">2013-01-03</span>
-            <span class="tm1 text-uppercase">10:30 AM</span>
-            <ion-icon class="clo1" name="time-outline"></ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+  <ion-list>
+    <ion-item lines="none">
+      <ion-label>
+        <h2>VIsitor Type</h2>
+        <p>Friend Family</p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <h2>Space Name</h2>
+        <p>Bhayani Heights</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <h2 class="ion-padding ion-text-uppercase">Sender Info</h2>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-label>
+        <h2>Name</h2>
+        <p>Ali Ahsan</p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <h2>Phone</h2>
+        <p>+92789065432</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <h2 class="ion-padding ion-text-uppercase">Receiver Info</h2>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-label>
+        <h2>Name</h2>
+        <p>Ali Ahsan</p>
+      </ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>
+        <h2>Phone</h2>
+        <p>+92789065432</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
