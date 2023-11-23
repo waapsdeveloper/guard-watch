@@ -26,7 +26,13 @@ const routes: Routes = [
     path: 'sent',
     loadChildren: () => import('./sent/sent.module').then( m => m.SentPageModule)
   },
+
     ]
+  },
+
+  {
+    path: 'create-pass',
+    loadChildren: () => import('./create-pass/create-pass.module').then( m => m.CreatePassPageModule)
   },
 
 

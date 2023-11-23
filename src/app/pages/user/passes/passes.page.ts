@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Injector } from '@angular/core';
 import { BasePage } from '../../base-page/base-page';
 
 @Component({
@@ -6,13 +6,15 @@ import { BasePage } from '../../base-page/base-page';
   templateUrl: './passes.page.html',
   styleUrls: ['./passes.page.scss'],
 })
-export class PassesPage implements OnInit {
+export class PassesPage extends BasePage implements OnInit {
 
-  constructor() { }
+  constructor( injector: Injector) {
+    super(injector)
+   }
 
   ngOnInit() {
   }
-  // goToCreatePass(){
-  //   this.nav.push('/pages/create-pass');
-  // }
+  goToCreatePass(){
+    this.nav.push('/passes/create-pass');
+  }
 }
