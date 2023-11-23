@@ -29,6 +29,11 @@ export class DashboardPage extends BasePage implements OnInit {
       case 'contact':
         this.nav.push('pages/user/contacts')
       break;
+      
+      case 'pass':
+        this.nav.push('pages/user/passes')
+      break;
+      
 
 
     }

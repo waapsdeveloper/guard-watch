@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'create-pass',
-    loadChildren: () => import('./create-pass/create-pass.module').then( m => m.CreatePassPageModule)
+    loadChildren: () => import('./passes/create-pass/create-pass.module').then( m => m.CreatePassPageModule)
   },
   {
     path: 'pass-detail',
