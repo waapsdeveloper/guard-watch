@@ -11,6 +11,7 @@ import { NavService } from './../../services/nav.service';
 
 import { ModalService } from 'src/app/services/basic/modal.service';
 import { DatumService } from 'src/app/services/datum.service';
+import { PopoversService } from 'src/app/services/popovers.service';
 // import { NetworkService } from 'src/app/services/network.service';
 // import { UtilityService } from 'src/app/services/utility.service';
 // import { EventsService } from 'src/app/services/events.service';
@@ -30,7 +31,9 @@ export abstract class BasePage {
     /*
       Custom Services
     */
-    public datum: DatumService
+    public datum: DatumService;
+    public popover: PopoversService;
+
     public sqlite: SqliteService;
     public nav: NavService;
     public modals: ModalService;
@@ -56,6 +59,8 @@ export abstract class BasePage {
         this.nav = injector.get(NavService);
         this.modals = injector.get(ModalService);
         this.datum = injector.get(DatumService);
+        this.popover = injector.get(PopoversService);
+
         // this.users = injector.get(UserService);
         // this.network = injector.get(NetworkService);
         // this.utility = injector.get(UtilityService);
