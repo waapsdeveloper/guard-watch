@@ -1,13 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>contacts</ion-title>
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-title>Contacts</ion-title>
+    <ion-buttons slot="primary">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>    
   </ion-toolbar>
 </ion-header>
+<!-- <ion-content>
+   <ion-router-outlet></ion-router-outlet>
+</ion-content> -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">contacts</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="contact-list">
+      <ion-icon name="call-outline"></ion-icon>
+      Contact List
+    </ion-tab-button>
+    <ion-tab-button tab="groups">
+      <ion-icon name="people-outline"></ion-icon>
+      Groups
+    </ion-tab-button>
+    <ion-tab-button tab="favourites"> 
+      <ion-icon name="heart-outline"></ion-icon>
+      Favourites
+    </ion-tab-button>
+    <ion-tab-button tab="pre-approved">
+      <ion-icon name="checkmark-outline"></ion-icon>
+      Pre-Approved
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
