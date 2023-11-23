@@ -6,12 +6,11 @@
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding"> 
+    <ion-content class="ion-padding">
       <ion-list>
         <ion-menu-toggle *ngFor="let item of ['A','B', 'C']">
           <ion-item>{{item}}</ion-item>
         </ion-menu-toggle>
-        
       </ion-list>
     </ion-content>
   </ion-menu>
@@ -19,14 +18,26 @@
   <div class="ion-page" id="main">
     <ion-header >
       <ion-toolbar color="primary">
-        <ion-buttons slot="start">
+        <ion-title>Guard Watch</ion-title>
+        <ion-buttons slot="primary">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>dashboard</ion-title>
+        <ion-buttons slot="secondary">
+          <ion-button>
+            <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+          </ion-button>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-router-outlet></ion-router-outlet>
+      <ion-list class="list-main-home">
+        <ion-item class="ion-bo-border" *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]" detail="true" lines="none" (click)="showDetails()" >
+          <ion-label>
+            <h2>Event name</h2>
+            <p>Pass sent {{item}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
     </ion-content>
     <ion-footer>
       <div class="tabs-like">
@@ -35,21 +46,21 @@
           <div class="title-469845">Passes</div>
         </div>
         <div class="box-outer">
-          <ion-icon name="card-outline"></ion-icon>
-          <div class="title-469845">Passes</div>
+          <ion-icon name="people-outline"></ion-icon>
+          <div class="title-469845">Contacts</div>
         </div>
         <div class="box-outer">
-          <ion-icon name="card-outline"></ion-icon>
-          <div class="title-469845">Passes</div>
+          <ion-icon name="cube-outline"></ion-icon>
+          <div class="title-469845">Spaces</div>
         </div>
         <div class="box-outer">
-          <ion-icon name="card-outline"></ion-icon>
-          <div class="title-469845">Passes</div>
+          <ion-icon name="cog-outline"></ion-icon>
+          <div class="title-469845">Settings</div>
         </div>
       </div>
     </ion-footer>
-    
-    
+
+
   </div>
 
 

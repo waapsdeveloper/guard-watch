@@ -1,0 +1,23 @@
+.highlight {
+  background: #6a87bc;
+  color: #fff;
+
+  width: calc(100% + 30px);
+  label {
+    padding: 12px 10px;
+    display: flex;
+    span {
+      display: block;
+    }
+  }
+  ion-col.right {
+    text-align: right;
+    label {
+      display: block;
+      float: left;
+    }
+    ion-icon {
+      float: right;
+    }
+  }
+}

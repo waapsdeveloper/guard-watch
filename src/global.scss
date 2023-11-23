@@ -33,6 +33,11 @@ ion-footer{
   --background: var(--ion-color-light);
   background: var(--ion-color-light)
 }
+ion-list{
+  --background: transparent;
+  background: transparent;
+}
+
 .form-body-outer{
   display: flex;
   flex-direction: column;
