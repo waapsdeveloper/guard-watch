@@ -32,5 +32,6 @@ export class DashboardPage extends BasePage implements OnInit {
   showPerson() {
     this.showOptions = false;
     console.log('Person clicked');
+    this.nav.push('pages/resident')
   }
 }

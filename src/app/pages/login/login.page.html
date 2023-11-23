@@ -8,13 +8,23 @@
 
     <app-input-box  (valueChanged)="onEmailChange($event)" placeholder="Email" ></app-input-box>
     <app-input-box (valueChanged)="onPasswordChange($event)" placeholder="Password" type="password"></app-input-box>
-  
+
     <ion-button shape="round" expand="full" color="primary" type="submit" (click)="login()">
       <span *ngIf="!isLoading">Sign In</span>
       <ion-spinner *ngIf="isLoading"></ion-spinner>
     </ion-button>
     <ion-button class="createaccount text-transform-non" fill="clear" color="primary" expand="full"
           (click)="switchToForgetPassword()">Forgot Password? Click Here</ion-button>
+
+          <div class="userpc">
+
+            <div class="forloop" *ngFor="let singleUser of user">
+
+              <img *ngIf="singleUser.profile_pic" [src]="singleUser.profile_pic" (click)="fillInputFields(singleUser)"
+              >
+              <h4>{{singleUser.type}}</h4>
+            </div>
+          </div>
   </div>
 
 </ion-content>

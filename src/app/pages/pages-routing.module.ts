@@ -35,7 +35,11 @@ const routes: Routes = [
   {
     path: 'guard',
     loadChildren: () => import('./guard/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },  {
+    path: 'resident',
+    loadChildren: () => import('./guard/resident/resident.module').then( m => m.ResidentPageModule)
   },
+
 
 ];
 

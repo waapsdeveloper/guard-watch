@@ -11,8 +11,8 @@ export class LoginPage extends BasePage implements OnInit {
   user: any;
   isLoading = false;
   obj = {
-    email_or_phone: 'alice@email.com',
-    password: 'Password123',
+    email_or_phone: '',
+    password: '',
   };
   constructor(injector: Injector) {
     super(injector)
@@ -29,6 +29,12 @@ export class LoginPage extends BasePage implements OnInit {
 
   onPasswordChange(password: string) {
     this.obj.password = password;
+  }
+  fillInputFields(singleUser:any) {
+    this.obj.email_or_phone = singleUser.email;
+    this.obj.password = singleUser.password;
+
+    localStorage.setItem('user_id', singleUser.id);
   }
   async login() {
     console.log(this.user, 'assasasa');
