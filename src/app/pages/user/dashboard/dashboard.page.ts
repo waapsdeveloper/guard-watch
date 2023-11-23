@@ -7,12 +7,15 @@ import { BasePage } from '../../base-page/base-page';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage extends BasePage implements OnInit {
-
+  userId:any;
+  user:any;
   constructor(injector: Injector) {
     super(injector)
   }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('user_id');
+    this.user = this.datum.getUserById(this.userId);
   }
 
 
