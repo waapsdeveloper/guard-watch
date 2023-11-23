@@ -1,0 +1,11 @@
+<ion-list *ngIf="flag == 'PASS'">
+  <ion-item (click)="close('CR')">
+    Call Resident
+  </ion-item>
+  <ion-item (click)="close('VBG')">
+   Verified By Guard
+  </ion-item>
+  <ion-item (click)="close('PAG')">
+    Pre-Approved Guests
+  </ion-item>
+</ion-list>

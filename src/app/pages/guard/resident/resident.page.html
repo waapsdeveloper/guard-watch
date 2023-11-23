@@ -7,11 +7,23 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
+  <ion-card>
     <ng-container *ngFor="let resident of user">
       <ion-item *ngIf="resident.role_id !== 8">
-        {{ resident.name }}
+        <ion-label>
+
+          <h2>
+            {{ resident.name }}
+          </h2>
+          <p>{{ resident.address }}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button (click)="openPopover($event)">
+            <ion-icon name="menu"></ion-icon>
+
+          </ion-button>
+        </ion-buttons>
       </ion-item>
     </ng-container>
-  </ion-list>
+  </ion-card>
 </ion-content>
