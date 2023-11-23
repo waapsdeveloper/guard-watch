@@ -11,8 +11,8 @@ export class LoginPage extends BasePage implements OnInit {
   user: any;
   isLoading = false;
   obj = {
-    email_or_phone: 'alice@email.com',
-    password: 'Password123',
+    email_or_phone: '',
+    password: '',
   };
   constructor(injector: Injector) {
     super(injector)
@@ -30,24 +30,35 @@ export class LoginPage extends BasePage implements OnInit {
   onPasswordChange(password: string) {
     this.obj.password = password;
   }
-
-  fillInputFields(singleUser: { email: string; password: any; id: string; }) {
+  fillInputFields(singleUser:any) {
     this.obj.email_or_phone = singleUser.email;
     this.obj.password = singleUser.password;
 
     localStorage.setItem('user_id', singleUser.id);
   }
   async login() {
-    // this.obj.email_or_phone = 'alice@email.com'
-    // this.obj.password = 'Password123'
+    console.log(this.user, 'assasasa');
+
     if (!this.obj.email_or_phone || !this.obj.password) {
       alert("Email and Password are required");
       return;
     }
-    const matchingUser = this.user.find((u: { email: string; password: string; }) => u.email === this.obj.email_or_phone && u.password === this.obj.password);
+
+    const matchingUser = this.user.find((u: { email: string; password: string; role_id: number }) =>
+      u.email === this.obj.email_or_phone && u.password === this.obj.password
+    );
+
+    console.log(matchingUser);
+
     if (matchingUser) {
       localStorage.setItem('user_id', matchingUser.id);
-      this.nav.push('pages/user');
+
+      if (matchingUser.role_id === 8) {
+        this.nav.push('pages/guard');
+      } else {
+        this.nav.push('pages/user');
+      }
+
       this.isLoading = false;
     } else {
       alert("Invalid email or password");
