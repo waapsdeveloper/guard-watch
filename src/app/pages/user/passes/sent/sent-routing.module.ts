@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreatePassPage } from './create-pass.page';
+import { SentPage } from './sent.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: CreatePassPage,
-  },
-
-
+    component: SentPage
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class CreatePassPageRoutingModule {}
+export class SentPageRoutingModule {}

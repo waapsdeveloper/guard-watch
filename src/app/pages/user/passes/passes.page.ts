@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BasePage } from '../../base-page/base-page';
 
 @Component({
   selector: 'app-passes',
@@ -11,5 +12,7 @@ export class PassesPage implements OnInit {
 
   ngOnInit() {
   }
-
+  // goToCreatePass(){
+  //   this.nav.push('/pages/create-pass');
+  // }
 }
