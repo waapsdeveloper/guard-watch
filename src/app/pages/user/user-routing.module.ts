@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'pass-detail',
     loadChildren: () => import('./passes/pass-detail/pass-detail.module').then( m => m.PassDetailPageModule)
-  },
+  }
 ];
 
 @NgModule({

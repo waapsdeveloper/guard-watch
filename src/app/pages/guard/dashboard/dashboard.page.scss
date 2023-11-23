@@ -1,0 +1,41 @@
+.tabs-like {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  * {
+    color: var(--ion-color-primary);
+  }
+
+  .box-outer {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    ion-icon {
+      font-size: 2em;
+    }
+
+    .title-469845 {
+      font-size: 0.8em;
+    }
+  }
+
+  .fab-options {
+    position: absolute;
+    top: 70px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .fab-options ion-fab-button {
+    margin-bottom: 20px;
+    vertical-align: top;
+  }
+}

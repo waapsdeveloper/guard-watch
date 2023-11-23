@@ -1,5 +1,3 @@
-
-
 <ion-split-pane when="lg" contentId="main">
   <ion-menu contentId="main">
     <ion-header>
@@ -17,9 +15,9 @@
   </ion-menu>
 
   <div class="ion-page" id="main">
-    <ion-header >
+    <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>Resident Watch</ion-title>
+        <ion-title>Guard Watch</ion-title>
         <ion-buttons slot="primary">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
@@ -32,7 +30,7 @@
     </ion-header>
     <ion-content>
       <ion-list class="list-main-home">
-        <ion-item class="ion-bo-border" *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]" detail="true" lines="none" (click)="showDetails()" >
+        <ion-item class="ion-bo-border" *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]" detail="true" lines="none">
           <ion-label>
             <h2>Event name</h2>
             <p>Pass sent {{item}}</p>
@@ -40,29 +38,26 @@
         </ion-item>
       </ion-list>
     </ion-content>
-    <ion-footer>
-      <div class="tabs-like">
-        <div class="box-outer">
-          <ion-icon name="card-outline"></ion-icon>
-          <div class="title-469845">Passes</div>
-        </div>
-        <div class="box-outer" (click)="openPage('contact')">
-          <ion-icon name="people-outline"></ion-icon>
-          <div class="title-469845">Contacts</div>
-        </div>
-        <div class="box-outer">
-          <ion-icon name="cube-outline"></ion-icon>
-          <div class="title-469845">Spaces</div>
-        </div>
-        <div class="box-outer">
-          <ion-icon name="cog-outline"></ion-icon>
-          <div class="title-469845">Settings</div>
-        </div>
-      </div>
-    </ion-footer>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="light" (click)="toggleOptions()">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
 
+        <div *ngIf="showOptions" class="fab-options">
+          <ion-fab-button color="white" (click)="scan()">
+            <ion-icon name="scan"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="white" (click)="showPerson()">
+            <ion-icon name="person"></ion-icon>
+          </ion-fab-button>
+
+        </div>
+      </ion-fab-list>
+    </ion-fab>
 
   </div>
 
 
-  </ion-split-pane>
+
+</ion-split-pane>
