@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatePassPage implements OnInit {
 
+  
+  type: string = "date"; 
+
   constructor() { }
 
   ngOnInit() {

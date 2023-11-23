@@ -38,8 +38,8 @@ export class LoginPage extends BasePage implements OnInit {
     localStorage.setItem('user_id', singleUser.id);
   }
   async login() {
-    this.obj.email_or_phone = 'alice@email.com'
-    this.obj.password = 'Password123'
+    // this.obj.email_or_phone = 'alice@email.com'
+    // this.obj.password = 'Password123'
     if (!this.obj.email_or_phone || !this.obj.password) {
       alert("Email and Password are required");
       return;
