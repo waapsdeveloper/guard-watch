@@ -24,17 +24,17 @@ resident: any;
     const res = await this.popover.present($event, { flag: 'PASS' });
     const data = res.data;
     console.log(data);
-    
+
     if (data) {
       switch (data.param) {
         case 'CR':
-          // this.additionalPhoneNumbers(c.formatted_phone, c.formatted_phone_one, c.formatted_phone_two )
-          break;
+          // this.nav.push('pages/call-resident');
+        break;
         case 'VBG':
-          // this.quickpassViaAdminGuard(c)
+          // this.nav.push('pages/verified-by-guard');
           break;
         case 'PAG':
-          // this.dncViaAdminGuard(c)
+          // this.nav.push('pages/pre-approved-guest');
           break;
       }
     }

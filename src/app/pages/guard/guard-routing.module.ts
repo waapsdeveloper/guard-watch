@@ -14,7 +14,19 @@ const routes: Routes = [
   {
     path: 'resident',
     loadChildren: () => import('./resident/resident.module').then( m => m.ResidentPageModule)
+  },  {
+    path: 'call-resident',
+    loadChildren: () => import('./call-resident/call-resident.module').then( m => m.CallResidentPageModule)
+  },
+  {
+    path: 'verified-by-guard',
+    loadChildren: () => import('./verified-by-guard/verified-by-guard.module').then( m => m.VerifiedByGuardPageModule)
+  },
+  {
+    path: 'pre-approved-guest',
+    loadChildren: () => import('./pre-approved-guest/pre-approved-guest.module').then( m => m.PreApprovedGuestPageModule)
   }
+
 ];
 
 @NgModule({
