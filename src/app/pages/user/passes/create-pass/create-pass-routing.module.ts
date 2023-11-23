@@ -6,8 +6,10 @@ import { CreatePassPage } from './create-pass.page';
 const routes: Routes = [
   {
     path: '',
-    component: CreatePassPage
-  }
+    component: CreatePassPage,
+  },
+
+
 ];
 
 @NgModule({
