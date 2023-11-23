@@ -9,6 +9,7 @@ const countries = require('./../../../data/countries.json')
 export class CountrySelectionComponent  implements OnInit {
 
   list = countries;
+  search: any;
   constructor(public modals: ModalService) { }
 
   ngOnInit() {}

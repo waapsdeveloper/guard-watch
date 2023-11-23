@@ -6,13 +6,13 @@
     </ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar mode="ios" class="search-box-235553"></ion-searchbar>
+    <ion-searchbar mode="ios" class="search-box-235553" [(ngModel)]="search"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-content-bg">
 
   <ion-list style="background: transparent">
-    <ion-item *ngFor="let item of list" (click)="selection(item)" style="--background: transparent">
+    <ion-item *ngFor="let item of list | filterList : ['dial_code','name'] : search" (click)="selection(item)" style="--background: transparent">
       <div class="flag-item-li">
         <span class="fi fi-{{item.code | lowercase}}"></span>
         <div>{{item.dial_code}}</div>
