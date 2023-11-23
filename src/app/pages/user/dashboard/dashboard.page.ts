@@ -20,4 +20,15 @@ export class DashboardPage extends BasePage implements OnInit {
     this.nav.push('/pages/user/pass-detail')
   }
 
+  openPage(page: string){
+
+    switch (page) {
+      case 'contact':
+        this.nav.push('pages/user/contacts')
+      break;
+
+
+    }
+  }
+
 }
