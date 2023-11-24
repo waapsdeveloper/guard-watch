@@ -1,13 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>verified-by-guard</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Quick Pass</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">verified-by-guard</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content >
+  <div class="hb-with-flag ion-pedding">
+    <h2>Create Quick Pass</h2>
+    <app-country-selection-box></app-country-selection-box>
+  </div>
+  <app-input-box placeholder="Name"></app-input-box>
+  <app-input-box class="ion-padding" placeholder="Phone Number"></app-input-box>
+  <div class="highlight ion-padding">
+    <h2 (click)="OpenModal()" class="ion-text-uppercase">Event Name <ion-icon name="caret-down-outline"></ion-icon></h2>
+    <div class="time-box-outer">
+
+      <div class="time-slots">
+        <h2>Start Time</h2>
+        <div class="left-slot">
+          <div class="left-53543">
+            <div>2013-01-03</div>
+            <div>10:30 AM</div>
+          </div>
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="time-slots">
+        <h2>End Time</h2>
+        <div class="left-slot">
+          <div class="left-53543">
+            <div>2013-01-03</div>
+            <div>10:30 AM</div>
+          </div>
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </ion-content>

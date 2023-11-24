@@ -20,21 +20,22 @@ resident: any;
     this.user = this.datum.getAllUsers()
   }
 
-  async openPopover($event: any) {
+  async openPopover($event: any, resident: any) {
+    localStorage.setItem('resident_id',resident.id)
     const res = await this.popover.present($event, { flag: 'PASS' });
     const data = res.data;
-    console.log(data);
+    console.log(data.param);
 
     if (data) {
       switch (data.param) {
         case 'CR':
-          // this.nav.push('pages/call-resident');
+          this.nav.push('/pages/guard/call-resident');
         break;
         case 'VBG':
-          // this.nav.push('pages/verified-by-guard');
+          this.nav.push('/pages/guard/verified-by-guard');
           break;
         case 'PAG':
-          // this.nav.push('pages/pre-approved-guest');
+          this.nav.push('/pages/guard/pre-approved-guest');
           break;
       }
     }

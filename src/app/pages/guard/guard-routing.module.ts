@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'resident',
     loadChildren: () => import('./resident/resident.module').then( m => m.ResidentPageModule)
-  },  {
+  },
+  {
     path: 'call-resident',
     loadChildren: () => import('./call-resident/call-resident.module').then( m => m.CallResidentPageModule)
   },
