@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let item of events | filterList : ['dial_code','name'] : search">
+  <ion-list *ngFor="let item of events | filterList : ['name'] : search">
     <ion-item>
       {{ item.event }}
     </ion-item>

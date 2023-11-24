@@ -27,6 +27,8 @@ export class DashboardPage extends BasePage implements OnInit {
   scan() {
     this.showOptions = false;
     console.log('Scan clicked');
+    this.nav.push('./pages/guard/scan-result')
+
   }
 
   showPerson() {

@@ -1,0 +1,33 @@
+.qrcode-div{
+  background: #ffffff;
+}
+.highlight {
+  background: var(--ion-color-primary) ;
+  color: #fff;
+
+  .time-box-outer{
+    display: flex;
+    flex-direction: row;
+
+    .time-slots{
+      flex-grow: 1;
+      flex-basis: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-right: 8px;
+
+      .left-slot{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        ion-icon{
+          font-size: 2em;
+        }
+      }
+    }
+  }
+}

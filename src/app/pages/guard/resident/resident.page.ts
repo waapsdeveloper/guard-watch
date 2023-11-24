@@ -12,32 +12,46 @@ c: any;
 
   user: any;
 resident: any;
+Options = [
+
+  {
+
+    text: 'Call Resident',
+    icon: '',
+    handler: () => {
+      console.log('Delete clicked');
+      this.nav.push('/pages/guard/call-resident');
+    }
+  },
+  {
+    text: 'Verified by Guard',
+    icon: '',
+    handler: () => {
+      console.log('verified clicked');
+      this.nav.push('/pages/guard/verified-by-guard');
+    }
+  },
+  {
+    text: 'Pre Approved Guest',
+    icon: '',
+    handler: () => {
+      console.log('preapp clicked');
+      this.nav.push('/pages/guard/pre-approved-guest');
+    }
+  },
+];
   constructor(injector: Injector) {
     super(injector);
    }
-
   ngOnInit() {
     this.user = this.datum.getAllUsers()
+
+    console.log(this.resident,'dsafgdfhfgjd');
+
   }
-
-  async openPopover($event: any, resident: any) {
-    localStorage.setItem('resident_id',resident.id)
-    const res = await this.popover.present($event, { flag: 'PASS' });
-    const data = res.data;
-    console.log(data.param);
-
-    if (data) {
-      switch (data.param) {
-        case 'CR':
-          this.nav.push('/pages/guard/call-resident');
-        break;
-        case 'VBG':
-          this.nav.push('/pages/guard/verified-by-guard');
-          break;
-        case 'PAG':
-          this.nav.push('/pages/guard/pre-approved-guest');
-          break;
-      }
-    }
+  openResidentDetails(resident: any) {
+    this.resident = resident
+    localStorage.setItem('resident_id',this.resident.id);
+    console.log(this.resident,'asasasassasassssssssss');
   }
 }

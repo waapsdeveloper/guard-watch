@@ -37,6 +37,7 @@ export abstract class BasePage {
     public sqlite: SqliteService;
     public nav: NavService;
     public modals: ModalService;
+    
     // public network: NetworkService;
     // public utility: UtilityService;
 

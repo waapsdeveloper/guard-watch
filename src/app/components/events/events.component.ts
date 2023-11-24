@@ -18,13 +18,5 @@ export class EventsComponent extends BasePage implements OnInit {
 
   ngOnInit() {
     this.events = this.datum.getAllEvents();
-    this.filteredEvents = this.events;
-  }
-
-filterEvents() {
-    this.filteredEvents = this.events.filter(
-      (item: any) =>
-        item.event.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
   }
 }

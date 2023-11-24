@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'pre-approved-guest',
     loadChildren: () => import('./pre-approved-guest/pre-approved-guest.module').then( m => m.PreApprovedGuestPageModule)
+  },  {
+    path: 'scan-result',
+    loadChildren: () => import('./scan-result/scan-result.module').then( m => m.ScanResultPageModule)
   }
+
 
 ];
 
