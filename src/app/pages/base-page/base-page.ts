@@ -12,6 +12,7 @@ import { NavService } from './../../services/nav.service';
 import { ModalService } from 'src/app/services/basic/modal.service';
 import { DatumService } from 'src/app/services/datum.service';
 import { PopoversService } from 'src/app/services/popovers.service';
+import { UserService } from 'src/app/services/user.service';
 // import { NetworkService } from 'src/app/services/network.service';
 // import { UtilityService } from 'src/app/services/utility.service';
 // import { EventsService } from 'src/app/services/events.service';
@@ -23,7 +24,6 @@ import { PopoversService } from 'src/app/services/popovers.service';
 
 
 export abstract class BasePage {
-
     public platform: Platform;
     public formBuilder: FormBuilder;
     public domSanitizer: DomSanitizer;
@@ -37,13 +37,13 @@ export abstract class BasePage {
     public sqlite: SqliteService;
     public nav: NavService;
     public modals: ModalService;
-    
+
     // public network: NetworkService;
     // public utility: UtilityService;
 
     // public events: EventsService;
     // public popover: PopoversService;
-    // public users: UserService;
+    public users: UserService;
 
     // public permissions: PermissionsService;
     // public fphs: FormatPhoneService;
@@ -62,7 +62,8 @@ export abstract class BasePage {
         this.datum = injector.get(DatumService);
         this.popover = injector.get(PopoversService);
 
-        // this.users = injector.get(UserService);
+        this.users = injector.get(UserService);
+        this.users = injector.get(UserService);
         // this.network = injector.get(NetworkService);
         // this.utility = injector.get(UtilityService);
         // this.events = injector.get(EventsService);

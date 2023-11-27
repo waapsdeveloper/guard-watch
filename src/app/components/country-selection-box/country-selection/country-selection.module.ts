@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountrySelectionComponent } from './country-selection.component';
 import { IonicModule } from '@ionic/angular';
-import { FilterListPipe } from 'src/app/pipes/filter-list.pipe';
 import { FormsModule } from '@angular/forms';
+import { FilterListPipeModule } from 'src/app/pipes/filter-list.pipe.module';
 
 
 
 @NgModule({
-  declarations: [CountrySelectionComponent, FilterListPipe],
+  declarations: [CountrySelectionComponent],
   imports: [
     CommonModule,
     IonicModule,
+    FilterListPipeModule,
     FormsModule
   ],
   exports: [

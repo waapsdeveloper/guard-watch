@@ -3,11 +3,15 @@
   <div class="form-body-outer">
     <div class="hb-with-flag">
       <h2>Signup with Phone</h2>
+      <app-country-selection-box (dialCodeSelected)="onDialCodeSelected($event)"></app-country-selection-box>
     </div>
 
-    <app-input-box></app-input-box>
-    <app-input-box></app-input-box>
-    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="submit()">
+    <app-input-box  placeholder="Name" (valueChanged)="result($event, 'name')"  ></app-input-box>
+    <app-input-box placeholder="Phone Number" (valueChanged)="result($event, 'phone_number')" ></app-input-box>
+    <app-input-box placeholder="Email" (valueChanged)="result($event, 'email')" ></app-input-box>
+    <app-input-box placeholder="Password" (valueChanged)="result($event, 'password')"></app-input-box>
+    <app-input-box placeholder="Confirm Password" (valueChanged)="result($event, 'confirm_password')"></app-input-box>
+    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="signup()">
       <span *ngIf="!isLoading">Sign Up</span>
       <ion-spinner *ngIf="isLoading"></ion-spinner>
     </ion-button>

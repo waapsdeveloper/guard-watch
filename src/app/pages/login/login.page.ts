@@ -10,67 +10,30 @@ import { log } from 'console';
 export class LoginPage extends BasePage implements OnInit {
   user: any;
   isLoading = false;
-  obj = {
-    email_or_phone: '',
+  obj: any = {
+    phone_number: '',
     password: '',
+    dia_code: ''
   };
   constructor(injector: Injector) {
     super(injector)
   }
 
   ngOnInit() {
-    this.user = this.datum.getAllUsers();
-  }
-  onEmailChange(email: string) {
-    this.obj.email_or_phone = email;
-    console.log(email);
 
   }
-
-  onPasswordChange(password: string) {
-    this.obj.password = password;
+  onDialCodeSelected(dialCode: string) {
+    this.obj.dial_code = dialCode;
   }
-  fillInputFields(singleUser:any) {
-    this.obj.email_or_phone = singleUser.email;
-    this.obj.password = singleUser.password;
 
-    localStorage.setItem('user_id', singleUser.id);
+  result(event: any, type: any){
+    this.obj[type] = event
   }
+
   async login() {
-    console.log(this.user, 'assasasa');
-
-    if (!this.obj.email_or_phone || !this.obj.password) {
-      alert("Email and Password are required");
-      return;
-    }
-
-    const matchingUser = this.user.find((u: { email: string; password: string; role_id: number }) =>
-      u.email === this.obj.email_or_phone && u.password === this.obj.password
-    );
-
-    console.log(matchingUser);
-
-    if (matchingUser) {
-      localStorage.setItem('user_id', matchingUser.id);
-
-      if (matchingUser.role_id === 8) {
-        this.nav.push('pages/guard');
-      } else {
-        this.nav.push('pages/user');
-      }
-
-      this.isLoading = false;
-    } else {
-      alert("Invalid email or password");
-      return;
-    }
-    // this.submitAttemptLogin = true;
-    // const formdata = this.aForm.value;
-    // formdata.register_with_phonenumber = true;
-    // formdata.dial_code = formdata.dial_code == 'HN' ? '+504' : '+92';
-    // formdata.phone_number = this.utility.getOnlyDigits(formdata.phone_number);
-    // this.isLoading = true;
-    // await this.users.login(formdata);
+    const res = this.users.login(this.obj)
+    console.log(res, 'assasasa');
+    
   }
 
   switchToForgetPassword() {

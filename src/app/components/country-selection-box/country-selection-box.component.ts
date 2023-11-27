@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CountrySelectionComponent } from './country-selection/country-selection.component';
 import { ModalService } from 'src/app/services/basic/modal.service';
 
@@ -9,10 +9,14 @@ import { ModalService } from 'src/app/services/basic/modal.service';
 })
 export class CountrySelectionBoxComponent  implements OnInit {
 
+
+  @Output() dialCodeSelected = new EventEmitter<string>();
+
+
   item: any = {
-    "name": "Yemen",
-    "dial_code": "+967",
-    "code": "YE"
+    "name": "Pakistan",
+    "dial_code": "+92",
+    "code": "PK"
   };
   constructor(public modals: ModalService) { }
 
@@ -26,6 +30,8 @@ export class CountrySelectionBoxComponent  implements OnInit {
       console.log(c);
       this.item = c;
     }
+    this.dialCodeSelected.emit(this.item.dial_code);
+
   }
 
 }

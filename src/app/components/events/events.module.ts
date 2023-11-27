@@ -3,16 +3,17 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { EventsComponent } from './events.component';
 import { FormsModule } from '@angular/forms';
-import { FilterListPipe } from 'src/app/pipes/filter-list.pipe';
+import { FilterListPipeModule } from 'src/app/pipes/filter-list.pipe.module';
 
 
 
 @NgModule({
-  declarations: [EventsComponent, FilterListPipe],
+  declarations: [EventsComponent],
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    FilterListPipeModule
   ],
   exports: [
     EventsComponent

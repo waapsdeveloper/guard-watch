@@ -8,16 +8,17 @@ import { PreApprovedGuestPageRoutingModule } from './pre-approved-guest-routing.
 
 import { PreApprovedGuestPage } from './pre-approved-guest.page';
 import { ActionSheetModule } from 'src/app/components/action-sheet/action-sheet.module';
-import { FilterListPipe } from 'src/app/pipes/filter-list.pipe';
+import { FilterListPipeModule } from 'src/app/pipes/filter-list.pipe.module';
 
 @NgModule({
+  declarations: [PreApprovedGuestPage],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     PreApprovedGuestPageRoutingModule,
-    ActionSheetModule
-  ],
-  declarations: [PreApprovedGuestPage, FilterListPipe]
+    ActionSheetModule,
+    FilterListPipeModule
+  ]
 })
 export class PreApprovedGuestPageModule {}
