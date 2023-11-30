@@ -1,0 +1,22 @@
+<ion-toolbar>
+  <ion-title>
+    Add Contacts
+  </ion-title>
+  <app-country-selection-box (dialCodeSelected)="result($event,'dial_code')" slot="end"></app-country-selection-box>
+
+</ion-toolbar>
+<ion-content>
+<div  style="display: flex;flex-direction: column; gap: 20px;">
+
+  <app-input-box (valueChanged)="result($event, 'name')" placeholder="name"></app-input-box>
+  <app-input-box  (valueChanged)="result($event, 'email')" placeholder="email"></app-input-box>
+
+  <app-input-box (valueChanged)="result($event, 'phone_number')" class="ion-pedding" placeholder="phone number" ></app-input-box>
+  <div class="ion-pedding" (click)="close()">
+
+    <ion-button shape="round" expand="full" color="primary">
+      <span>Save</span>
+    </ion-button>
+  </div>
+</div>
+</ion-content>

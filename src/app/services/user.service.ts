@@ -23,8 +23,9 @@ export class UserService {
 
     this.network.login(user).then(
       async (res) => {
-
-        console.log('bbbbbbbbbbb', res);
+        var token = res.result.token
+        localStorage.setItem('token',token)
+        console.log('bbbbbbbbbbb', res.result.token, token);
         if(res.role_id == 3){
           console.log('guard');
           this.nav.push('./pages/guard/dashboard')

@@ -23,6 +23,10 @@ export class NetworkService {
     return this.httpPostResponse('auth/register', data, null, true);
   }
 
+  addContact(data: any) {
+    var token = localStorage.getItem('token')
+    return this.httpPostResponse('contacts/add', data, null, true);
+  }
   getOnBehalf(loader = false) {
     return this.httpGetResponse('on-behalf', null, loader, false);
   }
