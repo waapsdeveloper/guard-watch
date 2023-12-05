@@ -14,6 +14,8 @@ import { DatumService } from 'src/app/services/datum.service';
 import { PopoversService } from 'src/app/services/popovers.service';
 import { UserService } from 'src/app/services/user.service';
 import { ContactService } from 'src/app/services/contact.service';
+import { PassesService } from 'src/app/services/passes.sevice';
+import { InvokeFunctionExpr } from '@angular/compiler';
 // import { NetworkService } from 'src/app/services/network.service';
 // import { UtilityService } from 'src/app/services/utility.service';
 // import { EventsService } from 'src/app/services/events.service';
@@ -38,7 +40,7 @@ export abstract class BasePage {
     public sqlite: SqliteService;
     public nav: NavService;
     public modals: ModalService;
-
+    public passes: PassesService;
     // public network: NetworkService;
     // public utility: UtilityService;
 
@@ -65,6 +67,7 @@ export abstract class BasePage {
         this.contact = injector.get(ContactService);
         this.users = injector.get(UserService);
         this.users = injector.get(UserService);
+        this.passes = injector.get(PassesService);
         // this.network = injector.get(NetworkService);
         // this.utility = injector.get(UtilityService);
         // this.events = injector.get(EventsService);

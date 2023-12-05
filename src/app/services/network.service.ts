@@ -24,12 +24,19 @@ export class NetworkService {
   }
 
   addContact(data: any) {
-    var token = localStorage.getItem('token')
     return this.httpPostResponse('contacts/add', data, null, true);
   }
-  getOnBehalf(loader = false) {
-    return this.httpGetResponse('on-behalf', null, loader, false);
+  addEvents(data: any) {
+    return this.httpPostResponse('events/add', data, null, true);
   }
+  getAllEvents(loader = false) {
+    return this.httpGetResponse('events/list', null, loader, false);
+  }
+
+  getAllContacts(loader = false) {
+    return this.httpGetResponse('contacts/list', null, loader, false);
+  }
+
   getAllusers(loader = false) {
     return this.httpGetResponse('users', null, loader, false);
   }
@@ -39,7 +46,7 @@ export class NetworkService {
     return this.httpGetResponse('user', null, loader, false);
   }
 
-  serialize = (obj: { [x: string]: string | number | boolean;}) => {
+  serialize = (obj: { [x: string]: string | number | boolean; }) => {
     const str = [];
     for (const p in obj) {
       if (obj.hasOwnProperty(p)) {
@@ -211,9 +218,9 @@ export class NetworkService {
           // if(err.status === 401){
           //   this.router.navigate(['splash']);
           // }
-          if(returnFullResponse){
+          if (returnFullResponse) {
             reject(err);
-          }else{
+          } else {
             reject(null);
           }
 

@@ -1,22 +1,19 @@
-<ion-toolbar>
-  <ion-title>
-    Add Contacts
-  </ion-title>
-  <app-country-selection-box (dialCodeSelected)="result($event,'dial_code')" slot="end"></app-country-selection-box>
+<ion-content class="login-page-content ion-padding" [fullscreen]="true" [scrollY]="true">
 
-</ion-toolbar>
-<ion-content>
-<div  style="display: flex;flex-direction: column; gap: 20px;">
+  <div class="form-body-outer">
+    <div class="hb-with-flag">
+      <h2>Add Contacts</h2>
+      <app-country-selection-box (dialCodeSelected)="result($event,'dial_code')"></app-country-selection-box>
+    </div>
 
   <app-input-box (valueChanged)="result($event, 'name')" placeholder="name"></app-input-box>
   <app-input-box  (valueChanged)="result($event, 'email')" placeholder="email"></app-input-box>
+  <app-input-box (valueChanged)="result($event, 'phone_number')" class="ion-pedding" placeholder="phone number" type="number"></app-input-box>
 
-  <app-input-box (valueChanged)="result($event, 'phone_number')" class="ion-pedding" placeholder="phone number" ></app-input-box>
-  <div class="ion-pedding" (click)="close()">
-
-    <ion-button shape="round" expand="full" color="primary">
+    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="close()">
       <span>Save</span>
     </ion-button>
+
   </div>
-</div>
+
 </ion-content>

@@ -31,6 +31,13 @@ export class NavService {
     };
     this.navigateTo(page, extras);
   }
+  
+  async pop1(data: any) {
+    return new Promise<void>( async resolve => {
+      this.location.back();
+      resolve(data);
+    });
+  }
 
   async pop() {
     return new Promise<void>( async resolve => {

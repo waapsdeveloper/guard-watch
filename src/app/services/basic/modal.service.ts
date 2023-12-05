@@ -26,11 +26,15 @@ export class ModalService {
 
   }
 
-  dismiss(data: any = {}): Promise<any> {
+  dismiss(data: any | string = {}): Promise<any> {
     return new Promise(resolve => {
+      if (typeof data === 'string') {
+        data = { result: data };
+      }
       data.dismiss = true;
       this.modal.dismiss(data).then(v => resolve(true));
     });
   }
+
 
 }

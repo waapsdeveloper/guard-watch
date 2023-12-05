@@ -1,0 +1,41 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-title>Events</ion-title>
+    <ion-buttons slot="primary">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="secondary" (click)="openAddContacts()">
+      <ion-button>
+        <ion-icon name="add-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content class="login-page-content " [fullscreen]="true" [scrollY]="true">
+  
+
+  <ion-item class="itemp">
+    <ion-searchbar mode="ios" class="search-box-235553" [(ngModel)]="search"></ion-searchbar>
+  </ion-item>
+
+  <ion-list class="list-main-home">
+    <ion-item class="ion-bo-border" *ngFor="let item of event| filterList : ['title'] : search"   lines="none"lines="none" (click)="onTitleClick(item.title)">
+      <ion-label>
+        <h2>{{item.title}}</h2>
+        <p>{{item.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="bottom" slot="fixed" horizontal="end" (click)="openAddEvents()">
+    <ion-fab-button>
+      <ion-icon name="add-outline" size="large"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+
+</ion-content>

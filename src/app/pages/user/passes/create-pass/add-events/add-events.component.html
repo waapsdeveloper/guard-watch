@@ -1,0 +1,18 @@
+<ion-content class="login-page-content ion-padding" [fullscreen]="true" [scrollY]="true">
+
+  <div class="form-body-outer">
+    <div class="hb-with-flag">
+      <h2>Add Events</h2>
+    </div>
+
+  <app-input-box (valueChanged)="result($event, 'title')" placeholder="title"></app-input-box>
+  <app-input-box  (valueChanged)="result($event, 'description')" placeholder="description"></app-input-box>
+
+    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="close()">
+      <span>Save</span>
+    </ion-button>
+
+  </div>
+
+</ion-content>
+

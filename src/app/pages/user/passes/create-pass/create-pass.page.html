@@ -16,7 +16,7 @@
       <qrcode [qrdata]="'Your data string'" [width]="25" [errorCorrectionLevel]="'M'"></qrcode>
     </div>
     <div class="highlight ion-padding">
-      <h2 class="ion-text-uppercase">Event Name <ion-icon name="caret-down-outline"></ion-icon></h2>
+      <h2 (click)="openModal()" class="ion-text-uppercase">{{ title ? title : 'Event Name' }} <ion-icon name="caret-down-outline"></ion-icon></h2>
       <div class="time-box-outer">
 
         <div class="time-slots">
@@ -56,8 +56,6 @@
         </div>
 
       </div>
-      <h3>Visitor Type</h3>
-      <ion-chip>Friend and Family</ion-chip>
     <h3>Pass Type</h3>
     <div>
       <ion-chip>One time </ion-chip>

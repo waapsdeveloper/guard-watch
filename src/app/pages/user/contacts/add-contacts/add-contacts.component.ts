@@ -7,31 +7,28 @@ import { BasePage } from 'src/app/pages/base-page/base-page';
   styleUrls: ['./add-contacts.component.scss'],
 })
 export class AddContactsComponent extends BasePage implements OnInit {
-
   obj: any = {
     name: '',
     phone_number: '',
-    email:'',
-    dial_code: ''
-  }
+    email: '',
+    dial_code: '',
+  };
 
-  constructor(injector:Injector) {
+  constructor(injector: Injector) {
     super(injector);
-   }
+  }
 
   ngOnInit() {}
-  close(){
 
-    const res = this.contact.addContact(this.obj);
-    console.log(res);
+  async close() {
+    const res = await this.contact.addContact(this.obj);
 
-    // this.modals.dismiss()
-  }
-  result(event: any, type: any){
+    console.log('resssssss',res);
 
-    this.obj[type] = event
-
-    console.log(this.obj);
+    this.modals.dismiss(res);
   }
 
+  result(event: any, type: any) {
+    this.obj[type] = event;
+  }
 }

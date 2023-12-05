@@ -1,11 +1,20 @@
+<ion-content>
+  <ion-item class="itemp">
+    <ion-searchbar mode="ios" class="search-box-235553" [(ngModel)]="search"></ion-searchbar>
+  </ion-item>
 
-<ion-content >
+
   <ion-list class="list-main-home">
-    <ion-item class="ion-bo-border" *ngFor="let item of [1,2,3,4,5,6,7,8,9,0, 1,2,3,4,5,6,7,8,9,0]" detail="true" lines="none">
+    <ion-item class="ion-bo-border" *ngFor="let item of contacts| filterList : ['name'] : search" detail="true" lines="none">
       <ion-label>
-        <h2>Contacts name</h2>
-        <p>Pass sent {{item}}</p>
+        <h2>{{item.name}}</h2>
+        <p>{{item.dial_code}}{{item.phone_number}}</p>
       </ion-label>
     </ion-item>
   </ion-list>
+  <ion-fab vertical="bottom" slot="fixed" horizontal="end">
+    <ion-fab-button (click)="openAddContacts()">
+      <ion-icon name="add-outline" size="large"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { NavService } from './nav.service';
 import { NetworkService } from './network.service';
 import { SqliteService } from './sqlite.service';
 import { UtilityService } from './utility.service';
+import { basename } from 'path';
+import { BasePage } from '../pages/base-page/base-page';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
+export class PassesService{
 
   constructor(
     public utilityProvider: UtilityService,
@@ -15,24 +17,9 @@ export class ContactService {
     public network: NetworkService,
     public nav: NavService,
   ) { }
-
-  addContact(data: any) {
+  public getAllEvents() {
     return new Promise(async resolve => {
-
-    this.network.addContact(data).then(
-      async (res) => {
-
-        console.log('bbbbbbbbbbb', res.result);
-        // res = res.result 
-        resolve(res);
-      }, err => { });
-    });
-
-  }
-
-  public getAllcontact() {
-    return new Promise(async resolve => {
-      this.network.getAllContacts().then(async (res) => {
+      this.network.getAllEvents().then(async (res) => {
         console.log('sdsdsdsd', res);
 
         res = res.result;
@@ -46,4 +33,19 @@ export class ContactService {
       });
     })
   }
+
+  addEvents(data: any) {
+    return new Promise(async resolve => {
+
+    this.network.addEvents(data).then(
+      async (res) => {
+
+        console.log('bbbbbbbbbbb', res.result);
+        // res = res.result
+        resolve(res);
+      }, err => { });
+    });
+
+  }
+
 }

@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: CreatePassPage,
+  },  {
+    path: 'events',
+    loadChildren: () => import('./events/events.module').then( m => m.EventsPageModule)
   },
+
 
 
 ];
