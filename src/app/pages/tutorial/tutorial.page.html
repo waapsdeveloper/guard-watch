@@ -1,6 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="openLoginPage()">SKIP</ion-button>
+    </ion-buttons>
+    <ion-title>Read Guide</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true" [color]="'light'" >
 
+  <swiper
+    #swiper
+    [slidesPerView]="1"
+
+  >
+    <ng-template swiperSlide *ngFor="let item of list; let i = index">
+      <app-tutorial-box [item]="item" [index]="i" (next)="next($event)" ></app-tutorial-box>
+    </ng-template>
+  </swiper>
+
+
+  <!-- <div class="layout-outer-43545">
+    <ion-card color="light" class="ion-no-border ion-no-shadow card-box-432532">
+      <ion-card-header>
+        <ion-card-title>{{heading}}</ion-card-title>
+        <ion-card-subtitle>{{subheading}}</ion-card-subtitle>
+      </ion-card-header>
+      <div class="animated-qrcodebox slide-in-bck-center">
+        <div class="one-line-animate"></div>
+
+        <qrcode class="" [qrdata]="'Your data string'" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+
+
+      </div>
+
+
+      <ion-card-content>
+        Here's a small text description for the card content. Nothing more, nothing less.
+      </ion-card-content>
+    </ion-card>
+
+  </div> -->
+
 </ion-content>
-<ion-footer color="light">
+<!-- <ion-footer color="light">
     <ion-button fill="clear" color="primary" expand="full" (click)="openLoginPage()"> Already a Member? Sign In </ion-button>
-</ion-footer>
+</ion-footer> -->

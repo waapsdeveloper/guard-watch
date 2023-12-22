@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "image": "/assets/images/tutorial/SS01.png",
+    "title": "Your security in your hands",
+    "description": "Just Follow the steps and you will be safe",
+    "longDescription": "We are here to help you in this pandemic situation. We are providing you a platform where you can invite your contacts to your home and they will be verified by our guards. This will help you to keep your home safe and secure."
+  },
+  {
+    "id": "2",
+    "image": "/assets/images/tutorial/SS02.png",
+    "title": "Step 1",
+    "description": "Open the app and create an invite code",
+    "longDescription": "We are here to help you in this pandemic situation. We are providing you a platform where you can invite your contacts to your home and they will be verified by our guards. This will help you to keep your home safe and secure."
+  },
+  {
+    "id": "3",
+    "image": "/assets/images/tutorial/SS03.png",
+    "title": "Step 2",
+    "description": "Share the invite code with your contacts",
+    "longDescription": "We are here to help you in this pandemic situation. We are providing you a platform where you can invite your contacts to your home and they will be verified by our guards. This will help you to keep your home safe and secure."
+  },
+  {
+    "id": "4",
+    "image": "/assets/images/tutorial/SS04.png",
+    "title": "Step 3",
+    "description": "A guard will scan the code and verify his identity and correct invitation time",
+    "longDescription": "We are here to help you in this pandemic situation. We are providing you a platform where you can invite your contacts to your home and they will be verified by our guards. This will help you to keep your home safe and secure."
+  },
+  {
+    "id": "5",
+    "image": "/assets/images/tutorial/SS05.png",
+    "title": "Step 4",
+    "description": "Once verified, he will let him In for your safety",
+    "longDescription": "We are here to help you in this pandemic situation. We are providing you a platform where you can invite your contacts to your home and they will be verified by our guards. This will help you to keep your home safe and secure."
+  }
+]

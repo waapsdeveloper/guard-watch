@@ -1,0 +1,18 @@
+<div class="layout-outer-43545">
+
+  <ion-card color="light" class="ion-no-border ion-no-shadow card-box-432532">
+    <img src="{{item.image}}" alt="image" />
+    <ion-card-header>
+      <ion-card-title>{{index}}. {{item.title}}</ion-card-title>
+      <ion-card-subtitle>{{item.description}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ item.longDescription }}
+    </ion-card-content>
+
+    <!-- <ion-button fill="clear">Previous</ion-button> -->
+    <ion-button fill="clear" (click)="gotoNext()">Next</ion-button>
+  </ion-card>
+</div>
+
