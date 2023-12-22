@@ -22,9 +22,24 @@ export class NetworkService {
   signUp(data: any) {
     return this.httpPostResponse('auth/register', data, null, true);
   }
+
+  /*
+  * SPACES
+  */
+
   addSpace(data: any) {
     return this.httpPostResponse('spaces/add', data, null, true);
   }
+
+  getAllSpaces() {
+    return this.httpGetResponse('spaces/list', null, false, false);
+  }
+
+  getSpaceById(id: number) {
+    return this.httpGetResponse('spaces/by-id/' + id, null, false, false);
+  }
+
+
   addContact(data: any) {
     return this.httpPostResponse('contacts/add', data, null, true);
   }
@@ -39,9 +54,11 @@ export class NetworkService {
     return this.httpGetResponse('contacts/list', null, loader, false);
   }
 
-  getAllSpaces(loader = false) {
-    return this.httpGetResponse('spaces/list', null, loader, false);
-  }
+  /*
+  * SPACES
+  */
+
+
 
   getAllusers(loader = false) {
     return this.httpGetResponse('users', null, loader, false);

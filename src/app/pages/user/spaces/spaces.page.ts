@@ -29,7 +29,9 @@ export class SpacesPage extends BasePage implements OnInit {
   }
 
   openDetails(item: any){
-    this.nav.push('/pages/user/spaces/space-details/' + item.id, { queryParams: { item: JSON.stringify(item) } });
+    console.log(item.id);
+    let url = `/pages/user/spaces/details/${item.id}`
+    this.nav.push(url);
 
   }
 

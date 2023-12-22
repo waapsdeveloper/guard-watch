@@ -45,4 +45,23 @@ export class SpaceService {
       });
     })
   }
+
+  public getSpaceById(id: number) {
+    return new Promise(async resolve => {
+      this.network.getSpaceById(id).then(async (res) => {
+
+        let d = res.result;
+        console.log('d', d);
+        if (d) {
+          resolve(d);
+        } else {
+          resolve(null);
+        }
+      }, err => {
+        console.log('err', err);
+        resolve(null);
+      });
+    })
+  }
+
 }

@@ -13,7 +13,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'space-detail/:id',
+    path: 'details/:id',
     loadChildren: () => import('./space-detail/space-detail.module').then( m => m.SpaceDetailPageModule)
   }
 
