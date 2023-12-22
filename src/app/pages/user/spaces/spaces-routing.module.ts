@@ -6,8 +6,17 @@ import { SpacesPage } from './spaces.page';
 const routes: Routes = [
   {
     path: '',
-    component: SpacesPage
+    component: SpacesPage,
+    children: [
+
+    ]
+
+  },
+  {
+    path: 'space-detail/:id',
+    loadChildren: () => import('./space-detail/space-detail.module').then( m => m.SpaceDetailPageModule)
   }
+
 ];
 
 @NgModule({

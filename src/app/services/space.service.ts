@@ -27,4 +27,22 @@ export class SpaceService {
     });
 
   }
+
+  public getAllSpaces() {
+    return new Promise(async resolve => {
+      this.network.getAllSpaces().then(async (res) => {
+
+        let d = res.result;
+        console.log('d', d);
+        if (d) {
+          resolve(d);
+        } else {
+          resolve([]);
+        }
+      }, err => {
+        console.log('err', err);
+        resolve([]);
+      });
+    })
+  }
 }

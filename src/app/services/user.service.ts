@@ -16,6 +16,7 @@ export class UserService {
     public utilityProvider: UtilityService,
     public sqlite: SqliteService,
     public network: NetworkService,
+    public nav: NavService,
   ) { }
 
   login(user: any) {
