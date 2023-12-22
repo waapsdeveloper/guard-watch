@@ -34,7 +34,12 @@ const routes: Routes = [
   {
     path: 'events',
     loadChildren: () => import('./passes/create-pass/events/events.module').then(m => m.EventsPageModule)
+  },
+  {
+    path: 'spaces',
+    loadChildren: () => import('./spaces/spaces.module').then( m => m.SpacesPageModule)
   }
+
 ];
 
 @NgModule({

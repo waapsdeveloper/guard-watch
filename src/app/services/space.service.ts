@@ -7,7 +7,7 @@ import { UtilityService } from './utility.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
+export class SpaceService {
 
   constructor(
     public utilityProvider: UtilityService,
@@ -16,29 +16,15 @@ export class ContactService {
     public nav: NavService,
   ) { }
 
-  addContact(data: any) {
+  addSpace(data: any) {
     return new Promise(async resolve => {
 
-    this.network.addContact(data).then(
+    this.network.addSpace(data).then(
       async (res) => {
         // res = res.result
         resolve(res);
       }, err => { });
     });
 
-  }
-
-  public getAllcontact() {
-    return new Promise(async resolve => {
-      this.network.getAllContacts().then(async (res) => {
-
-        res = res.result;
-        if (res) {
-          resolve(res);
-        } else {
-        }
-      }, err => {
-      });
-    })
   }
 }

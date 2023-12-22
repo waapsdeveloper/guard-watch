@@ -22,7 +22,9 @@ export class NetworkService {
   signUp(data: any) {
     return this.httpPostResponse('auth/register', data, null, true);
   }
-
+  addSpace(data: any) {
+    return this.httpPostResponse('spaces/add', data, null, true);
+  }
   addContact(data: any) {
     return this.httpPostResponse('contacts/add', data, null, true);
   }
@@ -230,9 +232,8 @@ export class NetworkService {
     });
   }
 
-  showFailure(err: { message: any; }) {
+  showFailure(err: string) {
     // console.error('ERROR', err);
-    err = err ? err.message : 'check logs';
     this.utility.presentFailureToast(err);
   }
 

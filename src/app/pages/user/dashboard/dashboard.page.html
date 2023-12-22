@@ -3,14 +3,20 @@
 <ion-split-pane when="lg" contentId="main">
   <ion-menu contentId="main">
     <ion-header>
-      <ion-toolbar color="tertiary">
+      <ion-toolbar color="primary">
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
-      <ion-list>
-        <ion-menu-toggle *ngFor="let item of ['A','B', 'C']">
-          <ion-item>{{item}}</ion-item>
+    <ion-content color="light">
+      <ion-list color="light" class="ion-no-padding ion-no-margin ion-margin-top" >
+        <ion-menu-toggle *ngFor="let item of menu" (click)="openPage(item.link)">
+          <ion-item lines="none" color="light">
+            <ion-label>
+              <h2>{{item.title}}</h2>
+            </ion-label>
+            <ion-icon [name]="item.icon" slot="end"></ion-icon>
+
+          </ion-item>
         </ion-menu-toggle>
       </ion-list>
     </ion-content>
@@ -19,28 +25,87 @@
   <div class="ion-page" id="main">
     <ion-header >
       <ion-toolbar color="primary">
-        <ion-title>Resident Watch</ion-title>
+        <ion-title>Dashboard</ion-title>
         <ion-buttons slot="primary">
           <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-buttons slot="secondary">
-          <ion-button>
-            <ion-icon slot="icon-only" name="person-circle"></ion-icon>
-          </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content>
-      <ion-list class="list-main-home">
-        <ion-item class="ion-bo-border" *ngFor="let item of [1,2,3,4,5,6,7,8,9,0]" detail="true" lines="none" (click)="showDetails()" >
-          <ion-label>
-            <h2>Event name</h2>
-            <p>Pass sent {{item}}</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+
+      <ion-card color="primary">
+        <ion-card-header class="card-header-688768">
+          <div>
+            <ion-card-subtitle class="ion-text-uppercase">concept</ion-card-subtitle>
+            <ion-card-title class="tl-67896">Spaces</ion-card-title>
+          </div>
+          <div class="card-header-right">
+            <div class="heading-7856758">5</div>
+            <ion-icon name="cube-outline"></ion-icon>
+          </div>
+
+        </ion-card-header>
+
+        <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+        <ion-button fill="clear" color="light" details="true" ><div class="ion-text-underline">View All Spaces</div></ion-button>
+      </ion-card>
+
+      <ion-card color="light">
+        <ion-card-header class="card-header-688768">
+          <div>
+            <ion-card-subtitle class="ion-text-uppercase">mutual</ion-card-subtitle>
+            <ion-card-title class="tl-67896">Contacts</ion-card-title>
+          </div>
+          <div class="card-header-right">
+            <div class="heading-7856758">205</div>
+            <ion-icon name="people-outline"></ion-icon>
+          </div>
+
+        </ion-card-header>
+
+        <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+        <ion-button fill="clear" color="light" details="true" ><div class="ion-text-underline">View All Spaces</div></ion-button>
+      </ion-card>
+
+      <ion-card color="light">
+        <ion-card-header class="card-header-688768">
+          <div>
+            <ion-card-subtitle class="ion-text-uppercase">secure</ion-card-subtitle>
+            <ion-card-title class="tl-67896">Invites</ion-card-title>
+          </div>
+          <div class="card-header-right">
+            <div class="heading-7856758">25</div>
+            <ion-icon name="card-outline"></ion-icon>
+          </div>
+
+        </ion-card-header>
+
+        <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+        <ion-button fill="clear" color="light" details="true" ><div class="ion-text-underline">View All Spaces</div></ion-button>
+      </ion-card>
+
+      <ion-card color="medium">
+        <ion-card-header class="card-header-688768">
+          <div>
+            <ion-card-subtitle class="ion-text-uppercase">setup</ion-card-subtitle>
+            <ion-card-title class="tl-67896">Settings</ion-card-title>
+          </div>
+          <div class="card-header-right">
+            <div class="heading-7856758"></div>
+            <ion-icon name="cog-outline"></ion-icon>
+          </div>
+
+        </ion-card-header>
+
+        <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+        <ion-button fill="clear" color="light" details="true" ><div class="ion-text-underline">View All Spaces</div></ion-button>
+      </ion-card>
+
+
+
+
     </ion-content>
-    <ion-footer>
+    <!-- <ion-footer>
       <div class="tabs-like">
         <div class="box-outer" (click)="openPage('pass')">
           <ion-icon name="card-outline"></ion-icon>
@@ -59,7 +124,7 @@
           <div class="title-469845">Settings</div>
         </div>
       </div>
-    </ion-footer>
+    </ion-footer> -->
 
 
   </div>

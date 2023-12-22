@@ -23,3 +23,31 @@
     }
 
 }
+
+.card-header-688768{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .card-header-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+    .heading-7856758{
+      font-size: 40px;
+    }
+    ion-icon{
+      font-size: 45px;
+    }
+  }
+
+  ion-card-subtitle{
+    font-size: 12px;
+  }
+  .tl-67896{
+    font-size: 35px;
+  }
+}
+

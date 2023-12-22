@@ -16,7 +16,6 @@ export class UserService {
     public utilityProvider: UtilityService,
     public sqlite: SqliteService,
     public network: NetworkService,
-    public nav: NavService,
   ) { }
 
   login(user: any) {
@@ -43,7 +42,13 @@ export class UserService {
 
     this.network.signUp(data).then(
       async (res) => {
+
+        // validations;
+
         this.nav.push('pages/user');
+
+
+
       }, err => { });
 
   }

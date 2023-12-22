@@ -8,40 +8,36 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage extends BasePage implements OnInit {
-  user:any;
+  user: any;
   obj: any = {
     name: '',
     email: '',
     phone_number: '',
     password: '',
     confirm_password: '',
-    dial_code: ''
+    dial_code: '+92',
   };
   isLoading = false;
   constructor(injector: Injector) {
     super(injector);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   onDialCodeSelected(dialCode: string) {
     this.obj.dial_code = dialCode;
   }
-  result(event: any,type: string){
-    // this.obj[type] = event
-    console.log(event,type);
-
-    this.obj[type] = event
-
+  result(event: any, type: string) {
+    this.obj[type] = event;
   }
-
 
   login() {
     this.nav.setRoot('pages/login');
   }
 
-async  signup() {
-    const res = await this.users.signUp(this.obj)
-    
+  async signup() {
+
+    // validations
+
+    const res = await this.users.signUp(this.obj);
   }
 }

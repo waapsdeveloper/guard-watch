@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from 'src/app/pages/base-page/base-page';
+import { ContactService } from 'src/app/services/contact.service';
 import { AddContactsComponent } from '../add-contacts/add-contacts.component';
 
 @Component({
@@ -11,7 +12,7 @@ export class ContactListPage extends BasePage implements OnInit {
   contacts: any;
   filteredContacts: any;
   search:any;
-  constructor(injector: Injector) {
+  constructor(injector: Injector, public contact: ContactService) {
     super(injector);
     this.initialize();
   }

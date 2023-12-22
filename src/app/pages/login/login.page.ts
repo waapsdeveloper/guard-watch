@@ -13,7 +13,7 @@ export class LoginPage extends BasePage implements OnInit {
   obj: any = {
     phone_number: '3418273826',
     password: '123456',
-    dia_code: '+92'
+    dial_code: '+92'
   };
   constructor(injector: Injector) {
     super(injector)
@@ -33,7 +33,7 @@ export class LoginPage extends BasePage implements OnInit {
   async login() {
     this.obj.phone_number = '3418273826';
     this.obj.password = '123456';
-    this.obj.dia_code = '+92';
+    this.obj.dial_code = '+92';
     const res = this.users.login(this.obj)
     console.log(res, 'assasasa');
 

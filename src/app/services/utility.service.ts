@@ -43,7 +43,7 @@ export class UtilityService {
     return this.alerts.presentSuccessToast(msg);
   }
 
-  presentFailureToast(msg: { message: any; }) {
+  presentFailureToast(msg: string) {
     return this.alerts.presentFailureToast(msg);
   }
 

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Spaces",
+    "icon": "cube-outline",
+    "link": "spaces"
+  },
+  {
+    "id": 2,
+    "title": "Contacts",
+    "icon": "people-outline",
+    "link": "contacts"
+  },
+  {
+    "id": 3,
+    "title": "Invites",
+    "icon": "card-outline",
+    "link": "https://www.spacesworks.com/"
+  },
+  {
+    "id": 4,
+    "title": "Profile",
+    "icon": "person-outline",
+    "link": "https://www.spacesworks.com/"
+  },
+  {
+    "id": 5,
+    "title": "Settings",
+    "icon": "cog-outline",
+    "link": "https://www.spacesworks.com/"
+  },
+  {
+    "id": 6,
+    "title": "Logout",
+    "icon": "exit-outline",
+    "link": "https://www.spacesworks.com/"
+  }
+]

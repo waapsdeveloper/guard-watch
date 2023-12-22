@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from 'src/app/pages/base-page/base-page';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-add-contacts',
@@ -14,7 +15,7 @@ export class AddContactsComponent extends BasePage implements OnInit {
     dial_code: '',
   };
 
-  constructor(injector: Injector) {
+  constructor(injector: Injector, public contact: ContactService) {
     super(injector);
   }
 
