@@ -22,22 +22,25 @@ export class SignupPage extends BasePage implements OnInit {
     super(injector);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
   onDialCodeSelected(dialCode: string) {
     this.obj.dial_code = dialCode;
   }
   result(event: any, type: string) {
     this.obj[type] = event;
   }
-
+  async signup() {
+    if (!this.obj.name || !this.obj.phone_number || !this.obj.email || !this.obj.password || !this.obj.confirm_password || !this.obj.dial_code) {
+      console.error('Please fill in all the required fields.');
+      return;
+    }
+    const res = await this.users.signUp(this.obj);
+    console.log("ssasasa", res);
+    if (res) {
+      this.nav.push('pages/user');
+    }    
+  }
   login() {
     this.nav.setRoot('pages/login');
-  }
-
-  async signup() {
-
-    // validations
-
-    const res = await this.users.signUp(this.obj);
   }
 }
