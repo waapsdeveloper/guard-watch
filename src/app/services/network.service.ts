@@ -64,11 +64,10 @@ export class NetworkService {
     return this.httpGetResponse('users', null, loader, false);
   }
 
-
   getUser(loader = false) {
     return this.httpGetResponse('user', null, loader, false);
   }
-
+  
   serialize = (obj: { [x: string]: string | number | boolean; }) => {
     const str = [];
     for (const p in obj) {

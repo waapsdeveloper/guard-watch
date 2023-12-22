@@ -15,43 +15,46 @@ export class UserService {
   constructor(
     public utilityProvider: UtilityService,
     public sqlite: SqliteService,
+    public nav: NavService,
     public network: NetworkService,
     public nav: NavService,
   ) { }
 
-  login(user: any) {
-
-    this.network.login(user).then(
-      async (res) => {
-        var token = res.result.token
-        localStorage.setItem('token',token)
-        console.log('bbbbbbbbbbb', res.result.token, token);
-        if(res.role_id == 3){
-          console.log('guard');
-          this.nav.push('./pages/guard/dashboard')
-        }else{
-          console.log('resident');
-
-          this.nav.push('./pages/user/dashboard')
+  async login(user: any) {
+    return new Promise(async (resolve) => {
+      try {
+        const res = await this.network.login(user);
+        if (res.status != 200) {
+          console.error(`Unexpected API response status: ${res.status}`);
+          resolve(null);
+          return
         }
-
-      }, err => { });
-
+        let obj = res.result;
+        var token = obj.token;
+        localStorage.setItem('token', token);
+        console.log('bbbbbbbbbbb', res, token);
+        resolve(obj);
+      } catch (err) {
+        console.error("Error during login:", err);
+        resolve(null);
+      }
+    });
   }
 
-  signUp(data: any) {
-
-    this.network.signUp(data).then(
-      async (res) => {
-
-        // validations;
-
-        this.nav.push('pages/user');
-
-
-
-      }, err => { });
-
+  async signUp(data: any): Promise<any> {
+    try {
+      const res = await this.network.signUp(data);
+      console.log("res", res);
+      if (res.status === 200) {
+        return true;
+      } else {
+        console.error(`Unexpected API response status: ${res.status}`);
+        return false;
+      }
+    } catch (err) {
+      console.error("Error during sign-up:", err);
+      return false;
+    }
   }
 
 

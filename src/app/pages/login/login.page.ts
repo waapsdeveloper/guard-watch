@@ -26,16 +26,33 @@ export class LoginPage extends BasePage implements OnInit {
     this.obj.dial_code = dialCode;
   }
 
-  result(event: any, type: any){
+  result(event: any, type: any) {
     this.obj[type] = event
   }
 
   async login() {
-    this.obj.phone_number = '3418273826';
-    this.obj.password = '123456';
-    this.obj.dial_code = '+92';
-    const res = this.users.login(this.obj)
-    console.log(res, 'assasasa');
+    if (!this.obj.phone_number || !this.obj.password || !this.obj.dial_code) {
+      console.error('Please fill in all the required fields.');
+      return;
+    }
+    // this.obj.phone_number = '3418273826';
+    // this.obj.password = '123456';
+    // this.obj.dial_code = '+92';
+    let res = await this.users.login(this.obj) as any
+
+    if (res == null) {
+      return
+    } else {
+
+      console.log(res, 'assasasa');
+      if (res.role_id == 3) {
+        console.log('guard');
+        this.nav.push('./pages/guard/dashboard');
+      } else {
+        console.log('resident');
+        this.nav.push('./pages/user/dashboard');
+      }
+    }
 
   }
 

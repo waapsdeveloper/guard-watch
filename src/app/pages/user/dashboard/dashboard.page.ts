@@ -45,5 +45,8 @@ export class DashboardPage extends BasePage implements OnInit {
 
     }
   }
+  goToContects(){
+    this.nav.push('pages/user/contacts')
+  }
 
 }
