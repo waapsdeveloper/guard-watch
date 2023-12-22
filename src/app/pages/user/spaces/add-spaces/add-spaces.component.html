@@ -11,7 +11,7 @@
     <app-input-box (valueChanged)="result($event, 'location')" class="ion-pedding"
       placeholder="location"></app-input-box>
 
-    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="submit()">
+    <ion-button [disabled]="!validate()" shape="round" expand="full" color="primary" type="submit" (click)="submit()">
       <span>Save</span>
     </ion-button>
 

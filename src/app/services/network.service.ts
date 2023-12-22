@@ -39,6 +39,10 @@ export class NetworkService {
     return this.httpGetResponse('contacts/list', null, loader, false);
   }
 
+  getAllSpaces(loader = false) {
+    return this.httpGetResponse('spaces/list', null, loader, false);
+  }
+
   getAllusers(loader = false) {
     return this.httpGetResponse('users', null, loader, false);
   }

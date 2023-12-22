@@ -28,9 +28,6 @@ export class AddSpacesComponent extends BasePage implements OnInit {
     }
 
     const res = await this.space.addSpace(this.obj);
-
-    console.log('resssssss',res);
-
     this.modals.dismiss(res);
   }
 
