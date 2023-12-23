@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'spaces',
     loadChildren: () => import('./spaces/spaces.module').then( m => m.SpacesPageModule)
+  },  {
+    path: 'invites',
+    loadChildren: () => import('./invites/invites.module').then( m => m.InvitesPageModule)
   }
+
 
 ];
 

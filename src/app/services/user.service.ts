@@ -17,7 +17,6 @@ export class UserService {
     public sqlite: SqliteService,
     public nav: NavService,
     public network: NetworkService,
-    public nav: NavService,
   ) { }
 
   async login(user: any) {

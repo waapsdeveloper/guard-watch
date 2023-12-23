@@ -11,8 +11,6 @@ import { SpaceService } from 'src/app/services/space.service';
 export class SpaceDetailPage extends BasePage implements OnInit {
 
   obj: any = {
-    space_id: -1,
-
   }
   constructor(injector: Injector, public activatedRoute: ActivatedRoute, private space: SpaceService) {
     super(injector)
@@ -20,15 +18,21 @@ export class SpaceDetailPage extends BasePage implements OnInit {
 
   async ionViewDidEnter() {
     let id = this.activatedRoute.snapshot.params['id'];
-    this.obj.space_id = id;
-    console.log('id', id);
-
+    if (!id) {
+      this.nav.pop();
+      return
+    }
     const res = await this.space.getSpaceById(id)
     console.log('res', res);
+    this.obj = res;
 
   }
 
   ngOnInit() {
+  }
+
+  openInviteList() {
+    this.nav.push('/pages/user/invites', { space_id: this.obj.space_id })
   }
 
 
