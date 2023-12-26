@@ -18,6 +18,7 @@ import { PassesService } from 'src/app/services/passes.sevice';
 import { InvokeFunctionExpr } from '@angular/compiler';
 import { UtilityService } from 'src/app/services/utility.service';
 import { NetworkService } from 'src/app/services/network.service';
+import { InviteService } from 'src/app/services/invite.service';
 // import { NetworkService } from 'src/app/services/network.service';
 // import { UtilityService } from 'src/app/services/utility.service';
 // import { EventsService } from 'src/app/services/events.service';
@@ -44,7 +45,7 @@ export abstract class BasePage {
     public passes: PassesService;
     public network: NetworkService;
     public utility: UtilityService;
-
+    public invites: InviteService;
     // public events: EventsService;
     // public popover: PopoversService;
     public users: UserService;
@@ -60,6 +61,7 @@ export abstract class BasePage {
         /*
           Custom Services
         */
+       this.invites = injector.get(InviteService);
         this.sqlite = injector.get(SqliteService);
         this.nav = injector.get(NavService);
         this.modals = injector.get(ModalService);

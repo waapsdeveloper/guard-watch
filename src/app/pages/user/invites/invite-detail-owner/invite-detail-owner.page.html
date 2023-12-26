@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Invite Detail Owner</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-card>
+    <ion-card-header class="card-header-688768">
+      <div>
+        <ion-card-subtitle class="ion-text-uppercase">{{item?.event?.description}}</ion-card-subtitle>
+        <ion-card-title class="tl-67896">{{item?.event?.title}}</ion-card-title>
+      </div>
+      <div class="card-header-right">
+        <div class="heading-7856758"></div>
+        <ion-icon name="card-outline"></ion-icon>
+      </div>
+    </ion-card-header>
+    <ion-card-content>{{item?.comments}}
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-list [inset]="true">
+
+    <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
+      <ion-label>
+        <h2>{{item.name}}</h2>
+        <p>{{item.dial_code}} - {{item.phone_number}}</p>
+
+      </ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="item.checked"></ion-checkbox>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+<ion-footer >
+  <ion-toolbar>
+    <ion-button *ngIf="ishow" shape="round" expand="full" color="primary" type="submit">
+      <span>Delete</span>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
