@@ -32,7 +32,7 @@ export class InvitesPage extends BasePage implements OnInit {
       this.obj.space_id = spid;
       this.initialize()
     } else {
-      this.nav.pop();
+      // this.nav.pop();
     }
   }
 
