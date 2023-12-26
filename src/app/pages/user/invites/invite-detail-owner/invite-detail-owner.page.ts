@@ -8,7 +8,7 @@ import { BasePage } from 'src/app/pages/base-page/base-page';
 })
 export class InviteDetailOwnerPage extends BasePage implements OnInit {
   inviteId: any;
-  list: any;
+  list: any[]=[];
   item: any = [];
   ishow = false;
   constructor(injector: Injector) {
@@ -16,9 +16,14 @@ export class InviteDetailOwnerPage extends BasePage implements OnInit {
 
     this.inviteId = localStorage.getItem('invites_id');
     this.initialize()
+
   }
 
   ngOnInit() {
+  }
+  showDeleteButton(): boolean {
+    
+    return this.list.some(item => item.checked);
   }
   async initialize() {
     const res = await this.invites.getInvitesByIdWithContacts(this.inviteId) as any;
