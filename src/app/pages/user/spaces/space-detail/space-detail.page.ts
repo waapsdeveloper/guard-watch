@@ -16,15 +16,20 @@ export class SpaceDetailPage extends BasePage implements OnInit {
     super(injector)
   }
 
-  async ionViewDidEnter() {
+  ionViewDidEnter() {
+    this.initialize()
+  }
+
+  async initialize(){
     let id = this.activatedRoute.snapshot.params['id'];
     if (!id) {
       this.nav.pop();
       return
     }
-    const res = await this.space.getSpaceById(id)
+    const res = await this.space.getSpaceDetailsById(id)
     console.log('res', res);
     this.obj = res;
+
 
   }
 
@@ -32,7 +37,9 @@ export class SpaceDetailPage extends BasePage implements OnInit {
   }
 
   openInviteList() {
-    this.nav.push('/pages/user/invites', { space_id: this.obj.space_id })
+    console.log("openInviteList", this.obj.id);
+    localStorage.setItem('space_id', this.obj.id);
+    this.nav.push('/pages/user/invites');
   }
 
 

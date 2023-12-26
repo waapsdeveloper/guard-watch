@@ -24,6 +24,18 @@ export class NetworkService {
   }
 
   /*
+  * INVITES
+  */
+
+  addInvite(data: any) {
+    return this.httpPostResponse('invites/add', data, null, true);
+  }
+
+  getInvitesBySpaceId(id: number) {
+    return this.httpGetResponse('invites/list/by-space-id/' + id, null, false, false);
+  }
+
+  /*
   * SPACES
   */
 
@@ -39,16 +51,30 @@ export class NetworkService {
     return this.httpGetResponse('spaces/by-id/' + id, null, false, false);
   }
 
+  getSpaceDetailsById(id: number) {
+    return this.httpGetResponse('spaces/details/by-id/' + id, null, false, false);
+  }
+
+  /*
+  * Events
+  */
+
+  getAllEvents() {
+    return this.httpGetResponse('events/list', null, false, false);
+  }
+
+  addEvents(data: any) {
+    return this.httpPostResponse('events/add', data, null, true);
+  }
+
+  /*
+  * Contacts
+  */
 
   addContact(data: any) {
     return this.httpPostResponse('contacts/add', data, null, true);
   }
-  addEvents(data: any) {
-    return this.httpPostResponse('events/add', data, null, true);
-  }
-  getAllEvents(loader = false) {
-    return this.httpGetResponse('events/list', null, loader, false);
-  }
+
 
   getAllContacts(loader = false) {
     return this.httpGetResponse('contacts/list', null, loader, false);
@@ -67,7 +93,7 @@ export class NetworkService {
   getUser(loader = false) {
     return this.httpGetResponse('user', null, loader, false);
   }
-  
+
   serialize = (obj: { [x: string]: string | number | boolean; }) => {
     const str = [];
     for (const p in obj) {

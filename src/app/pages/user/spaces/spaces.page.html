@@ -6,7 +6,7 @@
 
 <ion-content color="light">
 
-  <ion-card color="light">
+  <ion-card>
     <ion-card-header class="card-header-688768">
       <div>
         <ion-card-subtitle class="ion-text-uppercase">concept</ion-card-subtitle>
@@ -19,11 +19,10 @@
     </ion-card-header>
 
     <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
-    <ion-button fill="clear" color="light" details="true" ><div class="ion-text-underline">View All Spaces</div></ion-button>
   </ion-card>
 
-  <ion-list class="ion-no-padding">
-    <ion-item lines="none" detail="true" *ngFor="let item of list" color="light" (click)="openDetails(item)">
+  <ion-list [inset]="true">
+    <ion-item lines="none" detail="true" *ngFor="let item of list" (click)="openDetails(item)">
       <ion-label>
         <h2>{{ item.title }}</h2>
         <p>{{ item.description }}</p>

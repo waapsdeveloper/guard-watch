@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Spaces</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="light">
+      <ion-title size="large">Spaces</ion-title>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" size="small" *ngIf="selectedSpace" (click)="addSelectedSpace()">
+          <ion-icon name="add-outline"></ion-icon> Add
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar></ion-searchbar>
+  <div class="ion-padding btn-div-53543543" *ngIf="!selectedSpace" >
+    <ion-note >
+      Selection of space is used to send invite on a perticular place to your contacts, you can add more space to your list here.
+    </ion-note>
+
+  </div>
+    <ion-list [inset]="true">
+
+      <ion-radio-group [(ngModel)]="selectedSpace">
+
+
+        <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
+          <ion-label>
+            <h2>{{item.title}}</h2>
+            <p>{{item.location}}</p>
+
+          </ion-label>
+          <ion-radio slot="end" [value]="item.id"></ion-radio>
+        </ion-item>
+
+      </ion-radio-group>
+
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="tertiary" (click)="addSpace()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+</ion-content>
+

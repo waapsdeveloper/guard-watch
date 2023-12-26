@@ -7,7 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: InvitesPage
-  }
+  },
+  {
+    path: 'invite-detail',
+    loadChildren: () => import('./invite-detail/invite-detail.module').then( m => m.InviteDetailPageModule)
+  },
+  {
+    path: 'invite-create',
+    loadChildren: () => import('./invite-create/invite-create.module').then( m => m.InviteCreatePageModule)
+  },
 ];
 
 @NgModule({

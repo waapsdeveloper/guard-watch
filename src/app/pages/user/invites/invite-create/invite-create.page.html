@@ -1,0 +1,156 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Invite</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="light">
+      <ion-title size="large">Invite</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- *ngIf="!extras['tn-note-789678']" -->
+    <div class="ion-padding tn-note-789678" >
+      <ion-note>Your Event QR Code will be Generated like this, fill out the details and press submit. Selection is easily
+        chaned by tapping options</ion-note><br>
+        <!-- <ion-button (click)="hideNotes('tn-note-789678')" size="small" fill="clear">Hide</ion-button> -->
+    </div>
+    <div class="highlight ion-padding">
+      <h2 (click)="selectEvent()" class="ion-text-uppercase heading-86789">{{ title ? title : 'Event Name' }} <ion-icon
+          name="caret-down-outline"></ion-icon></h2>
+
+      <div class="time-box-outer">
+
+        <div class="time-slots">
+          <h2>Start Time</h2>
+
+          <div class="left-slot">
+            <div class="left-53543">
+              <ion-datetime-button locale="es-ES" datetime="datetime" color="primary" class="dt-6789678" ></ion-datetime-button>
+            </div>
+            <ion-icon name="create-outline"></ion-icon>
+          </div>
+        </div>
+
+        <div class="time-slots">
+          <h2>End Time</h2>
+          <div class="left-slot">
+            <div class="left-53543">
+              <ion-datetime-button locale="es-ES" datetime="datetime-end" color="primary" class="dt-6789678"></ion-datetime-button>
+            </div>
+            <ion-icon name="create-outline"></ion-icon>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <ion-list [inset]="true">
+        <ion-item (click)="openAddSpaces()" [button]="true">
+          <ion-label>Space Selected</ion-label>
+        </ion-item>
+        <ion-radio-group [(ngModel)]="obj.space_id">
+        <ion-item *ngFor="let item of obj.spaces" lines="none">
+          <ion-label>
+            <h2>{{item.title}}</h2>
+            <p>{{item.location}}</p>
+
+          </ion-label>
+          <ion-radio slot="end" [(ngModel)]="item.id"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <!-- <h2 class="ion-padding-start ion-padding-end ion-text-uppercase">Your Guest Info</h2> -->
+
+    <ion-list [inset]="true">
+        <ion-item (click)="openAddContacts()" [button]="true">
+          <ion-label>Invite Contacts</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let item of obj.contacts" lines="none">
+          <ion-label>
+            <h2>{{item.name}}</h2>
+            <p>{{item.dial_code}} - {{item.phone_number}}</p>
+
+          </ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="item.checked"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+    <div class="ion-padding-start ion-padding-end">
+      <ion-note>
+        Your guest info will be kept anonymous and will only be used to send invites to your guests, no information will be send to any third party.
+      </ion-note>
+    </div>
+    <ion-list [inset]="true">
+      <ion-item>
+        <ion-select label="Visitor" label-placement="fixed" placeholder="type?" interface="action-sheet" [(ngModel)]="obj.visitor_type">
+
+          <ion-select-option [value]="'guest'">Guest</ion-select-option>
+          <ion-select-option [value]="'friend-and-family'">Friend and Family</ion-select-option>
+          <ion-select-option [value]="'vendor'">Vendor</ion-select-option>
+          <ion-select-option [value]="'delivery'">Delivery</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Pass" label-placement="fixed" placeholder="type?" interface="action-sheet" [(ngModel)]="obj.pass_type">
+          <ion-select-option [value]="'one-time'">One time</ion-select-option>
+          <ion-select-option [value]="'recurring'">Recurring</ion-select-option>
+          <ion-select-option [value]="'self'">Self</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-select label="Validity" label-placement="fixed" placeholder="till?" interface="action-sheet" [(ngModel)]="obj.validity" >
+          <ion-select-option [value]="60">1 hours</ion-select-option>
+          <ion-select-option [value]="180">3 hours</ion-select-option>
+          <ion-select-option [value]="360">6 hours</ion-select-option>
+          <ion-select-option [value]="720">12 hours</ion-select-option>
+          <ion-select-option [value]="1440">24 hours</ion-select-option>
+          <ion-select-option [value]="2880">48 hours</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+
+    </ion-list>
+
+    <ion-list [inset]="true" class="ion-padding-horizontal">
+      <ion-textarea label="comments" labelPlacement="floating" [autoGrow]="true" [rows]="6" [(ngModel)]="obj.comments"></ion-textarea>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-note color="medium">
+        Your comments will be kept anonymous and will only show to those who receive the invite, this will be used to guide the guest and improve the interaction.
+      </ion-note>
+    </div>
+
+    <div class="ion-margin"></div>
+
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="datetime" [showDefaultButtons]="true" (ionChange)="timeSelection('start_date', $event)" [(ngModel)]="obj.start_date"></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime id="datetime-end" [showDefaultButtons]="true"  (ionChange)="timeSelection('end_date', $event)" [(ngModel)]="obj.end_date" ></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>
+<ion-footer class="ion-padding-vertical" >
+  <ion-button *ngIf="!this.extras['invite-created']" expand="block" shape="round" class="text-transform-non ion-margin-start ion-margin-end" (click)="addInvite()">Create Invite</ion-button>
+  <div class="ion-padding" *ngIf="this.extras['invite-created']">
+
+    <div class="invite-created-message">
+      <ion-icon name="shield-checkmark-outline" color="primary"></ion-icon>
+    </div>
+
+  </div>
+</ion-footer>

@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
 
-  <ion-card color="medium" *ngIf="obj.id">
+  <ion-card color="secondary" *ngIf="obj.id">
     <ion-card-header class="card-header-688768">
       <div>
         <ion-card-subtitle class="ion-text-uppercase">concept</ion-card-subtitle>
@@ -28,13 +28,13 @@
         <ion-card-title class="tl-67896">Invites</ion-card-title>
       </div>
       <div class="card-header-right">
-        <div class="heading-7856758">25</div>
+        <div class="heading-7856758">{{obj['invite_count']}}</div>
         <ion-icon name="card-outline"></ion-icon>
       </div>
 
     </ion-card-header>
 
-    <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+    <ion-card-content> Invite is a concept of invite your trustees into your boundry, like your friend, co-workers, delivery, office or else </ion-card-content>
     <ion-button fill="clear" color="dark" details="true" ><div class="ion-text-underline" (click)="openInviteList()">View All Invites</div></ion-button>
   </ion-card>
 

@@ -4,84 +4,52 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="light">
 
-  <ion-card color="light">
+  <ion-list [inset]="true">
+      <ion-item (click)="openAddSpaces()" [button]="true">
+        <ion-label>Space Selected</ion-label>
+      </ion-item>
+      <ion-radio-group [(ngModel)]="obj.space_id">
+      <ion-item *ngFor="let item of obj.spaces" lines="none">
+        <ion-label>
+          <h2>{{item.title}}</h2>
+          <p>{{item.location}}</p>
+
+        </ion-label>
+        <ion-radio slot="end" [(ngModel)]="item.id"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-card>
     <ion-card-header class="card-header-688768">
       <div>
         <ion-card-subtitle class="ion-text-uppercase">secure</ion-card-subtitle>
         <ion-card-title class="tl-67896">Invites</ion-card-title>
       </div>
       <div class="card-header-right">
-        <div class="heading-7856758">25</div>
+        <div class="heading-7856758">{{obj.invite_count === 0 ? '' : obj.invite_count}}</div>
         <ion-icon name="card-outline"></ion-icon>
       </div>
+
 
     </ion-card-header>
 
     <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+    <ion-button fill="clear" color="tertiary" details="true" (click)="createInvite()" >Create Invite</ion-button>
   </ion-card>
 
-  <ion-list [inset]="true">
-    <ion-item [button]="true" detail="false">
-      <div class="unread-indicator-wrapper" slot="start">
-        <div class="unread-indicator"></div>
-      </div>
-      <ion-label>
-        <strong>Rick Astley</strong>
-        <ion-text>Never Gonna Give You Up</ion-text><br />
-        <ion-note color="medium" class="ion-text-wrap">
-          Never gonna give you up Never gonna let you down Never gonna run...
-        </ion-note>
-      </ion-label>
-      <div class="metadata-end-wrapper" slot="end">
-        <ion-note color="medium">06:11</ion-note>
-        <ion-icon color="medium" name="chevron-forward"></ion-icon>
-      </div>
-    </ion-item>
-    <ion-item [button]="true" detail="false">
-      <div class="unread-indicator-wrapper" slot="start"></div>
-      <ion-label>
-        <strong>Ionitron</strong>
-        <ion-text>I have become sentient</ion-text><br />
-        <ion-note color="medium" class="ion-text-wrap">That is all.</ion-note>
-      </ion-label>
-      <div class="metadata-end-wrapper" slot="end">
-        <ion-note color="medium">03:44</ion-note>
-        <ion-icon color="medium" name="chevron-forward"></ion-icon>
-      </div>
-    </ion-item>
-    <ion-item [button]="true" detail="false">
-      <div class="unread-indicator-wrapper" slot="start">
-        <div class="unread-indicator"></div>
-      </div>
-      <ion-label>
-        <strong>Steam</strong>
-        <ion-text>Game Store Sale</ion-text><br />
-        <ion-note color="medium" class="ion-text-wrap">
-          That game you added to your wish list 2 years ago is now on sale!
-        </ion-note>
-      </ion-label>
-      <div class="metadata-end-wrapper" slot="end">
-        <ion-note color="medium">Yesterday</ion-note>
-        <ion-icon color="medium" name="chevron-forward"></ion-icon>
-      </div>
-    </ion-item>
-    <ion-item [button]="true" detail="false">
-      <div class="unread-indicator-wrapper" slot="start"></div>
-      <ion-label>
-        <strong>Ionic</strong>
-        <ion-text>Announcing Ionic 7.0</ion-text><br />
-        <ion-note color="medium" class="ion-text-wrap">This version is one more than Ionic 6!</ion-note>
-      </ion-label>
-      <div class="metadata-end-wrapper" slot="end">
-        <ion-note color="medium">Yesterday</ion-note>
-        <ion-icon color="medium" name="chevron-forward"></ion-icon>
-      </div>
-    </ion-item>
+  <ion-list [inset]="true" class="invite-items">
+    <app-invite-list-item *ngFor="let item of list" [item]="item" (click)="inviteDetail(item)"></app-invite-list-item>
   </ion-list>
 
-
+<!--
+  <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+    <ion-fab-button (click)="addInvite()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
 
 
 </ion-content>

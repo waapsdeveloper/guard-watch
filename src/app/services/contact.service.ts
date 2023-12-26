@@ -9,6 +9,8 @@ import { UtilityService } from './utility.service';
 })
 export class ContactService {
 
+  list: any[] = [];
+
   constructor(
     public utilityProvider: UtilityService,
     public sqlite: SqliteService,
@@ -16,29 +18,46 @@ export class ContactService {
     public nav: NavService,
   ) { }
 
+  public getAllcontact() {
+    return new Promise(async resolve => {
+
+      if (this.list.length > 0) {
+        resolve(this.list);
+        return;
+      }
+
+      this.network.getAllContacts().then(async (res) => {
+
+        if (res.status == 200) {
+          this.list = res.result;
+          resolve(this.list);
+        } else {
+          resolve([]);
+        }
+      }, err => {
+        console.error('err', err);
+        resolve([]);
+      });
+    })
+  }
+
   addContact(data: any) {
     return new Promise(async resolve => {
 
     this.network.addContact(data).then(
       async (res) => {
-        // res = res.result
-        resolve(res);
-      }, err => { });
-    });
 
-  }
-
-  public getAllcontact() {
-    return new Promise(async resolve => {
-      this.network.getAllContacts().then(async (res) => {
-
-        res = res.result;
-        if (res) {
+        if (res.status == 200) {
+          this.list.unshift(res.result);
           resolve(res);
         } else {
+          resolve(null);
         }
       }, err => {
+        console.error('err', err);
+        resolve(null);
       });
-    })
+    });
+
   }
 }

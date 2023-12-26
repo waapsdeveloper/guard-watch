@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Add Space</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="light">
+      <ion-title size="large">Add Space</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="form-body-outer ion-padding">
+
+    <app-input-box (valueChanged)="result($event, 'title')" placeholder="title"></app-input-box>
+    <app-input-box (valueChanged)="result($event, 'description')" placeholder="description"></app-input-box>
+    <app-input-box (valueChanged)="result($event, 'location')" class="ion-pedding"
+      placeholder="location"></app-input-box>
+
+    <ion-button shape="round" expand="full" color="primary" type="submit" (click)="save()" [disabled]="!validate()">
+      <span *ngIf="!isLoading">Save</span>
+      <ion-spinner *ngIf="isLoading"></ion-spinner>
+    </ion-button>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>

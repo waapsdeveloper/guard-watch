@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Contacts</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="light">
+      <ion-title size="large">Contacts</ion-title>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" size="small" *ngIf="isListItemSelected()" (click)="selectedContacts()">
+          <ion-icon name="add-outline"></ion-icon> Add
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar></ion-searchbar>
+  <div class="ion-padding btn-div-53543543" *ngIf="!isListItemSelected()" >
+    <ion-note >
+      Selection of contact is used to send invite to your contacts, you can add or import contact from phone book as well.
+    </ion-note>
+
+  </div>
+    <ion-list [inset]="true">
+
+        <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
+          <ion-label>
+            <h2>{{item.name}}</h2>
+            <p>{{item.dial_code}} - {{item.phone_number}}</p>
+
+          </ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="item.checked"></ion-checkbox>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isListItemSelected()">
+      <ion-fab-button color="tertiary">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="top">
+        <ion-fab-button color="light" (click)="addContact()">
+          <ion-icon name="people-outline"></ion-icon>
+        </ion-fab-button>
+        <!-- <ion-fab-button color="light" (click)="importContact()">
+          <ion-icon name="albums-outline"></ion-icon>
+        </ion-fab-button> -->
+      </ion-fab-list>
+    </ion-fab>
+
+</ion-content>
+

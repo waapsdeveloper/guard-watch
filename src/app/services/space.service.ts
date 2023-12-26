@@ -9,6 +9,8 @@ import { UtilityService } from './utility.service';
 })
 export class SpaceService {
 
+  list: any[] = [];
+
   constructor(
     public utilityProvider: UtilityService,
     public sqlite: SqliteService,
@@ -16,39 +18,70 @@ export class SpaceService {
     public nav: NavService,
   ) { }
 
+  public getAllSpaces() {
+    return new Promise(async resolve => {
+
+      if (this.list.length > 0) {
+        resolve(this.list);
+        return;
+      }
+
+      this.network.getAllSpaces().then(async (res) => {
+
+        if (res.status == 200) {
+          this.list = res.result;
+          resolve(this.list);
+        } else {
+          resolve([]);
+        }
+      }, err => {
+        console.error('err', err);
+        resolve([]);
+      });
+    })
+  }
+
   addSpace(data: any) {
     return new Promise(async resolve => {
 
     this.network.addSpace(data).then(
       async (res) => {
-        // res = res.result
-        resolve(res);
-      }, err => { });
+
+        if (res.status == 200) {
+          this.list.unshift(res.result);
+          resolve(res);
+        } else {
+          resolve(null);
+        }
+      }, err => {
+        console.error('err', err);
+        resolve(null);
+      });
     });
 
   }
 
-  public getAllSpaces() {
+  public getSpaceById(id: number) {
     return new Promise(async resolve => {
-      this.network.getAllSpaces().then(async (res) => {
+      this.network.getSpaceById(id).then(async (res) => {
 
         let d = res.result;
         console.log('d', d);
         if (d) {
           resolve(d);
         } else {
-          resolve([]);
+          resolve(null);
         }
       }, err => {
         console.log('err', err);
-        resolve([]);
+        resolve(null);
       });
     })
   }
 
-  public getSpaceById(id: number) {
+  public getSpaceDetailsById(id: number) {
     return new Promise(async resolve => {
-      this.network.getSpaceById(id).then(async (res) => {
+      this.network.getSpaceDetailsById(id).then(async (res) => {
 
         let d = res.result;
         console.log('d', d);
