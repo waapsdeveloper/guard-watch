@@ -3,6 +3,7 @@ import { BasePage } from '../../base-page/base-page';
 import { AddContactsComponent } from './add-contacts/add-contacts.component';
 import { ContactsAddComponent } from 'src/app/components/contacts-list/contacts-add/contacts-add.component';
 import { ContactService } from 'src/app/services/contact.service';
+import { ContactDetailsPage } from './contact-details/contact-details.page';
 
 @Component({
   selector: 'app-contacts',
@@ -34,6 +35,9 @@ export class ContactsPage extends BasePage implements OnInit {
 
   setItemColor(item: any){
 
+    this.nav.push(`pages/user/contacts/contact-details/${item.id}`);
+    console.log("testt", item.id);
+  
     if(item.selected == true){
       return 'light'
     }else{
