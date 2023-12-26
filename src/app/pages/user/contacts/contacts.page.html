@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
   <ion-toolbar color="primary">
     <ion-title>Contacts</ion-title>
     <ion-buttons slot="primary">
@@ -11,9 +11,9 @@
     </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
- <ion-content>
-   <!-- <ion-router-outlet></ion-router-outlet> -->
-   <ion-card>
+<ion-content>
+  <!-- <ion-router-outlet></ion-router-outlet> -->
+  <ion-card>
     <ion-card-header class="card-header-688768">
       <div>
         <ion-card-subtitle class="ion-text-uppercase">secure</ion-card-subtitle>
@@ -27,8 +27,25 @@
 
     </ion-card-header>
 
-    <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+    <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else
+    </ion-card-content>
     <!-- <ion-button fill="clear" color="tertiary" details="true" >Create Invite</ion-button> -->
   </ion-card>
-</ion-content> 
+  <ion-list [inset]="true">
 
+    <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
+      <ion-label>
+        <h2>{{item.name}}</h2>
+        <p>{{item.dial_code}} - {{item.phone_number}}</p>
+
+      </ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="item.checked"></ion-checkbox>
+    </ion-item>
+
+</ion-list>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openAddContacts()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
