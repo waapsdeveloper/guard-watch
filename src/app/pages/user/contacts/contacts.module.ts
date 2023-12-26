@@ -8,6 +8,7 @@ import { ContactsPageRoutingModule } from './contacts-routing.module';
 
 import { ContactsPage } from './contacts.page';
 import { AddContactsModule } from './add-contacts/add-contacts.module';
+import { ContactDetailsPageRoutingModule } from './contact-details/contact-details-routing.module';
 
 @NgModule({
   imports: [
