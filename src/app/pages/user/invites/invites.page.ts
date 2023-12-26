@@ -10,7 +10,7 @@ import { BasePage } from '../../base-page/base-page';
   styleUrls: ['./invites.page.scss'],
 })
 export class InvitesPage extends BasePage implements OnInit {
-
+  userId: any;
   obj: any = {
     "space_id": -1,
     "invite_count": 0,
@@ -19,7 +19,7 @@ export class InvitesPage extends BasePage implements OnInit {
 
   list = [];;
 
-  constructor(injector: Injector, public activatedRoute: ActivatedRoute, private invites: InviteService) {
+  constructor(injector: Injector, public activatedRoute: ActivatedRoute) {
     super(injector)
   }
 
@@ -37,7 +37,16 @@ export class InvitesPage extends BasePage implements OnInit {
   }
 
   inviteDetail(item: any){
-    this.nav.push('pages/user/invites/invite-detail')
+    this.userId = localStorage.getItem('user_id');
+    console.log(this.userId,item.user_id);
+    if(this.userId == item.user_id){
+      console.log('ownserrr');
+      localStorage.setItem('invitesd',item.id)
+      this.nav.push('pages/user/invites/invite-detail-owner', { item: item });
+
+    }else{
+      this.nav.push('pages/user/invites/invite-detail')
+    }
   }
 
   async addInvite(){
@@ -50,7 +59,8 @@ export class InvitesPage extends BasePage implements OnInit {
   async initialize(){
 
     const res = await this.invites.getInvitesBySpaceId(this.obj.space_id) as any;
-    console.log('res', res);
+    console.log('ressssss', res);
+
     this.obj.space_id = res.space.id;
     this.obj.spaces = [res.space];
     this.list = res.invites;

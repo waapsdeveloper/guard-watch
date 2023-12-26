@@ -7,6 +7,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 })
 export class NavService {
 
+
   //
   constructor(public location: Location, public router: Router,
     //  private nativePageTransitions: NativePageTransitions
@@ -31,7 +32,7 @@ export class NavService {
     };
     this.navigateTo(page, extras);
   }
-  
+
   async pop1(data: any) {
     return new Promise<void>( async resolve => {
       this.location.back();
@@ -56,6 +57,8 @@ export class NavService {
   }
 
   getParams() {
+    console.log('this.activatedRoute.snapshot.params',this.activatedRoute.snapshot.params);
+
     return this.activatedRoute.snapshot.params;
   }
 

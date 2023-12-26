@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: 'invite-create',
     loadChildren: () => import('./invite-create/invite-create.module').then( m => m.InviteCreatePageModule)
+  },  {
+    path: 'invite-detail-owner',
+    loadChildren: () => import('./invite-detail-owner/invite-detail-owner.module').then( m => m.InviteDetailOwnerPageModule)
   },
+
 ];
 
 @NgModule({

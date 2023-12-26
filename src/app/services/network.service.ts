@@ -27,6 +27,16 @@ export class NetworkService {
   * INVITES
   */
 
+  getInviteById(){
+
+  }
+///invites/by-id/
+
+getinvitesByIdWithContacts(id: number){
+  return this.httpGetResponse('invites/by-id/'+id+'/with-contacts', null, false, false);
+}
+
+
   addInvite(data: any) {
     return this.httpPostResponse('invites/add', data, null, true);
   }

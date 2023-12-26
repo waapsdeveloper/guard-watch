@@ -17,6 +17,20 @@ export class InviteService {
     })
 
   }
+  getInvitesByIdWithContacts(id: number){
+    return new Promise(async (resolve) => {
+
+      const res = await this.network.getinvitesByIdWithContacts(id);
+      console.log('responseinvites',res);
+      if(res.status != 200){
+        resolve(null);
+        return;
+      }
+
+      resolve(res.result);
+    })
+
+  }
 
   getInvitesBySpaceId(id: number){
     return new Promise(async (resolve) => {
