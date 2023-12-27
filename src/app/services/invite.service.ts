@@ -15,8 +15,19 @@ export class InviteService {
       console.log('res',res);
       resolve(res);
     })
-
   }
+
+  deleteContactsFromInvites(obj: any){
+    return new Promise(async (resolve) => {
+
+      const res = await this.network.deleteContactFromInvite(obj);
+      console.log('DeleteContacts',res);
+      resolve(res);
+    })
+  }
+
+
+
   getInvitesByIdWithContacts(id: number){
     return new Promise(async (resolve) => {
 

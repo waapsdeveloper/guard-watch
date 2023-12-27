@@ -41,7 +41,7 @@ export class InvitesPage extends BasePage implements OnInit {
     console.log(this.userId,item.user_id);
     if(this.userId == item.user_id){
       console.log('ownserrr');
-      localStorage.setItem('invitesd',item.id)
+      localStorage.setItem('invites_id',item.id)
       this.nav.push('pages/user/invites/invite-detail-owner', { item: item });
 
     }else{
