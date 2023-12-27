@@ -19,7 +19,6 @@ export class InviteDetailOwnerPage extends BasePage implements OnInit {
   ishow = false;
   constructor(injector: Injector) {
     super(injector)
-
     this.inviteId = localStorage.getItem('invites_id');
     this.initialize()
 
@@ -54,10 +53,11 @@ export class InviteDetailOwnerPage extends BasePage implements OnInit {
 
     console.log('Invites Object:', this.invitesObject);
   }
-  opendetails() {
+  async openContactlist() {
     console.log('logggg',this.list);
 
-    this.modals.present(ContactDetailListPage, { data: this.list });
+    const res = await this.modals.present(ContactDetailListPage, { list: this.list });
+    console.log(res)
   }
 
 

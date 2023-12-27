@@ -9,40 +9,37 @@ import { AddContactsComponent } from '../add-contacts/add-contacts.component';
   styleUrls: ['./contact-detail-list.page.scss'],
 })
 export class ContactDetailListPage extends BasePage implements OnInit {
-  @Input() data: any[] = [];
-  contacts: any;
-  filteredContacts: any;
+  @Input() list: any[] = [];
   search: any;
 
   constructor(injector: Injector, public contact: ContactService) {
     super(injector);
-    this.initialize();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.list)
+  }
 
   initialize() {
-    this.getcontacts();
+
   }
 
   async getcontacts() {
-    console.log('sssssssss', this.data);
-    this.contacts = this.data;
   }
 
   async openAddContacts() {
     const res = await this.modals.present(AddContactsComponent);
-    this.contacts.push(res.data.result);
+    // this.contacts.push(res.data.result);
   }
 
-  onSearch(event: any) {
-    const searchTerm = event.detail.value.toLowerCase();
+  // onSearch(event: any) {
+  //   const searchTerm = event.detail.value.toLowerCase();
 
-    this.filteredContacts = this.contacts.filter((contact: any) => {
-      return (
-        contact.name.toLowerCase().includes(searchTerm) ||
-        (contact.dial_code + contact.phone_number).includes(searchTerm)
-      );
-    });
-  }
+  //   this.filteredContacts = this.contacts.filter((contact: any) => {
+  //     return (
+  //       contact.name.toLowerCase().includes(searchTerm) ||
+  //       (contact.dial_code + contact.phone_number).includes(searchTerm)
+  //     );
+  //   });
+  // }
 }
