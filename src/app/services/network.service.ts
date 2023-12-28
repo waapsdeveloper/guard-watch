@@ -52,12 +52,24 @@ deleteContactFromInvite(data: any) {
   * SPACES
   */
 
+  addSpaceAdmin(data: any){
+    return this.httpPostResponse('spaces/add-space-admin',data, null, true)
+  }
+
   addSpace(data: any) {
     return this.httpPostResponse('spaces/add', data, null, true);
   }
+  deleteSpaceAdmin(data: any) {
+    return this.httpPostResponse('spaces/delete-space-admin', data, null, true);
+  }
+
 
   getAllSpaces() {
     return this.httpGetResponse('spaces/list', null, false, false);
+  }
+
+  getSpaceAdminById(id: number) {
+    return this.httpGetResponse('spaces/get-space-admins/' + id, null, false, false);
   }
 
   getSpaceById(id: number) {

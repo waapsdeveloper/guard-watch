@@ -49,26 +49,17 @@ export class ContactsListComponent implements OnInit {
     console.log('addContact');
     const res = await this.modals.present(ContactsAddComponent);
     console.log('res', res);
-
     this.getAllcontact()
   }
-
-  async importContact() {
-    console.log('importContact');
-  }
-
   isListItemSelected() {
-
     if(this.flag){
       return this.list.filter(x => x.id == this.selectedContactId).length > 0;
     } else {
       return this.list.filter(x => x.checked == true).length > 0;
     }
-
   }
 
   selectedContacts() {
-
     if(this.flag){
       let list = this.list.filter(x => x.id == this.selectedContactId);
       this.modals.dismiss({ list: list });
@@ -76,9 +67,6 @@ export class ContactsListComponent implements OnInit {
       let list = this.list.filter(x => x.checked == true);
       this.modals.dismiss({ list: list });
     }
-
-
-
   }
 
 }

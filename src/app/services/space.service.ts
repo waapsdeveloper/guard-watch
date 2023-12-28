@@ -41,22 +41,80 @@ export class SpaceService {
     })
   }
 
-  addSpace(data: any) {
+  public getSpaceAdminById(id: number) {
     return new Promise(async resolve => {
+      this.network.getSpaceAdminById(id).then(async (res) => {
 
-    this.network.addSpace(data).then(
-      async (res) => {
-
-        if (res.status == 200) {
-          this.list.unshift(res.result);
-          resolve(res);
+        let d = res.result;
+        console.log('ddddddddd', d);
+        if (d) {
+          resolve(d);
         } else {
           resolve(null);
         }
       }, err => {
-        console.error('err', err);
+        console.log('err', err);
         resolve(null);
       });
+    })
+  }
+  //deleteSpaceAdmin
+  deleteSpaceAdmin(data: any) {
+    return new Promise(async resolve => {
+
+      this.network.deleteSpaceAdmin(data).then(
+        async (res) => {
+
+          if (res.status == 200) {
+            this.list.unshift(res.result);
+            resolve(res);
+          } else {
+            resolve(null);
+          }
+        }, err => {
+          console.error('err', err);
+          resolve(null);
+        });
+    });
+
+  }
+  addSpaceAdmin(data: any) {
+    return new Promise(async resolve => {
+
+      this.network.addSpaceAdmin(data).then(
+        async (res) => {
+
+          if (res.status == 200) {
+            this.list.unshift(res.result);
+            resolve(res);
+          } else {
+            resolve(null);
+          }
+        }, err => {
+          console.error('err', err);
+          resolve(null);
+        });
+    });
+
+  }
+
+
+  addSpace(data: any) {
+    return new Promise(async resolve => {
+
+      this.network.addSpace(data).then(
+        async (res) => {
+
+          if (res.status == 200) {
+            this.list.unshift(res.result);
+            resolve(res);
+          } else {
+            resolve(null);
+          }
+        }, err => {
+          console.error('err', err);
+          resolve(null);
+        });
     });
 
   }
