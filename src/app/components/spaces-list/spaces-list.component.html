@@ -4,19 +4,19 @@
   </ion-toolbar>
 
 </ion-header>
-<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar color="light">
-      <ion-title size="large">Spaces</ion-title>
-      <ion-buttons slot="end">
-        <ion-button fill="clear" size="small" *ngIf="selectedSpace" (click)="addSelectedSpace()">
-          <ion-icon name="add-outline"></ion-icon> Add
-        </ion-button>
-      </ion-buttons>
+  <ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar color="light">
+        <ion-title size="large">Spaces</ion-title>
+        <ion-buttons slot="end">
+          <ion-button fill="clear" size="small" *ngIf="selectedSpace" (click)="addSelectedSpace()">
+            <ion-icon name="add-outline"></ion-icon> Add
+          </ion-button>
+        </ion-buttons>
 
-    </ion-toolbar>
-  </ion-header>
-  <ion-searchbar></ion-searchbar>
+      </ion-toolbar>
+    </ion-header>
+    <ion-searchbar></ion-searchbar>
   <div class="ion-padding btn-div-53543543" *ngIf="!selectedSpace" >
     <ion-note >
       Selection of space is used to send invite on a perticular place to your contacts, you can add more space to your list here.

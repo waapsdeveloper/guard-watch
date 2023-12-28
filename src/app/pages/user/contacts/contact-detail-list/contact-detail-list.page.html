@@ -1,10 +1,21 @@
-<ion-content>
-  <ion-item class="itemp">
-    <ion-searchbar class="search-box-235553" [(ngModel)]="search"></ion-searchbar>
-  </ion-item>
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Contacts list</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="light">
+      <ion-title size="large">Contacts list</ion-title>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar></ion-searchbar>
 
 
-  <ion-list class="list-main-home">
+  <ion-list [inset]="true" class="list-main-home">
     <ion-item class="ion-bo-border" *ngFor="let item of list | filterList : ['name'] : search" detail="true" lines="none">
       <ion-label>
         <h2>{{item.name}}</h2>
