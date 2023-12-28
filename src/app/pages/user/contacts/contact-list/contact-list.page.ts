@@ -38,7 +38,7 @@ export class ContactListPage extends BasePage implements OnInit {
     const searchTerm = event.detail.value.toLowerCase();
 
     // Filter contacts based on the search term
-    this.filteredContacts = this.contacts.filter((contact: any) => {
+    this.filteredContacts = this.contact.filter((contact: any) => {
       return (
         contact.name.toLowerCase().includes(searchTerm) ||
         (contact.dial_code + contact.phone_number).includes(searchTerm)

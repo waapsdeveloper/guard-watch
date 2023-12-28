@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SpaceDetailPageRoutingModule } from './space-detail-routing.module';
 
 import { SpaceDetailPage } from './space-detail.page';
+import { SpaceAdminModule } from 'src/app/components/spaces-list/space-admin/space-admin.module';
 
 @NgModule({
   imports: [

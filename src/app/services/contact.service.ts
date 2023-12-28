@@ -8,6 +8,9 @@ import { UtilityService } from './utility.service';
   providedIn: 'root'
 })
 export class ContactService {
+  filter(arg0: (contact: any) => any): any {
+    throw new Error('Method not implemented.');
+  }
 
   list: any[] = [];
 

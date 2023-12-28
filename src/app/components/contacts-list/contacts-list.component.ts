@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalService } from 'src/app/services/basic/modal.service';
 import { ContactService } from 'src/app/services/contact.service';
 import { ContactsAddComponent } from './contacts-add/contacts-add.component';
@@ -9,53 +9,60 @@ import { ContactsAddComponent } from './contacts-add/contacts-add.component';
   styleUrls: ['./contacts-list.component.scss'],
 })
 export class ContactsListComponent implements OnInit {
-
   list: any[] = [];
+  @Input() flag: any
   constructor(private modals: ModalService, private contact: ContactService) { }
 
   ngOnInit() {
+    console.log(this.flag, 'asfg');
+
     this.getAllcontact()
   }
+  flagExists(): boolean {
+    return this.flag;
+  }
 
-  getAllcontact(){
+
+  getAllcontact() {
     return new Promise(async (resolve) => {
 
       const res = await this.contact.getAllcontact() as any[];
-      console.log('res',res);
+      console.log('ressssssssssssss', res);
       this.list = res
+
       resolve(res);
 
     })
   }
 
-  setItemColor(item: any){
+  setItemColor(item: any) {
 
-    if(item.selected == true){
+    if (item.selected == true) {
       return 'light'
-    }else{
+    } else {
       return ''
     }
   }
 
-  async addContact(){
+  async addContact() {
     console.log('addContact');
     const res = await this.modals.present(ContactsAddComponent);
-    console.log('res',res);
+    console.log('res', res);
 
     this.getAllcontact()
   }
 
-  async importContact(){
+  async importContact() {
     console.log('importContact');
   }
 
-  isListItemSelected(){
+  isListItemSelected() {
     return this.list.filter(x => x.checked == true).length > 0;
   }
 
-  selectedContacts(){
-    let list = this.list.filter(x => x.checked == true);
-    this.modals.dismiss({list: list});
+  selectedContacts() {
+    let list = this.list.filter(x => x.id).length > 0;
+    this.modals.dismiss({ list: list });
   }
 
 }

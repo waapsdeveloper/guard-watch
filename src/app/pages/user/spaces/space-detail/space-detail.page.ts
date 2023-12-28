@@ -4,6 +4,7 @@ import { BasePage } from 'src/app/pages/base-page/base-page';
 import { SpaceService } from 'src/app/services/space.service';
 import { ContactListPage } from '../../contacts/contact-list/contact-list.page';
 import { ContactsListComponent } from 'src/app/components/contacts-list/contacts-list.component';
+import { SpaceAdminComponent } from 'src/app/components/spaces-list/space-admin/space-admin.component';
 
 @Component({
   selector: 'app-space-detail',
@@ -49,13 +50,14 @@ export class SpaceDetailPage extends BasePage implements OnInit {
 
   // }
   async openAddContacts(){
-    const res = await this.modals.present(ContactsListComponent)
+    const res = await this.modals.present(SpaceAdminComponent)
     console.log('res',res);
 
     if(res && res.data){
-      console.log(res.data)
       const d = Object.assign({}, res.data);
-      this.obj.contacts = d.list;
+      console.log(d.list,'kkkkkkk')
+
+      // this.obj.contacts = d.list;
     }
   }
 
