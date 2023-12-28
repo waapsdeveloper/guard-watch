@@ -34,7 +34,7 @@
     </ion-list>
 
     <ion-list [inset]="true" *ngIf="flag">
-      <ion-radio-group>
+      <ion-radio-group [(ngModel)]="selectedContactId">
         <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
           <ion-label>
             <h2>{{item.name}}</h2>

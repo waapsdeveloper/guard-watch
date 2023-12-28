@@ -10,7 +10,8 @@ import { ContactsAddComponent } from './contacts-add/contacts-add.component';
 })
 export class ContactsListComponent implements OnInit {
   list: any[] = [];
-  @Input() flag: any
+  @Input() flag: any;
+  selectedContactId = null;
   constructor(private modals: ModalService, private contact: ContactService) { }
 
   ngOnInit() {
@@ -57,12 +58,27 @@ export class ContactsListComponent implements OnInit {
   }
 
   isListItemSelected() {
-    return this.list.filter(x => x.checked == true).length > 0;
+
+    if(this.flag){
+      return this.list.filter(x => x.id == this.selectedContactId).length > 0;
+    } else {
+      return this.list.filter(x => x.checked == true).length > 0;
+    }
+
   }
 
   selectedContacts() {
-    let list = this.list.filter(x => x.id).length > 0;
-    this.modals.dismiss({ list: list });
+
+    if(this.flag){
+      let list = this.list.filter(x => x.id == this.selectedContactId);
+      this.modals.dismiss({ list: list });
+    } else {
+      let list = this.list.filter(x => x.checked == true);
+      this.modals.dismiss({ list: list });
+    }
+
+
+
   }
 
 }
