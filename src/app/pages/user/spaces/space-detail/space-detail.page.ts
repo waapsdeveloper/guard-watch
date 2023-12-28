@@ -2,6 +2,8 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BasePage } from 'src/app/pages/base-page/base-page';
 import { SpaceService } from 'src/app/services/space.service';
+import { ContactListPage } from '../../contacts/contact-list/contact-list.page';
+import { ContactsListComponent } from 'src/app/components/contacts-list/contacts-list.component';
 
 @Component({
   selector: 'app-space-detail',
@@ -42,6 +44,20 @@ export class SpaceDetailPage extends BasePage implements OnInit {
     this.nav.push('/pages/user/invites');
   }
 
+  // openAdminList(){
+  //   this.modals.present(ContactListPage)
+
+  // }
+  async openAddContacts(){
+    const res = await this.modals.present(ContactsListComponent)
+    console.log('res',res);
+
+    if(res && res.data){
+      console.log(res.data)
+      const d = Object.assign({}, res.data);
+      this.obj.contacts = d.list;
+    }
+  }
 
 
 }

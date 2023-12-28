@@ -40,6 +40,8 @@
     <ion-button fill="clear" color="tertiary" details="true" (click)="createInvite()" >Create Invite</ion-button>
   </ion-card>
 
+
+
   <ion-list [inset]="true" class="invite-items">
     <app-invite-list-item *ngFor="let item of list" [item]="item" (click)="inviteDetail(item)"></app-invite-list-item>
   </ion-list>
