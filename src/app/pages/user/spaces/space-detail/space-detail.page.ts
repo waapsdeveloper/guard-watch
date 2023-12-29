@@ -29,7 +29,11 @@ export class SpaceDetailPage extends BasePage implements OnInit {
       this.nav.pop();
       return
     }
-    const res = await this.space.getSpaceDetailsById(id)
+    const res = await this.space.getSpaceDetailsById(id);
+    if(!res){
+      this.nav.pop();
+      return
+    }
     console.log('res', res);
     this.obj = res;
 

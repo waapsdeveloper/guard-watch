@@ -56,8 +56,9 @@ deleteContactFromInvite(data: any) {
     return this.httpPostResponse('spaces/add', data, null, true);
   }
 
-  getAllSpaces() {
-    return this.httpGetResponse('spaces/list', null, false, false);
+  getAllSpaces(params: any) {
+    const str = this.serialize(params);
+    return this.httpGetResponse('spaces/list?' + str , null, false, false);
   }
 
   getSpaceById(id: number) {
@@ -66,6 +67,11 @@ deleteContactFromInvite(data: any) {
 
   getSpaceDetailsById(id: number) {
     return this.httpGetResponse('spaces/details/by-id/' + id, null, false, false);
+  }
+
+  getGlobalSpaces(params: any) {
+    const str = this.serialize(params);
+    return this.httpGetResponse('spaces/get-global-spaces?' + str , null, false, false);
   }
 
   /*

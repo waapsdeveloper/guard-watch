@@ -18,7 +18,7 @@ export class SpaceService {
     public nav: NavService,
   ) { }
 
-  public getAllSpaces() {
+  public getAllSpaces(params = {}) {
     return new Promise(async resolve => {
 
       if (this.list.length > 0) {
@@ -26,7 +26,7 @@ export class SpaceService {
         return;
       }
 
-      this.network.getAllSpaces().then(async (res) => {
+      this.network.getAllSpaces(params).then(async (res) => {
 
         if (res.status == 200) {
           this.list = res.result;
@@ -93,6 +93,24 @@ export class SpaceService {
       }, err => {
         console.log('err', err);
         resolve(null);
+      });
+    })
+  }
+
+  public getGlobalSpaces(params = {}) {
+    return new Promise(async resolve => {
+
+      this.network.getGlobalSpaces(params).then(async (res) => {
+
+        if (res.status == 200) {
+          let list = res.result;
+          resolve(list);
+        } else {
+          resolve([]);
+        }
+      }, err => {
+        console.error('err', err);
+        resolve([]);
       });
     })
   }
