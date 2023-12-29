@@ -14,13 +14,11 @@ export class SpaceAdminComponent implements OnInit {
   spaceId: any;
   roleId: any;
   obj: any = {
-    space_id: '',
-    role_id: '',
     contact_id: ''
   };
   objd: any = {
-    space_id: '',
-    contact_id: ''
+    id: '',
+    space_id: ''
   };
   selectedItem: any;
 
@@ -35,7 +33,7 @@ export class SpaceAdminComponent implements OnInit {
   }
   async initialize(){
   this.spaceId = localStorage.getItem('space_id');
-    const res = await this.space.getSpaceAdminById(this.spaceId);
+    const res = await this.space.getSpaceAdminById(this.spaceId) as any;
     console.log(res, 'abdullah');
     this.list = res
 
@@ -78,11 +76,13 @@ export class SpaceAdminComponent implements OnInit {
   
   async selectedContacts() {
       let list = this.list.filter((x: { id: null; }) => x.id == this.selectedContactId);
-      this.objd.space_id = this.spaceId
-      this.objd.contact_id = list[0].id
-      console.log('listtt',this.objd);
-      const res = await this.space.deleteSpaceAdmin(this.objd)
-      
+      var id = list[0].id
+      const res = await this.space.deleteSpaceAdmin(id);
+      const updatedList = this.list.filter((x: { id: null }) => x.id != this.selectedContactId);
+
+      console.log(res,updatedList.length,'abdullllll');
+      localStorage.setItem('space_length', updatedList.length);
+      this.modals.dismiss({res: res, length: updatedList.length})
     }
   }
 

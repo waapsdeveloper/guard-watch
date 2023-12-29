@@ -59,25 +59,24 @@ export class SpaceService {
     })
   }
   //deleteSpaceAdmin
-  deleteSpaceAdmin(data: any) {
+  deleteSpaceAdmin(id: number) {
     return new Promise(async resolve => {
+      this.network.deleteSpaceAdminById(id).then(async (res) => {
 
-      this.network.deleteSpaceAdmin(data).then(
-        async (res) => {
-
-          if (res.status == 200) {
-            this.list.unshift(res.result);
-            resolve(res);
-          } else {
-            resolve(null);
-          }
-        }, err => {
-          console.error('err', err);
+        // let d = res.result;
+        console.log('d', res);
+        if (res) {
+          resolve(res);
+        } else {
           resolve(null);
-        });
-    });
-
+        }
+      }, err => {
+        console.log('err', err);
+        resolve(null);
+      });
+    })
   }
+  
   addSpaceAdmin(data: any) {
     return new Promise(async resolve => {
 

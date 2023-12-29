@@ -26,7 +26,10 @@ export class NetworkService {
   /*
   * INVITES
   */
-
+  deleteSpaceAdminById(id: number) {
+    
+    return this.httpDeleteResponse('spaces/delete-space-admin/' + id, null, null, true, true);
+  }
   getInviteById(){
 
   }
@@ -60,7 +63,7 @@ deleteContactFromInvite(data: any) {
     return this.httpPostResponse('spaces/add', data, null, true);
   }
   deleteSpaceAdmin(data: any) {
-    return this.httpPostResponse('spaces/delete-space-admin', data, null, true);
+    return this.httpPostResponse('spaces/add', data, null, true);
   }
 
 
