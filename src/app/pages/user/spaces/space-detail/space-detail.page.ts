@@ -12,7 +12,7 @@ import { SpaceAdminComponent } from 'src/app/components/spaces-list/space-admin/
   styleUrls: ['./space-detail.page.scss'],
 })
 export class SpaceDetailPage extends BasePage implements OnInit {
-
+  spaceLength:any;
   obj: any = {
   }
   constructor(injector: Injector, public activatedRoute: ActivatedRoute, private space: SpaceService) {
@@ -20,6 +20,7 @@ export class SpaceDetailPage extends BasePage implements OnInit {
   }
 
   ionViewDidEnter() {
+    this.spaceLength = localStorage.getItem('space_length');
     this.initialize()
   }
 
@@ -48,20 +49,14 @@ export class SpaceDetailPage extends BasePage implements OnInit {
     localStorage.setItem('space_id', this.obj.id);
     this.nav.push('/pages/user/invites');
   }
-
-  // openAdminList(){
-  //   this.modals.present(ContactListPage)
-
-  // }
   async openAddContacts(){
     const res = await this.modals.present(SpaceAdminComponent)
-    console.log('res',res);
+    console.log('resassafdds',res);
 
     if(res && res.data){
       const d = Object.assign({}, res.data);
-      console.log(d.list,'kkkkkkk')
-
-      // this.obj.contacts = d.list;
+      this.spaceLength = d.length
+      console.log(this.spaceLength,'kkkkkkk')
     }
   }
 

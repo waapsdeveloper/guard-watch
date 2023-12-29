@@ -29,10 +29,10 @@ export class SpacesPage extends BasePage implements OnInit {
   }
 
   openDetails(item: any){
-    console.log(item.id);
+    console.log(item.id,'item.id');
+    localStorage.setItem('space_id',item.id)
     let url = `/pages/user/spaces/details/${item.id}`
     this.nav.push(url);
-
   }
 
 }

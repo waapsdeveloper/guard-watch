@@ -26,7 +26,10 @@ export class NetworkService {
   /*
   * INVITES
   */
-
+  deleteSpaceAdminById(id: number) {
+    
+    return this.httpDeleteResponse('spaces/delete-space-admin/' + id, null, null, true, true);
+  }
   getInviteById(){
 
   }
@@ -52,13 +55,25 @@ deleteContactFromInvite(data: any) {
   * SPACES
   */
 
+  addSpaceAdmin(data: any){
+    return this.httpPostResponse('spaces/add-space-admin',data, null, true)
+  }
+
   addSpace(data: any) {
     return this.httpPostResponse('spaces/add', data, null, true);
   }
+  deleteSpaceAdmin(data: any) {
+    return this.httpPostResponse('spaces/add', data, null, true);
+  }
+
 
   getAllSpaces(params: any) {
     const str = this.serialize(params);
     return this.httpGetResponse('spaces/list?' + str , null, false, false);
+  }
+
+  getSpaceAdminById(id: number) {
+    return this.httpGetResponse('spaces/get-space-admins/' + id, null, false, false);
   }
 
   getSpaceById(id: number) {

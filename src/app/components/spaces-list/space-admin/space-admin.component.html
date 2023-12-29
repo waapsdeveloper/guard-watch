@@ -10,8 +10,9 @@
       <ion-title size="large">Space Admin</ion-title>
       <ion-buttons slot="end">
         <ion-button fill="clear" size="small" *ngIf="isListItemSelected()" (click)="selectedContacts()">
-          <ion-icon name="add-outline"></ion-icon> Add
+          <ion-icon name="add-outline"></ion-icon> Delete
         </ion-button>
+
       </ion-buttons>
 
     </ion-toolbar>
@@ -19,24 +20,24 @@
   <ion-searchbar></ion-searchbar>
   <div class="ion-padding btn-div-53543543" *ngIf="!isListItemSelected()" >
     <ion-note >
-      Selection of contact is used to make Space Admin, you can add or import contact from phone book as well.
+      Selection of contact is used to send invite to your contacts, you can add or import contact from phone book as well.
     </ion-note>
 
   </div>
-    <ion-list [inset]="true">
-
-        <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
-          <ion-label>
-            <h2>{{item.name}}</h2>
-            <p>{{item.dial_code}} - {{item.phone_number}}</p>
-
-          </ion-label>
-          <ion-checkbox slot="end" [(ngModel)]="item.checked"></ion-checkbox>
-        </ion-item>
-
+  <ion-list [inset]="true">
+    <ion-radio-group [(ngModel)]="selectedContactId">
+      <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
+        <ion-label>
+          <h2>{{item.contact.name}}</h2>
+          <p>{{item.contact.dial_code}} - {{item.contact.phone_number}}</p>
+        </ion-label>
+        <ion-radio slot="end" [(ngModel)]="item.id"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
     </ion-list>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isListItemSelected()">
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button color="primary">
         <ion-icon name="add-outline"></ion-icon>
       </ion-fab-button>
