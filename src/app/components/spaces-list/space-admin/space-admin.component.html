@@ -28,9 +28,9 @@
     <ion-radio-group [(ngModel)]="selectedContactId">
       <ion-item *ngFor="let item of list" lines="none" [color]="setItemColor(item)">
         <ion-label>
-          <h2>{{item.contact.name}}</h2>
-          <p>{{item.contact.dial_code}} - {{item.contact.phone_number}}</p>
-          <p>{{item.role.display_name}}</p>
+          <h2>{{item.contact?.name}}</h2>
+          <p>{{item.contact?.dial_code}} - {{item.contact?.phone_number}}</p>
+          <p>{{item.role?.display_name}}</p>
         </ion-label>
         <ion-radio slot="end" [(ngModel)]="item.id"></ion-radio>
       </ion-item>
