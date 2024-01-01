@@ -1,6 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from '../../base-page/base-page';
 import { SpaceSearchComponent } from 'src/app/components/space-search/space-search.component';
+import { SpaceService } from 'src/app/services/space.service';
 const usermenu = require("./../../../data/user-menu.json")
 
 @Component({
@@ -12,7 +13,7 @@ export class DashboardPage extends BasePage implements OnInit {
   userId:any;
   user:any;
   menu: any[] = [];
-
+  list:any;
   searchList = [
     {
       id: 2,
@@ -23,14 +24,21 @@ export class DashboardPage extends BasePage implements OnInit {
       search: "ERRRRRt43463"
     }
   ]
-  constructor(injector: Injector) {
+  constructor(injector: Injector, private space: SpaceService) {
     super(injector)
   }
 
   ngOnInit() {
+    this.initialize()
     this.menu = usermenu;
     this.userId = localStorage.getItem('user_id');
     this.user = this.datum.getUserById(this.userId);
+  }
+  async initialize(){
+    const res = await this.space.getmoderatorsByUserId();
+    this.list = res
+    console.log(this.list,'resssherere');
+    
   }
 
 
