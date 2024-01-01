@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from '../../base-page/base-page';
+import { SpaceSearchComponent } from 'src/app/components/space-search/space-search.component';
 const usermenu = require("./../../../data/user-menu.json")
 
 @Component({
@@ -11,6 +12,17 @@ export class DashboardPage extends BasePage implements OnInit {
   userId:any;
   user:any;
   menu: any[] = [];
+
+  searchList = [
+    {
+      id: 2,
+      search: "ERRRRR"
+    },
+    {
+      id: 3,
+      search: "ERRRRRt43463"
+    }
+  ]
   constructor(injector: Injector) {
     super(injector)
   }
@@ -52,5 +64,21 @@ export class DashboardPage extends BasePage implements OnInit {
   goToContects(){
     this.nav.push('pages/user/contacts')
   }
+
+  async handleGlobalInput($event: any){
+    let v = $event.target.value;
+    const res = await this.modals.present(SpaceSearchComponent, {
+      search: v
+    }, '', 0.75)
+
+    console.log(res);
+    if(res.data && res.data.item){
+      let t = res.data.item;
+      console.log(t);
+      this.nav.push('/pages/user/spaces/public-space-by-id/' + t.id)
+    }
+
+  }
+
 
 }

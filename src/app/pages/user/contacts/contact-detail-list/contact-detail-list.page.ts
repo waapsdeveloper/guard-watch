@@ -14,7 +14,7 @@ export class ContactDetailListPage extends BasePage implements OnInit {
   invitesObject: any = {
     invite_id: '',
     contacts: [],
-  };
+  };  data :any= []
   constructor(injector: Injector, public contact: ContactService) {
     super(injector);
   }

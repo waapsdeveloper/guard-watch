@@ -1,0 +1,45 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="light">
+    <ion-title>Space Search</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar color="light">
+      <ion-title size="large">Space Search</ion-title>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" size="small" *ngIf="selectedSpace" (click)="backSelection()" >
+          <ion-icon name="add-outline"></ion-icon> Select
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar [debounce]="1000" (ionInput)="handleGlobalInput($event)" [(ngModel)]="search"></ion-searchbar>
+  <div class="ion-padding btn-div-53543543">
+    <ion-note>
+      Selection of contact is used to send invite to your contacts, you can add or import contact from phone book as
+      well.
+    </ion-note>
+
+  </div>
+
+  <ion-list [inset]="true">
+    <ion-radio-group [(ngModel)]="selectedSpace">
+      <ion-item *ngFor="let item of list" lines="none">
+        <ion-label>
+          <h2>{{item.title}}</h2>
+          <p>{{item.location}}</p>
+        </ion-label>
+        <ion-radio slot="end" [value]="item.id" ></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <div *ngIf="list.length == 0" class="ion-padding">
+    <ion-note>
+      No records found
+    </ion-note>
+  </div>
+
+</ion-content>

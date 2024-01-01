@@ -19,52 +19,52 @@ export class ContactsPage extends BasePage implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 
-  getAllcontact(){
+  getAllcontact() {
     return new Promise(async (resolve) => {
 
       const res = await this.contact.getAllcontact() as any[];
-      console.log('res',res);
+      console.log('res', res);
       this.list = res
       resolve(res);
 
     })
   }
 
-  setItemColor(item: any){
+  setItemColor(item: any) {
 
-    this.nav.push(`pages/user/contacts/contact-details/${item.id}`);
-    console.log("testt", item.id);
-  
-    if(item.selected == true){
+    this.modals.present(ContactDetailsPage, { item: item });
+    console.log("testt", item);
+
+    if (item.selected == true) {
       return 'light'
-    }else{
+    } else {
       return ''
     }
   }
 
-  async openAddContacts(){
+  async openAddContacts() {
     console.log('addContact');
     const res = await this.modals.present(ContactsAddComponent);
-    console.log('res',res);
+    console.log('res', res);
 
     this.getAllcontact()
   }
 
-  async importContact(){
+  async importContact() {
     console.log('importContact');
   }
 
-  isListItemSelected(){
+  isListItemSelected() {
     return this.list.filter(x => x.checked == true).length > 0;
   }
 
-  selectedContacts(){
+  selectedContacts() {
     let list = this.list.filter(x => x.checked == true);
-    this.modals.dismiss({list: list});
-  } 
-  
+    this.modals.dismiss({ list: list });
+  }
+
 
 }

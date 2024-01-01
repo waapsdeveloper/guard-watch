@@ -42,7 +42,12 @@ const routes: Routes = [
   {
     path: 'invites',
     loadChildren: () => import('./invites/invites.module').then( m => m.InvitesPageModule)
+  },
+  {
+    path: 'public-space-by-id/:id',
+    loadChildren: () => import('./spaces/public-space-by-id/public-space-by-id.module').then( m => m.PublicSpaceByIdPageModule)
   }
+
 
 
 ];

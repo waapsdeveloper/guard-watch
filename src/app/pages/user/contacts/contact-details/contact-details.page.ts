@@ -7,22 +7,25 @@ import { BasePage } from 'src/app/pages/base-page/base-page';
   styleUrls: ['./contact-details.page.scss'],
 })
 export class ContactDetailsPage extends BasePage implements OnInit {
-  private _item: any;
-  @Input()
-  set item(value: any) {
-    this._item = value;
-    this.initialize(value);
+
+  @Input() item: any;
+  name: any;
+  dailCode:any;
+  phoneNumber:any;
+  constructor(private injector: Injector) {
+    super(injector);
   }
 
-  get item() {
-    return this._item;
+  ngOnInit() {
+    if (this.item && this.item.name) {
+      this.name = this.item.name;
+      this.phoneNumber = this.item.phone_number
+      this.dailCode = this.item.dial_code
+      
+    }
   }
 
-  constructor(injector: Injector) {
-    super(injector)
-    console.log("gfhsdf", this._item);
-  }
-  ngOnInit() { }
-  initialize(value: any){
+  initialize(value: any) {
+    // Your initialization logic here
   }
 }
