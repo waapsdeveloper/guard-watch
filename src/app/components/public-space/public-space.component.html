@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-title>Add Contact</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
+
+  <!-- Heading Section -->
+  <ion-header collapse="condense">
+    <ion-toolbar color="light">
+      <ion-title size="large">Date and Time</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Date and Time Section -->
+  <div class="date-time-section ion-padding">
+    <!-- <ion-title>Date and Time</ion-title> -->
+    <!-- Include your date and time components here -->
+    <!-- Example: -->
+    <!-- <app-date-picker>hello</app-date-picker>
+    <app-time-picker>kkkk</app-time-picker> -->
+  </div>
+
+  <!-- Form Section -->
+  <div class="form-body-outer ion-padding">
+    <ion-datetime value="2022-04-21T00:00:00" min="2022-03-01T00:00:00" max="2022-05-31T23:59:59"></ion-datetime>
+
+  </div>
+
+</ion-content>

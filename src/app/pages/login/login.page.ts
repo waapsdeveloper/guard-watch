@@ -44,8 +44,10 @@ export class LoginPage extends BasePage implements OnInit {
       return
     } else {
 
-      console.log(res.id, 'assasasa');
+      console.log(res, 'assasasa');
       localStorage.setItem("user_id", res.id)
+
+      localStorage.setItem("role_id", res.role_id)
       if (res.role_id == 3) {
         console.log('guard');
         this.nav.push('./pages/guard/dashboard');
