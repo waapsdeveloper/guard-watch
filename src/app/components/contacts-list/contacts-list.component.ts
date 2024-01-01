@@ -11,11 +11,12 @@ import { ContactsAddComponent } from './contacts-add/contacts-add.component';
 export class ContactsListComponent implements OnInit {
   list: any[] = [];
   @Input() flag: any;
+  @Input() role: any;
   selectedContactId = null;
   constructor(private modals: ModalService, private contact: ContactService) { }
 
   ngOnInit() {
-    console.log(this.flag, 'asfg');
+    console.log(this.flag,this.role, 'asfg');
 
     this.getAllcontact()
   }
@@ -62,7 +63,9 @@ export class ContactsListComponent implements OnInit {
   selectedContacts() {
     if(this.flag){
       let list = this.list.filter(x => x.id == this.selectedContactId);
-      this.modals.dismiss({ list: list });
+      console.log(list);
+      
+      this.modals.dismiss({ list: list, role: this.role });
     } else {
       let list = this.list.filter(x => x.checked == true);
       this.modals.dismiss({ list: list });

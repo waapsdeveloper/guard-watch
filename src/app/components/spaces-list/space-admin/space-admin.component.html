@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="light">
-    <ion-title>Space Admin</ion-title>
+    <ion-title>Moderators</ion-title>
   </ion-toolbar>
 
 </ion-header>
 <ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
   <ion-header collapse="condense">
     <ion-toolbar color="light">
-      <ion-title size="large">Space Admin</ion-title>
+      <ion-title size="large">Moderators</ion-title>
       <ion-buttons slot="end">
         <ion-button fill="clear" size="small" *ngIf="isListItemSelected()" (click)="selectedContacts()">
           <ion-icon name="add-outline"></ion-icon> Delete
@@ -30,6 +30,7 @@
         <ion-label>
           <h2>{{item.contact.name}}</h2>
           <p>{{item.contact.dial_code}} - {{item.contact.phone_number}}</p>
+          <p>{{item.role.display_name}}</p>
         </ion-label>
         <ion-radio slot="end" [(ngModel)]="item.id"></ion-radio>
       </ion-item>
@@ -42,8 +43,11 @@
         <ion-icon name="add-outline"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="top">
-        <ion-fab-button color="light" (click)="addContact()">
+        <ion-fab-button color="light" (click)="addContact('resident')">
           <ion-icon name="people-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="light" (click)="addContact('guard')">
+          <ion-icon name="people"></ion-icon>
         </ion-fab-button>
       </ion-fab-list>
     </ion-fab>

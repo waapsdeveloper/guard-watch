@@ -8,12 +8,11 @@
   <ion-header collapse="condense">
     <ion-toolbar color="light">
       <ion-title size="large">Contacts</ion-title>
-      <ion-buttons slot="end">
+      <ion-buttons  id="click-trigger" slot="end">
         <ion-button fill="clear" size="small" *ngIf="isListItemSelected()" (click)="selectedContacts()">
           <ion-icon name="add-outline"></ion-icon> Add
         </ion-button>
       </ion-buttons>
-
     </ion-toolbar>
   </ion-header>
   <ion-searchbar></ion-searchbar>
@@ -45,7 +44,7 @@
       </ion-radio-group>
       </ion-list>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isListItemSelected()">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!flag">
       <ion-fab-button color="primary">
         <ion-icon name="add-outline"></ion-icon>
       </ion-fab-button>
