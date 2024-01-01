@@ -11,7 +11,7 @@ import { AddContactsComponent } from '../add-contacts/add-contacts.component';
 export class ContactDetailListPage extends BasePage implements OnInit {
   @Input() list: any[] = [];
   search: any;
-
+  data :any= []
   constructor(injector: Injector, public contact: ContactService) {
     super(injector);
   }
