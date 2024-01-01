@@ -1,6 +1,7 @@
 import { Component, OnInit, Injector } from '@angular/core';
 import { BasePage } from '../base-page/base-page';
 import { log } from 'console';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,9 @@ export class LoginPage extends BasePage implements OnInit {
     password: '123456',
     dial_code: '+92'
   };
-  constructor(injector: Injector) {
+  constructor(injector: Injector, private alertController: AlertController) {
     super(injector)
+    
   }
 
   ngOnInit() {
@@ -35,30 +37,65 @@ export class LoginPage extends BasePage implements OnInit {
       console.error('Please fill in all the required fields.');
       return;
     }
-    // this.obj.phone_number = '3418273826';
-    // this.obj.password = '123456';
-    // this.obj.dial_code = '+92';
     let res = await this.users.login(this.obj) as any
 
     if (res == null) {
       return
     } else {
 
-      console.log(res, 'assasasa');
-      localStorage.setItem("user_id", res.id)
+      if (res.guard_spaces.length == 0) {
 
-      localStorage.setItem("role_id", res.role_id)
-      if (res.role_id == 3) {
         console.log('guard');
-        this.nav.push('./pages/guard/dashboard');
+        await this.presentAlert()
+       
+
       } else {
         console.log('resident');
         this.nav.push('./pages/user/dashboard');
       }
+
     }
 
   }
-
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Select your role',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          handler: (data) => {
+            this.handleAlertChoice(data);
+          },
+        },
+      ],
+      inputs: [
+        {
+          label: 'Guard',
+          type: 'radio',
+          value: 'guard',
+        },
+        {
+          label: 'Checker',
+          type: 'radio',
+          value: 'checker',
+        },
+      ],
+    });
+  
+    await alert.present();
+  }
+  
+  handleAlertChoice(choice: any) {
+    if (choice === 'guard') {
+      this.nav.push('./pages/guard/dashboard');
+    } else if (choice === 'checker') {
+      this.nav.push('./pages/user/dashboard');
+    }
+  }
   switchToForgetPassword() {
     // this.aForm.reset();
     // this.setupForgetPassForm();
