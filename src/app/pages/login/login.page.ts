@@ -41,19 +41,19 @@ export class LoginPage extends BasePage implements OnInit {
 
     if (res == null) {
       return
-    } else {
+    }  else {
 
-      if (res.guard_spaces.length == 0) {
+      console.log(res, 'assasasa');
+      localStorage.setItem("user_id", res.id)
 
+      localStorage.setItem("role_id", res.role_id)
+      if (res.role_id == 3) {
         console.log('guard');
-        await this.presentAlert()
-       
-
+        this.nav.push('./pages/guard/dashboard');
       } else {
         console.log('resident');
         this.nav.push('./pages/user/dashboard');
       }
-
     }
 
   }

@@ -2,6 +2,7 @@ import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from '../../base-page/base-page';
 import { SpaceSearchComponent } from 'src/app/components/space-search/space-search.component';
 import { SpaceService } from 'src/app/services/space.service';
+import { AlertController } from '@ionic/angular';
 const usermenu = require("./../../../data/user-menu.json")
 
 @Component({
@@ -10,10 +11,10 @@ const usermenu = require("./../../../data/user-menu.json")
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage extends BasePage implements OnInit {
-  userId:any;
-  user:any;
+  userId: any;
+  user: any;
   menu: any[] = [];
-  list:any;
+  list: any;
   searchList = [
     {
       id: 2,
@@ -24,7 +25,7 @@ export class DashboardPage extends BasePage implements OnInit {
       search: "ERRRRRt43463"
     }
   ]
-  constructor(injector: Injector, private space: SpaceService) {
+  constructor(injector: Injector, private space: SpaceService, private alertController: AlertController) {
     super(injector)
   }
 
@@ -34,61 +35,65 @@ export class DashboardPage extends BasePage implements OnInit {
     this.userId = localStorage.getItem('user_id');
     this.user = this.datum.getUserById(this.userId);
   }
-  async initialize(){
+  async initialize() {
     const res = await this.space.getmoderatorsByUserId();
     this.list = res
-    console.log(this.list,'resssherere');
-    
-  }
-  setItemColor(item: any) {
+    console.log(this.list, 'resssherere');
 
-    if (item.selected == true) {
-      return 'light'
+  }
+  async setItemColor(item: any) {
+    console.log('hellpo', item);
+
+    if (item.role.display_name == 'Guard') {
+      this.nav.push('./pages/guard/dashboard');
     } else {
-      return ''
+      
+    localStorage.setItem('space_id',item.space.id)
+    let url = `/pages/user/spaces/details/${item.space.id}`
+    this.nav.push(url);
     }
   }
 
 
-  showDetails(){
+  showDetails() {
     this.nav.push('/pages/user/pass-detail')
   }
 
-  openPage(page: string){
+  openPage(page: string) {
 
     switch (page) {
       case 'spaces':
         this.nav.push('pages/user/spaces')
-      break;
+        break;
 
       case 'contacts':
         this.nav.push('pages/user/contacts')
-      break;
+        break;
 
       case 'invites':
         this.nav.push('pages/user/invites')
-      break;
+        break;
 
       case 'pass':
         this.nav.push('pages/user/passes')
-      break;
+        break;
 
 
 
     }
   }
-  goToContects(){
+  goToContects() {
     this.nav.push('pages/user/contacts')
   }
 
-  async handleGlobalInput($event: any){
+  async handleGlobalInput($event: any) {
     let v = $event.target.value;
     const res = await this.modals.present(SpaceSearchComponent, {
       search: v
     }, '', 0.75)
 
     console.log(res);
-    if(res.data && res.data.item){
+    if (res.data && res.data.item) {
       let t = res.data.item;
       console.log(t);
       this.nav.push('/pages/user/spaces/public-space-by-id/' + t.id)
