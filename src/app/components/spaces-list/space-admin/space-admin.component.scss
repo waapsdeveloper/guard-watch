@@ -2,3 +2,12 @@
   display: flex;
   justify-content: flex-end;
 }
+ion-fab[horizontal="start"] ion-fab-list {
+  left: 0;
+  align-items: flex-start;
+}
+
+ion-fab[horizontal="end"] ion-fab-list {
+  right: 0;
+  align-items: flex-end;
+}
