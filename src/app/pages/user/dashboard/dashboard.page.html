@@ -35,9 +35,14 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
+      <div class="ion-padding-start ion-padding-end">
+        <ion-note>
+          Your moderation Spaces
+        </ion-note>
+      </div>
       <ion-list [inset]="true">
-        <!-- (click)="setItemColor(item)" -->
-        <ion-item lines="none" detail="true" *ngFor="let item of list" >
+        
+        <ion-item lines="none" detail="true" *ngFor="let item of list" (click)="setItemColor(item)">
           <ion-label>
             <h2>{{item.space.title}}</h2>
             <p>{{item.space.description}}</p>

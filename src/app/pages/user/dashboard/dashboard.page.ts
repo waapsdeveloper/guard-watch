@@ -40,6 +40,14 @@ export class DashboardPage extends BasePage implements OnInit {
     console.log(this.list,'resssherere');
     
   }
+  setItemColor(item: any) {
+
+    if (item.selected == true) {
+      return 'light'
+    } else {
+      return ''
+    }
+  }
 
 
   showDetails(){
