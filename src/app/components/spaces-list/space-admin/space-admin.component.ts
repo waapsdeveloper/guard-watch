@@ -15,7 +15,7 @@ export class SpaceAdminComponent implements OnInit {
   roleId: any;
   obj: any = {
     contact_id: '',
-    space_id: '',
+    space_id: 18,
     role_id:''
   };
   objd: any = {
@@ -35,6 +35,7 @@ export class SpaceAdminComponent implements OnInit {
   }
   async initialize(){
   this.spaceId = localStorage.getItem('space_id');
+  
     const res = await this.space.getSpaceAdminById(this.spaceId) as any;
     console.log(res, 'abdullah');
     this.list = res
@@ -52,7 +53,7 @@ export class SpaceAdminComponent implements OnInit {
   async addContact(item: any) {
     console.log('addContact');
     const res = await this.modals.present(ContactsListComponent, { flag: 'true', role: item });
-    this.spaceId = localStorage.getItem('space_id');
+    // this.spaceId = localStorage.getItem('space_id');
     this.roleId = localStorage.getItem('role_id');
     
     if (res.data.role == 'guard'){
@@ -63,10 +64,10 @@ export class SpaceAdminComponent implements OnInit {
     
     
     
-    this.obj.space_id = this.spaceId;
+    // this.obj.space_id = this.spaceId;
     this.obj.contact_id = res.data.list[0].id
     
-    console.log('Selected Contact', this.obj);
+    console.log('Selected Contact', this.spaceId);
     const result = await this.space.addSpaceAdmin(this.obj);
     console.log('resultss',result);
     
