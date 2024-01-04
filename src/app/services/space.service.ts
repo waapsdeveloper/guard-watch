@@ -117,6 +117,23 @@ export class SpaceService {
     });
 
   }
+  public getmoderatorsByUserId() {
+    return new Promise(async resolve => {
+      this.network.getmoderatorsByUserId().then(async (res) => {
+
+        let d = res.result;
+        console.log('getmoderatorsByUserId', d);
+        if (d) {
+          resolve(d);
+        } else {
+          resolve(null);
+        }
+      }, err => {
+        console.log('err', err);
+        resolve(null);
+      });
+    })
+  }
 
   public getSpaceById(id: number) {
     return new Promise(async resolve => {

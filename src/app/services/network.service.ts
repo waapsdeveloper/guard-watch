@@ -58,6 +58,9 @@ deleteContactFromInvite(data: any) {
   addSpaceAdmin(data: any){
     return this.httpPostResponse('spaces/add-space-admin',data, null, true)
   }
+  getmoderatorsByUserId() {
+    return this.httpGetResponse('spaces/get-my-moderation-spaces-by-user-id', null, false, false);
+  }
 
   addSpace(data: any) {
     return this.httpPostResponse('spaces/add', data, null, true);
