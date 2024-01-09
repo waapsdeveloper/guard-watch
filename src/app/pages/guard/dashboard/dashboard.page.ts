@@ -1,6 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { BasePage } from '../../base-page/base-page';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController, AlertController } from '@ionic/angular';
+import { ScanResultPage } from '../scan-result/scan-result.page';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +9,11 @@ import { ActionSheetController } from '@ionic/angular';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage extends BasePage implements OnInit {
-  userId:any;
-  user:any;
+  userId: any;
+  user: any;
   showOptions = false;
-  constructor(injector: Injector, public actionSheet: ActionSheetController) {
+  item: any;
+  constructor(injector: Injector, public actionSheet: ActionSheetController, private alertController: AlertController) {
     super(injector)
 
   }
@@ -24,13 +26,43 @@ export class DashboardPage extends BasePage implements OnInit {
     this.showOptions = !this.showOptions;
   }
 
-  scan() {
+  async scan() {
     this.showOptions = false;
-    console.log('Scan clicked');
-    this.nav.push('./pages/guard/scan-result')
+    console.log('Scan clicked')
+    await this.presentAlert();
+
 
   }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Enter Id',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          handler: (data) => {
+            this.handleAlertChoice(data);
+          },
+        },
+      ],
+      inputs: [
+        {
+          label: 'Guard',
+          type: 'number',
+          value: '',
+        },
+      ],
+    });
 
+    await alert.present();
+  }
+  handleAlertChoice(choice: any) {
+    console.log(choice);
+    this.nav.push('/pages/guard/scan-result/'+ choice);
+  }
   showPerson() {
     this.showOptions = false;
     console.log('Person clicked');
