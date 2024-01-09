@@ -24,21 +24,25 @@ export class InviteService {
       resolve(res);
     })
   }
-
   getQrCodeData(data: any) {
     return new Promise(async (resolve) => {
       const res = await this.network.qrCode(data)
       resolve(res);
     })
   }
-
-  getInvitesReceived(active: any){
+  getInvitesReceived(active: any) {
     return new Promise(async (resolve) => {
 
       const res = await this.network.getInvitesReceived(active);
-      console.log('DeleteContacts',res);
+      console.log('ressssss', res);
+      if (res.status != 200) {
+        resolve(null);
+        return;
+      }
+
       resolve(res);
     })
+
   }
 
 

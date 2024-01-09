@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'qrcode-reader',
-    loadChildren: () => import('../qrcode-reader/qrcode-reader.module').then( m => m.QrcodeReaderPageModule)
+    loadChildren: () => import('./qrcode-reader/qrcode-reader.module').then(m => m.QrcodeReaderPageModule)
   },
 
 
@@ -20,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardPageRoutingModule {}
+export class DashboardPageRoutingModule { }

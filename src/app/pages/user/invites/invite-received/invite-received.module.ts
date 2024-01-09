@@ -13,7 +13,7 @@ import { InviteReceivedPage } from './invite-received.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    InviteReceivedPageRoutingModule
+    InviteReceivedPageRoutingModule,
   ],
   declarations: [InviteReceivedPage]
 })
