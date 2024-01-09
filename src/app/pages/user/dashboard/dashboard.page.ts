@@ -47,10 +47,10 @@ export class DashboardPage extends BasePage implements OnInit {
     if (item.role.display_name == 'Guard') {
       this.nav.push('./pages/guard/dashboard');
     } else {
-      
-    localStorage.setItem('space_id',item.space.id)
-    let url = `/pages/user/spaces/details/${item.space.id}`
-    this.nav.push(url);
+
+      localStorage.setItem('space_id', item.space.id)
+      let url = `/pages/user/spaces/details/${item.space.id}`
+      this.nav.push(url);
     }
   }
 
@@ -78,6 +78,9 @@ export class DashboardPage extends BasePage implements OnInit {
         this.nav.push('pages/user/passes')
         break;
 
+      case 'recieved_invites':
+        this.nav.push('pages/user/invites/invite-received')
+        break;
 
 
     }

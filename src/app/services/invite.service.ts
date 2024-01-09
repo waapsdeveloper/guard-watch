@@ -26,6 +26,15 @@ export class InviteService {
     })
   }
 
+  getInvitesReceived(active: any){
+    return new Promise(async (resolve) => {
+
+      const res = await this.network.getInvitesReceived(active);
+      console.log('DeleteContacts',res);
+      resolve(res);
+    })
+  }
+
 
 
   getInvitesByIdWithContacts(id: number){

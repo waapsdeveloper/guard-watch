@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'invite-detail-owner',
     loadChildren: () => import('./invite-detail-owner/invite-detail-owner.module').then( m => m.InviteDetailOwnerPageModule)
   },
+  {
+    path: 'invite-received',
+    loadChildren: () => import('./invite-received/invite-received.module').then( m => m.InviteReceivedPageModule)
+  },
 
 ];
 

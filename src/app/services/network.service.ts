@@ -69,6 +69,10 @@ deleteContactFromInvite(data: any) {
     return this.httpPostResponse('spaces/add', data, null, true);
   }
 
+  getInvitesReceived(active: any){
+    return this.httpGetResponse('invites/received?type='+active, null, false, false)
+  }
+
 
   getAllSpaces(params: any) {
     const str = this.serialize(params);
