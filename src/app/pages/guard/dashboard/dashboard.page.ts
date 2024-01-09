@@ -29,7 +29,8 @@ export class DashboardPage extends BasePage implements OnInit {
   async scan() {
     this.showOptions = false;
     console.log('Scan clicked')
-    await this.presentAlert();
+    // await this.presentAlert();
+    this.nav.push('/pages/guard/qrcode-reader')
 
 
   }
@@ -61,7 +62,7 @@ export class DashboardPage extends BasePage implements OnInit {
   }
   handleAlertChoice(choice: any) {
     console.log(choice);
-    this.nav.push('/pages/guard/scan-result/'+ choice);
+    this.nav.push('/pages/guard/scan-result/' + choice);
   }
   showPerson() {
     this.showOptions = false;

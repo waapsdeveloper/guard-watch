@@ -27,21 +27,25 @@ export class NetworkService {
   * INVITES
   */
   deleteSpaceAdminById(id: number) {
-    
+
     return this.httpDeleteResponse('spaces/delete-space-admin/' + id, null, null, true, true);
   }
-  getInviteById(){
+  getInviteById() {
 
   }
-///invites/by-id/
+  ///invites/by-id/
 
-getinvitesByIdWithContacts(id: number){
-  return this.httpGetResponse('invites/by-id/'+id+'/with-contacts', null, false, false);
-}
+  getinvitesByIdWithContacts(id: number) {
+    return this.httpGetResponse('invites/by-id/' + id + '/with-contacts', null, false, false);
+  }
 
-deleteContactFromInvite(data: any) {
-  return this.httpPostResponse('invites/delete-invite-contacts', data, null, true);
-}
+  deleteContactFromInvite(data: any) {
+    return this.httpPostResponse('invites/delete-invite-contacts', data, null, true);
+  }
+  qrCode(data: any) {
+    return this.httpPostResponse('invites/scan-qrcode', data, null, false);
+
+  }
 
   addInvite(data: any) {
     return this.httpPostResponse('invites/add', data, null, true);
@@ -55,8 +59,8 @@ deleteContactFromInvite(data: any) {
   * SPACES
   */
 
-  addSpaceAdmin(data: any){
-    return this.httpPostResponse('spaces/add-space-admin',data, null, true)
+  addSpaceAdmin(data: any) {
+    return this.httpPostResponse('spaces/add-space-admin', data, null, true)
   }
   getmoderatorsByUserId() {
     return this.httpGetResponse('spaces/get-my-moderation-spaces-by-user-id', null, false, false);
@@ -76,7 +80,7 @@ deleteContactFromInvite(data: any) {
 
   getAllSpaces(params: any) {
     const str = this.serialize(params);
-    return this.httpGetResponse('spaces/list?' + str , null, false, false);
+    return this.httpGetResponse('spaces/list?' + str, null, false, false);
   }
 
   getSpaceAdminById(id: number) {
@@ -93,7 +97,7 @@ deleteContactFromInvite(data: any) {
 
   getGlobalSpaces(params: any) {
     const str = this.serialize(params);
-    return this.httpGetResponse('spaces/get-global-spaces?' + str , null, false, false);
+    return this.httpGetResponse('spaces/get-global-spaces?' + str, null, false, false);
   }
 
   /*

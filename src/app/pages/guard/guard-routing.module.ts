@@ -30,8 +30,11 @@ const routes: Routes = [
   {
     path: 'scan-result/:choice',
     loadChildren: () => import('./scan-result/scan-result.module').then( m => m.ScanResultPageModule)
+  },
+  {
+    path: 'qrcode-reader',
+    loadChildren: () => import('./qrcode-reader/qrcode-reader.module').then( m => m.QrcodeReaderPageModule)
   }
-
 
 ];
 

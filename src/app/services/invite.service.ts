@@ -8,20 +8,26 @@ export class InviteService {
 
   constructor(private network: NetworkService) { }
 
-  addInvite(data: any){
+  addInvite(data: any) {
     return new Promise(async (resolve) => {
 
       const res = await this.network.addInvite(data);
-      console.log('res',res);
+      console.log('res', res);
       resolve(res);
     })
   }
 
-  deleteContactsFromInvites(obj: any){
+  deleteContactsFromInvites(obj: any) {
     return new Promise(async (resolve) => {
-
       const res = await this.network.deleteContactFromInvite(obj);
-      console.log('DeleteContacts',res);
+      console.log('DeleteContacts', res);
+      resolve(res);
+    })
+  }
+
+  getQrCodeData(data: any) {
+    return new Promise(async (resolve) => {
+      const res = await this.network.qrCode(data)
       resolve(res);
     })
   }
@@ -36,13 +42,12 @@ export class InviteService {
   }
 
 
-
-  getInvitesByIdWithContacts(id: number){
+  getInvitesByIdWithContacts(id: number) {
     return new Promise(async (resolve) => {
 
       const res = await this.network.getinvitesByIdWithContacts(id);
-      console.log('responseinvites',res);
-      if(res.status != 200){
+      console.log('responseinvites', res);
+      if (res.status != 200) {
         resolve(null);
         return;
       }
@@ -52,12 +57,12 @@ export class InviteService {
 
   }
 
-  getInvitesBySpaceId(id: number){
+  getInvitesBySpaceId(id: number) {
     return new Promise(async (resolve) => {
 
       const res = await this.network.getInvitesBySpaceId(id);
-      console.log('res',res);
-      if(res.status != 200){
+      console.log('res', res);
+      if (res.status != 200) {
         resolve(null);
         return;
       }

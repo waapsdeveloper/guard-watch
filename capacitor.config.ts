@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'guard-watch',
   webDir: 'www',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'http'
   }
 };
 

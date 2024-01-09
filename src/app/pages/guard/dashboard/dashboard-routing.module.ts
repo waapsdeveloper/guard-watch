@@ -7,7 +7,13 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardPage
-  }
+  },
+  {
+    path: 'qrcode-reader',
+    loadChildren: () => import('../qrcode-reader/qrcode-reader.module').then( m => m.QrcodeReaderPageModule)
+  },
+
+
 ];
 
 @NgModule({
