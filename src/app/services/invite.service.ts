@@ -27,6 +27,12 @@ export class InviteService {
   getQrCodeData(data: any) {
     return new Promise(async (resolve) => {
       const res = await this.network.qrCode(data)
+      console.log('ressssss', res);
+      if (res.status != 200) {
+        resolve(null);
+        return;
+      }
+
       resolve(res);
     })
   }

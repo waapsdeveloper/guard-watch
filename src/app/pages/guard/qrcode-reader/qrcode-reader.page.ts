@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { Capacitor } from '@capacitor/core';
 import { InviteService } from 'src/app/services/invite.service';
+import { NavService } from 'src/app/services/nav.service';
 
 @Component({
   selector: 'app-qrcode-reader',
@@ -14,7 +15,8 @@ export class QrcodeReaderPage implements OnInit {
   scannedData: {} | any;
   obj: any = { qrcode: "" }
 
-  constructor(private invite: InviteService) {
+
+  constructor(private invite: InviteService, public nav: NavService) {
     this.initialize()
   }
 
@@ -49,20 +51,21 @@ export class QrcodeReaderPage implements OnInit {
         this.scannedData = barcodeData.content;
         this.obj.qrcode = this.scannedData
         console.log("testyui", this.scannedData);
-        const res = this.invite.getQrCodeData(this.obj)
+        const res = await this.invite.getQrCodeData(this.obj) as any
         console.log("Res Data", res);
-
+        this.nav.push('/pages/guard/scan-result/' + res);
       })
     }
     else {
 
-      let array = ["XStuQqCnl9mu2uklVPxp"];
+      let array = ["8jenw2GAzbTCTrcgQ9mQ"];
       const randomElement = array[Math.floor(Math.random() * array.length)];
       this.scannedData = randomElement;
-      this.obj.qrcode = this.scannedData
+      this.obj.qrcode = this.scannedData;
       console.log(this.scannedData);
-      const res = this.invite.getQrCodeData(this.obj)
+      const res = await this.invite.getQrCodeData(this.obj) as any;
       console.log("Res Data", res);
+      this.nav.push('/pages/guard/scan-result/' + res);
     }
   }
   callTimer() {
