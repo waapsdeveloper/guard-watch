@@ -13,7 +13,8 @@ import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot({
+  imports: [
+    BrowserModule, IonicModule.forRoot({
     mode: 'ios'
   }), AppRoutingModule, QRCodeModule, HttpClientModule],
   providers: [
