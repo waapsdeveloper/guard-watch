@@ -8,14 +8,23 @@ import { BasePage } from '../../base-page/base-page';
   styleUrls: ['./scan-result.page.scss'],
 })
 export class ScanResultPage extends BasePage implements OnInit {
+  _object: any;
+  @Input()
+  public get object(): any {
+    return this._object;
+  }
+  public set object(value: any) {
+    this._object = value;
 
+    this.initialize(value);
+  }
 
-  @Input() object: any;
   constructor(injector: Injector) {
     super(injector);
-    console.log("test", this.object);
   }
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
+  initialize(value: any) {
+    console.log('test', value);
+  }
 }
