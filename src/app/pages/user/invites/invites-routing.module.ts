@@ -10,18 +10,19 @@ const routes: Routes = [
   },
   {
     path: 'invite-detail',
-    loadChildren: () => import('./invite-detail/invite-detail.module').then( m => m.InviteDetailPageModule)
+    loadChildren: () => import('./invite-detail/invite-detail.module').then(m => m.InviteDetailPageModule)
   },
   {
     path: 'invite-create',
-    loadChildren: () => import('./invite-create/invite-create.module').then( m => m.InviteCreatePageModule)
-  },  {
+    loadChildren: () => import('./invite-create/invite-create.module').then(m => m.InviteCreatePageModule)
+  },
+  {
     path: 'invite-detail-owner',
-    loadChildren: () => import('./invite-detail-owner/invite-detail-owner.module').then( m => m.InviteDetailOwnerPageModule)
+    loadChildren: () => import('./invite-detail-owner/invite-detail-owner.module').then(m => m.InviteDetailOwnerPageModule)
   },
   {
     path: 'invite-received',
-    loadChildren: () => import('./invite-received/invite-received.module').then( m => m.InviteReceivedPageModule)
+    loadChildren: () => import('./invite-received/invite-received.module').then(m => m.InviteReceivedPageModule)
   },
 
 ];
@@ -30,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class InvitesPageRoutingModule {}
+export class InvitesPageRoutingModule { }

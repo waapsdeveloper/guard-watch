@@ -7,11 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: InviteReceivedPage
-  }
+  },
+  {
+    path: 'invite',
+    loadChildren: () => import('./../invites.module').then(m => m.InvitesPageModule)
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class InviteReceivedPageRoutingModule {}
+export class InviteReceivedPageRoutingModule { }

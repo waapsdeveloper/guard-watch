@@ -7,10 +7,10 @@
 <ion-content color="light">
 
   <ion-list [inset]="true">
-      <ion-item (click)="openAddSpaces()" [button]="true">
-        <ion-label>Space Selected</ion-label>
-      </ion-item>
-      <ion-radio-group [(ngModel)]="obj.space_id">
+    <ion-item (click)="openAddSpaces()" [button]="true">
+      <ion-label>Space Selected</ion-label>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="obj.space_id">
       <ion-item *ngFor="let item of obj.spaces" lines="none">
         <ion-label>
           <h2>{{item.title}}</h2>
@@ -36,8 +36,9 @@
 
     </ion-card-header>
 
-    <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
-    <ion-button fill="clear" color="tertiary" details="true" (click)="createInvite()" >Create Invite</ion-button>
+    <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else
+    </ion-card-content>
+    <ion-button fill="clear" color="tertiary" details="true" (click)="createInvite()">Create Invite</ion-button>
   </ion-card>
 
 
@@ -46,12 +47,24 @@
     <app-invite-list-item *ngFor="let item of list" [item]="item" (click)="inviteDetail(item)"></app-invite-list-item>
   </ion-list>
 
-<!--
+  <!--
   <ion-fab slot="fixed" horizontal="end" vertical="bottom">
     <ion-fab-button (click)="addInvite()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab> -->
 
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="active">
+        <ion-icon name="clipboard-outline"></ion-icon>
+        Invites
+      </ion-tab-button>
+      <ion-tab-button tab="invite-received">
+        <ion-icon name="archive-outline"></ion-icon>
+        Recieved Invites
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
 </ion-content>

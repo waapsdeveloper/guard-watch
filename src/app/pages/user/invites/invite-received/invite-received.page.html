@@ -25,15 +25,27 @@
 
 
     <ion-item *ngFor="let list of listt" detail="true" (click)="openModal(list)">
-        <ion-label>
-          
-          <h2>{{list?.comments}}</h2>
-          <p><strong>{{list?.name}}</strong></p>
-          <p color="medium" class="ion-text-wrap">Valid till: {{ list?.end_date }}!</p>
-          <ion-note color="medium">{{list?.date}}</ion-note>
-        </ion-label>
+      <ion-label>
+
+        <h2>{{list?.comments}}</h2>
+        <p><strong>{{list?.name}}</strong></p>
+        <p color="medium" class="ion-text-wrap">Valid till: {{ list?.end_date }}!</p>
+        <ion-note color="medium">{{list?.date}}</ion-note>
+      </ion-label>
     </ion-item>
 
   </ion-list>
+  <ion-tabs>
+    <ion-tab-bar slot="invite">
+      <ion-tab-button tab="active">
+        <ion-icon name="clipboard-outline"></ion-icon>
+        Invites
+      </ion-tab-button>
+      <ion-tab-button tab="invite-received">
+        <ion-icon name="archive-outline"></ion-icon>
+        Recieved Invites
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
 </ion-content>

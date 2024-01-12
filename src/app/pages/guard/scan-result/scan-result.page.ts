@@ -32,7 +32,7 @@ export class ScanResultPage extends BasePage implements OnInit {
   constructor(injector: Injector) {
     super(injector);
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
   initialize(value: any) {
     console.log('test', value);
@@ -49,4 +49,5 @@ export class ScanResultPage extends BasePage implements OnInit {
       this.enddate = this.object.invite.end_date;
     }
   }
+
 }

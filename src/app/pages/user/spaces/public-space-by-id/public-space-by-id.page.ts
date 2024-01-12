@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, Input, OnInit } from '@angular/core';
 import { BasePage } from 'src/app/pages/base-page/base-page';
 import { PublicSpaceComponent } from 'src/app/components/public-space/public-space.component';
 
@@ -8,15 +8,30 @@ import { PublicSpaceComponent } from 'src/app/components/public-space/public-spa
   styleUrls: ['./public-space-by-id.page.scss'],
 })
 export class PublicSpaceByIdPage extends BasePage implements OnInit {
+  _object: any;
 
-  constructor(injector:Injector) {
+  @Input()
+  public get object(): any {
+    return this._object;
+  }
+  public set object(value: any) {
+    this._object = value;
+
+    this.initialize(value);
+  }
+  constructor(injector: Injector) {
     super(injector)
-   }
+
+  }
 
   ngOnInit() {
   }
-  SendRequest(){
-    console.log("button clickedd");
+  initialize(value: any) {
+
+  }
+  SendRequest() {
+    console.log("button clickedd", this.object);
+
 
     this.modals.present(PublicSpaceComponent)
 

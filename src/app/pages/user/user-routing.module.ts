@@ -37,15 +37,15 @@ const routes: Routes = [
   },
   {
     path: 'spaces',
-    loadChildren: () => import('./spaces/spaces.module').then( m => m.SpacesPageModule)
+    loadChildren: () => import('./spaces/spaces.module').then(m => m.SpacesPageModule)
   },
   {
     path: 'invites',
-    loadChildren: () => import('./invites/invites.module').then( m => m.InvitesPageModule)
+    loadChildren: () => import('./invites/invites.module').then(m => m.InvitesPageModule)
   },
   {
-    path: 'public-space-by-id/:id',
-    loadChildren: () => import('./spaces/public-space-by-id/public-space-by-id.module').then( m => m.PublicSpaceByIdPageModule)
+    path: 'public-space-by-id',
+    loadChildren: () => import('./spaces/public-space-by-id/public-space-by-id.module').then(m => m.PublicSpaceByIdPageModule)
   }
 
 
