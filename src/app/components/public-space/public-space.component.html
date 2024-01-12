@@ -4,28 +4,41 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="login-page-content" color="light" [fullscreen]="true" [scrollY]="true">
-
+<ion-content
+  class="login-page-content"
+  color="light"
+  [fullscreen]="true"
+  [scrollY]="true"
+>
   <!-- Heading Section -->
   <ion-header collapse="condense">
     <ion-toolbar color="light">
-      <ion-title size="large">Date and Time</ion-title>
+      <ion-title size="large">Request Invite</ion-title>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" size="small">
+          <ion-icon name="add-outline"></ion-icon> Select
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
-
-  <!-- Date and Time Section -->
-  <div class="date-time-section ion-padding">
-    <!-- <ion-title>Date and Time</ion-title> -->
-    <!-- Include your date and time components here -->
-    <!-- Example: -->
-    <!-- <app-date-picker>hello</app-date-picker>
-    <app-time-picker>kkkk</app-time-picker> -->
+  <div class="ion-padding btn-div-53543543">
+    <ion-note>
+      Selection of contact is used to send invite to your contacts, you can add
+      or import contact from phone book as well.
+    </ion-note>
   </div>
 
   <!-- Form Section -->
   <div class="form-body-outer ion-padding">
-    <ion-datetime value="2022-04-21T00:00:00" min="2022-03-01T00:00:00" max="2022-05-31T23:59:59"></ion-datetime>
-
+    <h4>Select Date & sTime</h4>
+    <ion-datetime
+      value="2022-04-21T00:00:00"
+      min="2022-03-01T00:00:00"
+      max="2022-05-31T23:59:59"
+    ></ion-datetime>
   </div>
-
+  <div class="date-time-section ion-padding">
+    <h4>Comment</h4>
+    <ion-textarea class="commnetinput"> </ion-textarea>
+  </div>
 </ion-content>

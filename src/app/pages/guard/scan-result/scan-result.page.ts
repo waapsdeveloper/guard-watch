@@ -15,6 +15,10 @@ export class ScanResultPage extends BasePage implements OnInit {
   sendername: any;
   senderphoneNumber: any;
   senderdailCode: any;
+  visitortype: any;
+  space: any;
+  startdate: any;
+  enddate: any;
   @Input()
   public get object(): any {
     return this._object;
@@ -28,18 +32,21 @@ export class ScanResultPage extends BasePage implements OnInit {
   constructor(injector: Injector) {
     super(injector);
   }
-  ngOnInit() { }
+  ngOnInit() {}
 
   initialize(value: any) {
     console.log('test', value);
     if (this.object && this.object.name) {
       this.name = this.object.name;
-      this.phoneNumber = this.object.phone_number
-      this.dailCode = this.object.dial_code
+      this.phoneNumber = this.object.phone_number;
+      this.dailCode = this.object.dial_code;
       this.sendername = this.object.invite.name;
-      this.senderphoneNumber = this.object.invite.phone_number
-      this.senderdailCode = this.object.invite.dial_code
-
+      this.senderphoneNumber = this.object.invite.phone_number;
+      this.senderdailCode = this.object.invite.dial_code;
+      this.visitortype = this.object.invite.visitor_type;
+      this.space = this.object.invite.space;
+      this.startdate = this.object.invite.start_date;
+      this.enddate = this.object.invite.end_date;
     }
   }
 }

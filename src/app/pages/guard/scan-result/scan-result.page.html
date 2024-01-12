@@ -28,13 +28,12 @@
   <div class="highlight ion-padding">
     <h2 class="ion-text-uppercase">Event Name</h2>
     <div class="time-box-outer">
-
       <div class="time-slots">
         <h2>Start Time</h2>
         <div class="left-slot">
           <div class="left-53543">
-            <div>2013-01-03</div>
-            <div>10:30 AM</div>
+            <p>{{ startdate | date: 'dd/MM/yyyy' }}</p>
+            <p>{{ startdate | date: 'hh:mm a' }}</p>
           </div>
           <ion-icon class="clo1" name="time-outline"></ion-icon>
         </div>
@@ -44,27 +43,25 @@
         <h2>End Time</h2>
         <div class="left-slot">
           <div class="left-53543">
-            <div>2013-01-03</div>
-            <div>10:30 AM</div>
+            <p>{{ enddate | date: 'dd/MM/yyyy' }}</p>
+            <p>{{ enddate | date: 'hh:mm a' }}</p>
           </div>
           <ion-icon class="clo1" name="time-outline"></ion-icon>
         </div>
       </div>
-
     </div>
-
   </div>
   <ion-list>
     <ion-item lines="none">
       <ion-label>
         <h2>VIsitor Type</h2>
-        <p>Friend Family</p>
+        <p>{{visitortype}}</p>
       </ion-label>
     </ion-item>
     <ion-item lines="none">
       <ion-label>
         <h2>Space Name</h2>
-        <p>Bhayani Heights</p>
+        <p>{{space}}</p>
       </ion-label>
     </ion-item>
   </ion-list>
@@ -83,6 +80,4 @@
       </ion-label>
     </ion-item>
   </ion-list>
-
-
 </ion-content>
