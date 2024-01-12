@@ -7,24 +7,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-<div>
-  <h2 class="ion-padding ion-text-uppercase">Receiver Info</h2>
-  <ion-list>
-    <ion-item lines="none">
-      <ion-label>
-        <h2>Name</h2>
-        <p>Ali Ahsan</p>
-      </ion-label>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-label>
-        <h2>Phone</h2>
-        <p>+92789065432</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-</div>
+<ion-content>
+  <div>
+    <h2 class="ion-padding ion-text-uppercase">Receiver Info</h2>
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label>
+          <h2>Name</h2>
+          <p>{{name}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <h2>Phone</h2>
+          <p>{{dailCode}}<span>{{phoneNumber}}</span></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
   <div class="highlight ion-padding">
     <h2 class="ion-text-uppercase">Event Name</h2>
     <div class="time-box-outer">
@@ -73,13 +73,13 @@
     <ion-item lines="none">
       <ion-label>
         <h2>Name</h2>
-        <p>Ali Ahsan</p>
+        <p>{{sendername}}</p>
       </ion-label>
     </ion-item>
     <ion-item lines="none">
       <ion-label>
         <h2>Phone</h2>
-        <p>+92789065432</p>
+        <p>{{senderdailCode}}<span>{{senderphoneNumber}}</span></p>
       </ion-label>
     </ion-item>
   </ion-list>

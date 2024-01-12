@@ -52,7 +52,7 @@ export class DashboardPage extends BasePage implements OnInit {
       const res = (await this.invite.getQrCodeData(obj)) as any;
       console.log('Res Data', res);
       this.modals.present(ScanResultPage, {
-        object: res,
+        object: res.invite,
       })
       // this.nav.push('/pages/guard/scan-result', {
       //   object: JSON.stringify(res),

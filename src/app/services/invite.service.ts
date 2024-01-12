@@ -33,7 +33,7 @@ export class InviteService {
         return;
       }
 
-      resolve(res);
+      resolve(res.result);
     })
   }
   getInvitesReceived(active: any) {
