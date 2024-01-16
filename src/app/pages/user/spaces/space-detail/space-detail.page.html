@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
   <ion-toolbar color="secondary">
     <ion-title>{{obj.title}}</ion-title>
   </ion-toolbar>
@@ -20,7 +20,7 @@
 
     <ion-card-content> {{obj.description}} </ion-card-content>
   </ion-card>
-   <ion-card color="light">
+  <ion-card color="light">
     <ion-card-header class="card-header-688768">
       <div>
         <ion-card-subtitle class="ion-text-uppercase">secure</ion-card-subtitle>
@@ -33,8 +33,11 @@
 
     </ion-card-header>
 
-    <ion-card-content> Invite is a concept of invite your trustees into your boundry, like your friend, co-workers, delivery, office or else </ion-card-content>
-    <ion-button fill="clear" color="dark" details="true" ><div class="ion-text-underline" (click)="openInviteList()">View All Invites</div></ion-button>
+    <ion-card-content> Invite is a concept of invite your trustees into your boundry, like your friend, co-workers,
+      delivery, office or else </ion-card-content>
+    <ion-button fill="clear" color="dark" details="true">
+      <div class="ion-text-underline" (click)="openInviteList()">View All Invites</div>
+    </ion-button>
   </ion-card>
 
   <ion-card color="light">
@@ -50,12 +53,18 @@
 
     </ion-card-header>
 
-    <ion-card-content> Invite is a concept of invite your trustees into your boundry, like your friend, co-workers, delivery, office or else </ion-card-content>
-    <ion-button fill="clear" color="dark" details="true" ><div class="ion-text-underline" (click)="openAddContacts()">View All Admins</div>
+    <ion-card-content> Invite is a concept of invite your trustees into your boundry, like your friend, co-workers,
+      delivery, office or else </ion-card-content>
+    <ion-button fill="clear" color="dark" details="true">
+      <div class="ion-text-underline" (click)="openAddContacts()">View All Admins</div>
 
     </ion-button>
   </ion-card>
-
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="openRequest()">
+      <ion-icon name="checkbox-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 
 

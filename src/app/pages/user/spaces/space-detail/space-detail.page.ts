@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BasePage } from 'src/app/pages/base-page/base-page';
 import { SpaceService } from 'src/app/services/space.service';
 import { SpaceAdminComponent } from 'src/app/components/spaces-list/space-admin/space-admin.component';
+import { RequestInvitesPage } from '../request-invites/request-invites.page';
 
 @Component({
   selector: 'app-space-detail',
@@ -10,7 +11,8 @@ import { SpaceAdminComponent } from 'src/app/components/spaces-list/space-admin/
   styleUrls: ['./space-detail.page.scss'],
 })
 export class SpaceDetailPage extends BasePage implements OnInit {
-  spaceLength:any;
+  spaceLength: any;
+  id: any;
   obj: any = {
   }
   constructor(injector: Injector, public activatedRoute: ActivatedRoute, private space: SpaceService) {
@@ -22,21 +24,19 @@ export class SpaceDetailPage extends BasePage implements OnInit {
     this.initialize()
   }
 
-  async initialize(){
+  async initialize() {
     let id = this.activatedRoute.snapshot.params['id'];
     if (!id) {
       this.nav.pop();
       return
     }
     const res = await this.space.getSpaceDetailsById(id);
-    if(!res){
+    if (!res) {
       this.nav.pop();
       return
     }
     console.log('res', res);
     this.obj = res;
-
-
   }
 
   ngOnInit() {
@@ -47,16 +47,23 @@ export class SpaceDetailPage extends BasePage implements OnInit {
     localStorage.setItem('space_id', this.obj.id);
     this.nav.push('/pages/user/invites');
   }
-  async openAddContacts(){
+  async openAddContacts() {
     const res = await this.modals.present(SpaceAdminComponent)
-    console.log('resassafdds',res);
+    console.log('resassafdds', res);
 
-    if(res && res.data){
+    if (res && res.data) {
       const d = Object.assign({}, res.data);
       this.spaceLength = d.length
-      console.log(this.spaceLength,'kkkkkkk')
+      console.log(this.spaceLength, 'kkkkkkk')
     }
   }
+  openRequest() {
+    this.id = this.obj.id
+    console.log("vgvghvh", this.id);
+    this.modals.present(RequestInvitesPage, {
+      id: this.id,
+    })
 
+  }
 
 }

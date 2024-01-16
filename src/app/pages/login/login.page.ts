@@ -18,7 +18,7 @@ export class LoginPage extends BasePage implements OnInit {
   };
   constructor(injector: Injector, private alertController: AlertController) {
     super(injector)
-    
+
   }
 
   ngOnInit() {
@@ -41,10 +41,13 @@ export class LoginPage extends BasePage implements OnInit {
 
     if (res == null) {
       return
-    }  else {
+    } else {
 
       console.log(res, 'assasasa');
       localStorage.setItem("user_id", res.id)
+      localStorage.setItem("username", res.name)
+      localStorage.setItem("dail_code", res.dial_code)
+      localStorage.setItem("phone_number", res.phone_number)
 
       localStorage.setItem("role_id", res.role_id)
       if (res.role_id == 3) {
@@ -85,10 +88,10 @@ export class LoginPage extends BasePage implements OnInit {
         },
       ],
     });
-  
+
     await alert.present();
   }
-  
+
   handleAlertChoice(choice: any) {
     if (choice === 'guard') {
       this.nav.push('./pages/guard/dashboard');

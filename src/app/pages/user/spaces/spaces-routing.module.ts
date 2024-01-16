@@ -19,7 +19,11 @@ const routes: Routes = [
   {
     path: 'public-space-by-id/:id',
     loadChildren: () => import('./public-space-by-id/public-space-by-id.module').then( m => m.PublicSpaceByIdPageModule)
+  },  {
+    path: 'request-invites',
+    loadChildren: () => import('./request-invites/request-invites.module').then( m => m.RequestInvitesPageModule)
   }
+
 
 ];
 

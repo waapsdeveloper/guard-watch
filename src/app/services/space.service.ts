@@ -76,7 +76,25 @@ export class SpaceService {
       });
     })
   }
-  
+
+  getRequests(id: any) {
+    return new Promise(async resolve => {
+      this.network.getInviteById(id).then(async (res) => {
+
+        // let d = res.result;
+        console.log('d', res);
+        if (res) {
+          resolve(res);
+        } else {
+          resolve(null);
+        }
+      }, err => {
+        console.log('err', err);
+        resolve(null);
+      });
+    })
+  }
+
   addSpaceAdmin(data: any) {
     return new Promise(async resolve => {
 

@@ -17,6 +17,14 @@ export class InviteService {
     })
   }
 
+  sendinvite(data: any) {
+    return new Promise(async (resolve) => {
+      const res = await this.network.sendInvite(data);
+      console.log('res', res);
+      resolve(res);
+    })
+  }
+
   deleteContactsFromInvites(obj: any) {
     return new Promise(async (resolve) => {
       const res = await this.network.deleteContactFromInvite(obj);

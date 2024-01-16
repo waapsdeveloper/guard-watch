@@ -98,10 +98,10 @@ export class DashboardPage extends BasePage implements OnInit {
     console.log(res);
     if (res.data && res.data.item) {
       let t = res.data.item;
-      console.log("fsdfsdfs", t);
-      this.nav.push('/pages/user/spaces/public-space-by-id/' + t)
+      let object = t;
+      console.log("fsdfsdfs", object);
+      this.nav.push('/pages/user/spaces/public-space-by-id/' + object.id)
     }
-
   }
 
 

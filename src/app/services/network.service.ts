@@ -30,8 +30,8 @@ export class NetworkService {
 
     return this.httpDeleteResponse('spaces/delete-space-admin/' + id, null, null, true, true);
   }
-  getInviteById() {
-
+  getInviteById(id: number) {
+    return this.httpGetResponse('invite-requests/list/space-invites/' + id, null, false, false);
   }
   ///invites/by-id/
 
@@ -49,6 +49,9 @@ export class NetworkService {
 
   addInvite(data: any) {
     return this.httpPostResponse('invites/add', data, null, true);
+  }
+  sendInvite(data: any) {
+    return this.httpPostResponse('invite-requests/add', data, null, true);
   }
 
   getInvitesBySpaceId(id: number) {
@@ -73,8 +76,8 @@ export class NetworkService {
     return this.httpPostResponse('spaces/add', data, null, true);
   }
 
-  getInvitesReceived(active: any){
-    return this.httpGetResponse('invites/received?type='+active, null, false, false)
+  getInvitesReceived(active: any) {
+    return this.httpGetResponse('invites/received?type=' + active, null, false, false)
   }
 
 

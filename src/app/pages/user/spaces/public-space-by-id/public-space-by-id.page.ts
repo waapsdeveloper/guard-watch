@@ -1,6 +1,7 @@
 import { Component, Injector, Input, OnInit } from '@angular/core';
 import { BasePage } from 'src/app/pages/base-page/base-page';
 import { PublicSpaceComponent } from 'src/app/components/public-space/public-space.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-public-space-by-id',
@@ -8,32 +9,29 @@ import { PublicSpaceComponent } from 'src/app/components/public-space/public-spa
   styleUrls: ['./public-space-by-id.page.scss'],
 })
 export class PublicSpaceByIdPage extends BasePage implements OnInit {
-  _object: any;
 
-  @Input()
-  public get object(): any {
-    return this._object;
-  }
-  public set object(value: any) {
-    this._object = value;
+  id: number = 0;
 
-    this.initialize(value);
-  }
-  constructor(injector: Injector) {
+  constructor(injector: Injector, public activatedRoute: ActivatedRoute) {
     super(injector)
 
+    this.activatedRoute.params.subscribe(params => {
+      const id = params['id'];
+      console.log('ID from route:', id);
+      this.id = id;
+    });
   }
 
   ngOnInit() {
   }
   initialize(value: any) {
-
+    console.log('test', value);
   }
   SendRequest() {
-    console.log("button clickedd", this.object);
-
-
-    this.modals.present(PublicSpaceComponent)
+    console.log("button clickedd", this.id);
+    this.modals.present(PublicSpaceComponent, {
+      id: this.id,
+    })
 
   }
 }

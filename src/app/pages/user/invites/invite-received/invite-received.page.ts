@@ -22,10 +22,7 @@ export class InviteReceivedPage extends BasePage implements OnInit {
     this.listt = res.result;
   }
   openModal(item: any) {
-
     console.log(item, 'abdullah');
     this.modals.present(InviteReceivedBarcodeComponent, { item }, '', 0.50)
   }
-
-
 }

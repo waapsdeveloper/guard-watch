@@ -1,11 +1,9 @@
-<ion-header >
+<ion-header>
   <ion-toolbar color="primary">
     <ion-title>spaces</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content color="light">
-
   <ion-card>
     <ion-card-header class="card-header-688768">
       <div>
@@ -17,12 +15,9 @@
         <ion-icon name="cube-outline"></ion-icon>
       </div>
     </ion-card-header>
-
-    <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else </ion-card-content>
+    <ion-card-content> Space is a concept of your boundry, like your office, home, workshop your private place or else
+    </ion-card-content>
   </ion-card>
-
-
-
   <ion-list [inset]="true">
     <ion-item lines="none" detail="true" *ngFor="let item of list" (click)="openDetails(item)">
       <ion-label>
@@ -31,11 +26,9 @@
       </ion-label>
     </ion-item>
   </ion-list>
-
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button (click)="openAddSpaces()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
 </ion-content>
