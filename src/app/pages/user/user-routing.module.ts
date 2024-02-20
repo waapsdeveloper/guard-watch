@@ -46,7 +46,15 @@ const routes: Routes = [
   {
     path: 'public-space-by-id/:id',
     loadChildren: () => import('./spaces/public-space-by-id/public-space-by-id.module').then(m => m.PublicSpaceByIdPageModule)
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
   }
+
 
 
 

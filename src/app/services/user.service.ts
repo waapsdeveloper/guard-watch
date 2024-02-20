@@ -23,15 +23,13 @@ export class UserService {
     return new Promise(async (resolve) => {
       try {
         const res = await this.network.login(user);
-        if (res.status != 200) {
-          console.error(`Unexpected API response status: ${res.status}`);
+        if (!res) {
           resolve(null);
           return
         }
-        let obj = res.result;
+        let obj = res;
         var token = obj.token;
         localStorage.setItem('token', token);
-        console.log('bbbbbbbbbbb', res, token);
         resolve(obj);
       } catch (err) {
         console.error("Error during login:", err);
@@ -100,18 +98,41 @@ export class UserService {
     return new Promise(async resolve => {
       this.network.getUser().then(async (user: any) => {
 
-        user = user.user;
+        console.log(user)
+
+        // user = user.user;
         if (user) {
-          await this.processUserData(user, false);
+          localStorage.setItem("user", JSON.stringify(user))
+          //await this.processUserData(user, false);
           resolve(user);
         } else {
           // redirect to steps
           this.logout();
+          resolve(null);
         }
       }, err => {
         this.logout();
+        resolve(null);
       });
     })
+
+  }
+
+  async userFlowRedirection(res: any) {
+
+    localStorage.setItem("user_id", res.id)
+    localStorage.setItem("username", res.name)
+    localStorage.setItem("dail_code", res.dial_code)
+    localStorage.setItem("phone_number", res.phone_number)
+    localStorage.setItem("role_id", res.role_id)
+
+    if (res.role_id == 3) {
+      console.log('guard');
+      this.nav.push('./pages/guard/dashboard');
+    } else {
+      console.log('resident');
+      this.nav.push('./pages/user/dashboard');
+    }
 
   }
 
@@ -119,20 +140,7 @@ export class UserService {
   async processUserData(user: any, showResetPass = false) {
 
     return new Promise(async (resolve) => {
-      // const _user = user
-      // localStorage.setItem('token', user.access_token);
-      // user.fcm_token = await this.firebaseService.getFCMToken();
-      // this.user_role_id = parseInt(_user['role_id']);
-      // this.utilityProvider.setKey('user_role_id', this.user_role_id);
 
-      // const saveduser = await this.sqlite.setUserInDatabase(user);
-      // // this.menuCtrl.enable(true, 'authenticated');
-      // if (!saveduser) {
-      //   this.logout();
-      //   return;
-      // }
-
-      // this.setUser(saveduser);
       console.log('dsbfjvhbnvjkbhufkdh');
 
       if (!showResetPass) {
@@ -143,23 +151,7 @@ export class UserService {
         // this.nav.setRoot('pages/update-password', { user: saveduser });
         resolve(false);
       }
-      // this.canBeResident = (parseInt(saveduser["can_user_become_resident"]) == 1);
-      // this.canShowSettings = parseInt(saveduser["role_id"]) != 7
 
-      // let currentUrl = this.nav.router.url;
-      // console.log(currentUrl);
-
-      // if (currentUrl == '/1/DashboardPage') {
-      //   this.events.publish('dashboard:initialize');
-      // } else {
-      //   this.nav.setRoot('1/DashboardPage',
-      //     {
-      //       showelcome: showelcome,
-      //       animate: true,
-      //       direction: 'forward'
-      //     }
-      //   );
-      // }
     })
 
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CountrySelectionComponent } from './country-selection/country-selection.component';
 import { ModalService } from 'src/app/services/basic/modal.service';
 
@@ -12,12 +12,15 @@ export class CountrySelectionBoxComponent  implements OnInit {
 
   @Output() dialCodeSelected = new EventEmitter<string>();
 
-
-  item: any = {
+  @Input() item: any = {
     "name": "Pakistan",
     "dial_code": "+92",
     "code": "PK"
   };
+
+  
+
+
   constructor(public modals: ModalService) { }
 
   ngOnInit() {}

@@ -15,16 +15,7 @@ export class DashboardPage extends BasePage implements OnInit {
   user: any;
   menu: any[] = [];
   list: any;
-  searchList = [
-    {
-      id: 2,
-      search: "ERRRRR"
-    },
-    {
-      id: 3,
-      search: "ERRRRRt43463"
-    }
-  ]
+  searchList = []
   constructor(injector: Injector, private space: SpaceService, private alertController: AlertController) {
     super(injector)
   }
@@ -32,13 +23,15 @@ export class DashboardPage extends BasePage implements OnInit {
   ngOnInit() {
     this.initialize()
     this.menu = usermenu;
+
     this.userId = localStorage.getItem('user_id');
-    this.user = this.datum.getUserById(this.userId);
+    this.userId = localStorage.getItem('user_id');
+    // this.user = this.datum.getUserById(this.userId);
   }
   async initialize() {
-    const res = await this.space.getmoderatorsByUserId();
-    this.list = res
-    console.log(this.list, 'resssherere');
+    // const res = await this.space.getmoderatorsByUserId();
+    // this.list = res
+    // console.log(this.list, 'resssherere');
 
   }
   async setItemColor(item: any) {
@@ -80,6 +73,10 @@ export class DashboardPage extends BasePage implements OnInit {
 
       case 'recieved_invites':
         this.nav.push('pages/user/invites/invite-received')
+        break;
+
+      case 'logout':
+        this.nav.push('pages/user/logout')
         break;
 
 

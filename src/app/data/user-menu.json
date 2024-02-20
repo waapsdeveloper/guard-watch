@@ -33,6 +33,6 @@
     "id": 6,
     "title": "Logout",
     "icon": "exit-outline",
-    "link": "https://www.spacesworks.com/"
+    "link": "logout"
   }
 ]

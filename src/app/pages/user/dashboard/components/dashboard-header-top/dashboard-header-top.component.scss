@@ -1,0 +1,43 @@
+.dashobard-header-main-outer{
+  height: 300px;
+  width: 100%;
+  background: var(--ion-color-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-profile-bar{
+  height: 64px;
+  width: 100%;
+  background: lightblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px;
+  .user-svg{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.dashboard-Welcome-bar{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  .heading-265436{
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .sub-heading-265436{
+
+  }
+
+}

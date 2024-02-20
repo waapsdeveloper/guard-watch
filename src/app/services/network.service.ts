@@ -139,7 +139,7 @@ export class NetworkService {
   }
 
   getUser(loader = false) {
-    return this.httpGetResponse('user', null, loader, false);
+    return this.httpGetResponse('auth/user', null, loader, false);
   }
 
   serialize = (obj: { [x: string]: string | number | boolean; }) => {
@@ -296,8 +296,11 @@ export class NetworkService {
             if (showError) {
               this.utility.presentSuccessToast(res.message);
             }
+
+            resolve(null)
           } else {
-            resolve(res);
+
+            resolve(res.result);
           }
 
         },

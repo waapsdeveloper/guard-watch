@@ -30,9 +30,11 @@ export class ContactService {
       }
 
       this.network.getAllContacts().then(async (res) => {
+        console.log(res);
 
-        if (res.status == 200) {
-          this.list = res.result;
+        if (res) {
+          this.list = res;
+          console.log("sfsfsdfsdfs", this.list);
           resolve(this.list);
         } else {
           resolve([]);
@@ -47,19 +49,19 @@ export class ContactService {
   addContact(data: any) {
     return new Promise(async resolve => {
 
-    this.network.addContact(data).then(
-      async (res) => {
+      this.network.addContact(data).then(
+        async (res) => {
 
-        if (res.status == 200) {
-          this.list.unshift(res.result);
-          resolve(res);
-        } else {
+          if (res.status == 200) {
+            this.list.unshift(res.result);
+            resolve(res);
+          } else {
+            resolve(null);
+          }
+        }, err => {
+          console.error('err', err);
           resolve(null);
-        }
-      }, err => {
-        console.error('err', err);
-        resolve(null);
-      });
+        });
     });
 
   }

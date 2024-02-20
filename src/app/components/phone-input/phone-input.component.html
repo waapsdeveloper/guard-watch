@@ -1,0 +1,9 @@
+<div class="phone-input-outer">
+  <form autocomplete="off">
+
+    <div class="pi-box" *ngFor="let inp of phoneInputs; let i = index">
+      <input autocomplete="false"  autofill="off" name="phone-input-{{i}}" type="number" #inputRef (keyup)="checkInput($event, i)" max="1" maxlength="1" [(ngModel)]="inp.value" />
+    </div>
+
+  </form>
+</div>

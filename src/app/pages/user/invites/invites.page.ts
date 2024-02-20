@@ -66,6 +66,8 @@ export class InvitesPage extends BasePage implements OnInit {
   }
 
   createInvite(){
+    console.log("sfdfsfdss");
+
     this.nav.push('pages/user/invites/invite-create')
   }
 

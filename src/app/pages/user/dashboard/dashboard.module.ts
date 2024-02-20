@@ -8,6 +8,7 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 import { SpaceSearchModule } from 'src/app/components/space-search/space-search.module';
+import { DashboardHeaderTopModule } from './components/dashboard-header-top/dashboard-header-top.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import { SpaceSearchModule } from 'src/app/components/space-search/space-search.
     FormsModule,
     IonicModule,
     DashboardPageRoutingModule,
-    SpaceSearchModule
+    SpaceSearchModule,
+
+    DashboardHeaderTopModule
   ],
   declarations: [DashboardPage]
 })

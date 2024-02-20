@@ -133,6 +133,8 @@ export class InviteCreatePage extends BasePage implements OnInit {
 
 
   async addInvite(){
+    console.log("fssfsfsf");
+
     if (this.obj.event_id == -1){
       this.utility.presentFailureToast('Please select an event');
       return;

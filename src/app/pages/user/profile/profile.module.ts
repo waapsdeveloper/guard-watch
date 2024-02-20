@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { ProfilePageRoutingModule } from './profile-routing.module';
 
-import { LoginPage } from './login.page';
+import { ProfilePage } from './profile.page';
 import { InputBoxModule } from 'src/app/components/input-box/input-box.module';
 import { CountrySelectionBoxModule } from 'src/app/components/country-selection-box/country-selection-box.module';
 import { PhoneInputModule } from 'src/app/components/phone-input/phone-input.module';
@@ -16,11 +16,11 @@ import { PhoneInputModule } from 'src/app/components/phone-input/phone-input.mod
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule,
+    ProfilePageRoutingModule,
     InputBoxModule,
     CountrySelectionBoxModule,
     PhoneInputModule
   ],
-  declarations: [LoginPage]
+  declarations: [ProfilePage]
 })
-export class LoginPageModule {}
+export class ProfilePageModule {}

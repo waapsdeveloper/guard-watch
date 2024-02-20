@@ -21,7 +21,12 @@
   </ion-menu>
 
   <div class="ion-page" id="main">
-    <ion-header>
+
+    <app-dashboard-header-top></app-dashboard-header-top>
+
+
+
+    <!-- <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Dashboard</ion-title>
         <ion-buttons slot="primary">
@@ -31,7 +36,7 @@
       <ion-toolbar color="primary">
         <ion-searchbar [debounce]="1000" (ionInput)="handleGlobalInput($event)"></ion-searchbar>
       </ion-toolbar>
-    </ion-header>
+    </ion-header> -->
     <ion-content>
       <div class="ion-padding-start ion-padding-end">
         <ion-note>
@@ -89,7 +94,7 @@
         </ion-button>
       </ion-card>
 
-      <!--       
+      <!--
       <ion-card color="light">
         <ion-card-header class="card-header-688768">
           <div>

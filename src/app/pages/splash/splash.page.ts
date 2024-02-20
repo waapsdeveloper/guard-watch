@@ -9,6 +9,8 @@ import { BasePage } from '../base-page/base-page';
 export class SplashPage extends BasePage implements OnInit {
 
   isLoading = false;
+  msg = "fetching data ..."
+
   constructor(
     injector: Injector
   ) {
@@ -19,10 +21,19 @@ export class SplashPage extends BasePage implements OnInit {
   ngOnInit() {
   }
 
-  initialize(){
-    setTimeout( () => {
-      this.nav.push('pages/tutorial')
-    }, 3000);
+  async initialize(){
+
+    let res = await this.users.getUser()
+    if(res){
+      this.users.userFlowRedirection(res)
+    }
+
+
+
+
+    // setTimeout( () => {
+    //   this.nav.push('pages/login')
+    // }, 3000);
   }
 
 }

@@ -2,11 +2,13 @@
 
   <div class="form-body-outer">
     <div class="hb-with-flag">
-      <h2>Login with Phone</h2>
+      <h2>My Phone Number</h2>
       <app-country-selection-box (dialCodeSelected)="onDialCodeSelected($event)"></app-country-selection-box>
     </div>
 
-    <app-input-box  (valueChanged)="result($event, 'phone_number')"  placeholder="Phone Number"type="Number" ></app-input-box>
+    <app-phone-input (valueChanged)="result($event, 'phone_number')"></app-phone-input>
+
+    <!-- <app-input-box  (valueChanged)="result($event, 'phone_number')"  placeholder="Phone Number"type="Number" ></app-input-box> -->
     <app-input-box (valueChanged)="result($event, 'password')"  placeholder="Password" type="password"></app-input-box>
 
     <ion-button shape="round" expand="full" color="primary" type="submit" (click)="login()">

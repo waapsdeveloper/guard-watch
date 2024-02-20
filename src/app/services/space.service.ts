@@ -28,8 +28,8 @@ export class SpaceService {
 
       this.network.getAllSpaces(params).then(async (res) => {
 
-        if (res.status == 200) {
-          this.list = res.result;
+        if (res) {
+          this.list = res;
           resolve(this.list);
         } else {
           resolve([]);

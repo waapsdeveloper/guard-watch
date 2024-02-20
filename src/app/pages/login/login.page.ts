@@ -12,8 +12,8 @@ export class LoginPage extends BasePage implements OnInit {
   user: any;
   isLoading = false;
   obj: any = {
-    phone_number: '3418273826',
-    password: '123456',
+    phone_number: '',
+    password: '',
     dial_code: '+92'
   };
   constructor(injector: Injector, private alertController: AlertController) {
@@ -44,19 +44,7 @@ export class LoginPage extends BasePage implements OnInit {
     } else {
 
       console.log(res, 'assasasa');
-      localStorage.setItem("user_id", res.id)
-      localStorage.setItem("username", res.name)
-      localStorage.setItem("dail_code", res.dial_code)
-      localStorage.setItem("phone_number", res.phone_number)
-
-      localStorage.setItem("role_id", res.role_id)
-      if (res.role_id == 3) {
-        console.log('guard');
-        this.nav.push('./pages/guard/dashboard');
-      } else {
-        console.log('resident');
-        this.nav.push('./pages/user/dashboard');
-      }
+      this.users.userFlowRedirection(res)
     }
 
   }
