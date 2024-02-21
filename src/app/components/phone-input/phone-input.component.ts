@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, QueryList, Input, OnInit, Output, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-phone-input',
@@ -9,6 +9,8 @@ export class PhoneInputComponent  implements OnInit {
 
   @ViewChild('inputRef')
   inputRef!: ElementRef;
+
+  @ViewChildren('phoneInputRef') phoneInputsArray!: QueryList<ElementRef>;
 
   private _phone: string = '';
 
@@ -70,7 +72,7 @@ export class PhoneInputComponent  implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private renderer: Renderer2, private el: ElementRef) { }
 
   ngAfterViewInit(): void {
     // Set focus on the third input after the view has been initialized
@@ -97,9 +99,21 @@ export class PhoneInputComponent  implements OnInit {
   checkInput(event: any, index: number): void {
     const inputValue = event.target.value;
 
+    if(isNaN(inputValue)){
+      this.phoneInputs[index].value = null;
+      event.target.value = null;
+      return;
+    }
+
+    event.target.value = event.target.value.charAt(0);
+
+    this.phoneInputs[index].value = event.target.value;
+
+    console.log(index)
     const isBackspace = event.code === 'Backspace';
     if(isBackspace){
-      this.doBackSpace()
+      this.valueChanged.emit('');
+      this.doBackSpace(index)
       return;
     }
 
@@ -108,55 +122,47 @@ export class PhoneInputComponent  implements OnInit {
       // Move to the next input if not the last one
       if (index < 10) {
         const nextIndex = index + 1;
-        const nextInput = document.querySelectorAll('input')[nextIndex] as HTMLInputElement;
-        if (nextInput) {
-          nextInput.focus();
+        const phoneInput = this.phoneInputsArray.find((input: any) => {
+          return input.nativeElement.id === ('phone-input-' + nextIndex)
+        });
+
+        console.log(phoneInput, index, nextIndex)
+        if (phoneInput) {
+          phoneInput.nativeElement.focus();
         }
       }
 
-      if(index == 10){
 
-        let j = this.phoneInputs.reduce( (prev, next) => {
-          return prev + next.value
-        }, '')
-
-        if(j.length == 11){
-          this.valueChanged.emit(j);
-        }
-
-      }
     }
-  }
-
-  doBackSpace(): void {
-    // Find the index of the last non-empty input
 
     let j = this.phoneInputs.reduce( (prev, next) => {
-      return prev + (next.value ? next.value : '')
+      return prev + next.value
     }, '')
 
-    let lastNonEmptyIndex = j.length;
+    console.log(j.length, index)
 
-    console.log(j, lastNonEmptyIndex)
-
-    while (lastNonEmptyIndex >= 0 && (this.phoneInputs[lastNonEmptyIndex].value == null)) {
-      lastNonEmptyIndex--;
-    }
-
-    // Clear the value of the last non-empty input
-    if (lastNonEmptyIndex >= 0) {
-      this.phoneInputs[lastNonEmptyIndex].value = null;
+    if(j.length == 11){
+      this.valueChanged.emit(j);
+    } else {
+      this.valueChanged.emit('');
     }
 
 
-    // Focus on the last non-empty input or the first input if all are empty
-    const inputToFocus = lastNonEmptyIndex >= 0
-      ? document.querySelector(`input[name="phone-input-${lastNonEmptyIndex}"]`) as HTMLInputElement
-      : document.querySelector(`input[name="phone-input-0"]`) as HTMLInputElement;
+  }
 
-      console.log(inputToFocus, lastNonEmptyIndex)
-    if (inputToFocus) {
-      inputToFocus.focus();
+  doBackSpace(index: number): void {
+    // Find the index of the last non-empty input
+
+    const prevIndex = index - 1
+    this.phoneInputs[prevIndex].value = null;
+
+    const phoneInput = this.phoneInputsArray.find((input: any) => {
+      return input.nativeElement.id === ('phone-input-' + prevIndex)
+    });
+
+    console.log(phoneInput, index, prevIndex)
+    if (phoneInput) {
+      phoneInput.nativeElement.focus();
     }
   }
 

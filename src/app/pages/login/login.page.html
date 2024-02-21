@@ -1,6 +1,43 @@
-<ion-content class="login-page-content ion-padding" [fullscreen]="true" [scrollY]="true">
+<ion-content class="login-page-content ion-padding" color="primary" [fullscreen]="true" [scrollY]="true">
 
-  <div class="form-body-outer">
+
+  <div class="ion-padding">
+    <img src="assets/icon/black-icon.png" width="80px" />
+    <h1 class="ion-text-lg-wrap">Welcome to <strong>Guard Watch</strong> </h1>
+    <h2 class="ion-text-lg-wrap">Please identify yourself </h2>
+  </div>
+
+  <ion-card *ngIf="step == 1">
+    <ion-card-header>
+      <ion-card-title class="hb-with-flag"><strong>Phone Number</strong><app-country-selection-box [item]="item" (dialCodeSelected)="onDialCodeSelected($event)"></app-country-selection-box></ion-card-title>
+      <ion-card-subtitle>03XX-XXX-XXXX</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <app-phone-input (valueChanged)="result($event, 'phone_number')"></app-phone-input>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="step == 2">
+    <ion-card-header>
+      <ion-card-title class="hb-with-flag"><strong>Password</strong></ion-card-title>
+      <ion-card-subtitle>{{obj.phone_number}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <app-input-box (valueChanged)="result($event, 'password')"  placeholder="Password" type="password"></app-input-box>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding flex-67876-button">
+    <ion-button [disabled]="disableSubmit()" (click)="submit()" color="light" fill="outline">SUBMIT </ion-button>
+    <ion-spinner *ngIf="isLoading" [color]="'light'" name="dots"></ion-spinner>
+    <!-- <ion-button class="ion-text-start" fill="clear" expand="block"
+    (click)="verifyPhoneNumber()">SUBMIT</ion-button> -->
+  </div>
+
+
+  <!-- <div class="form-body-outer">
     <div class="hb-with-flag">
       <h2>My Phone Number</h2>
       <app-country-selection-box (dialCodeSelected)="onDialCodeSelected($event)"></app-country-selection-box>
@@ -8,7 +45,7 @@
 
     <app-phone-input (valueChanged)="result($event, 'phone_number')"></app-phone-input>
 
-    <!-- <app-input-box  (valueChanged)="result($event, 'phone_number')"  placeholder="Phone Number"type="Number" ></app-input-box> -->
+    <app-input-box  (valueChanged)="result($event, 'phone_number')"  placeholder="Phone Number"type="Number" ></app-input-box>
     <app-input-box (valueChanged)="result($event, 'password')"  placeholder="Password" type="password"></app-input-box>
 
     <ion-button shape="round" expand="full" color="primary" type="submit" (click)="login()">
@@ -19,10 +56,10 @@
           (click)="switchToForgetPassword()">Forgot Password? Click Here</ion-button>
 
 
-  </div>
+  </div> -->
 
 </ion-content>
-<ion-footer color="light">
+<!-- <ion-footer color="light">
   <ion-button class="text-transform-non" (click)="switchToSignUp()" fill="clear" color="primary" expand="full">
     Not a Member? &nbsp;&nbsp;<strong class="createaccount">Create Account</strong></ion-button>
-</ion-footer>
+</ion-footer> -->

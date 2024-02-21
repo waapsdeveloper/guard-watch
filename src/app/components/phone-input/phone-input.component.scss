@@ -5,9 +5,9 @@
     flex-direction: row;
     width: 100%;
     gap: 5px;
-    border: 1px solid var(--ion-color-primary);
-    border-radius: 50px;
-    padding: 0px 8px;
+    // border: 1px solid var(--ion-color-primary);
+    // border-radius: 50px;
+    // padding: 0px 8px;
     .pi-box {
       width: calc(100% / 10);
       height: 36px;
@@ -23,7 +23,7 @@
         background: transparent;
         border: none;
         font-weight: bold;
-        // border-bottom: 1px solid var(--ion-color-primary);
+        border-bottom: 1px solid var(--ion-color-primary);
 
       }
 

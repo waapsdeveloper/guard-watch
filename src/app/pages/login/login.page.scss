@@ -6,6 +6,15 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.flex-67876-button{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: auto;
+}
+
 .userpc{
   width: 100%;
   display: flex;

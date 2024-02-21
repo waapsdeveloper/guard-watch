@@ -9,6 +9,7 @@ import { SignupPageRoutingModule } from './signup-routing.module';
 import { SignupPage } from './signup.page';
 import { InputBoxModule } from 'src/app/components/input-box/input-box.module';
 import { CountrySelectionBoxModule } from "../../components/country-selection-box/country-selection-box.module";
+import { SignupHeaderModule } from './signup-header/signup-header.module';
 
 @NgModule({
     declarations: [SignupPage],
@@ -19,7 +20,8 @@ import { CountrySelectionBoxModule } from "../../components/country-selection-bo
         IonicModule,
         SignupPageRoutingModule,
         InputBoxModule,
-        CountrySelectionBoxModule
+        CountrySelectionBoxModule,
+        SignupHeaderModule
     ]
 })
 export class SignupPageModule {}

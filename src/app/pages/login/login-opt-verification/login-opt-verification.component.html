@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Verify OTP</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content color="primary">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="hb-with-flag"><strong>OTP Code</strong></ion-card-title>
+      <ion-card-subtitle>Enter your OTP code received on your number</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <app-input-box (valueChanged)="result($event, 'password')"  placeholder="Password" type="password"></app-input-box>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding flex-67876-button">
+    <ion-button [disabled]="disableSubmit()" (click)="verifyOTP()" color="light" fill="outline">SUBMIT </ion-button>
+    <ion-spinner *ngIf="isLoading" [color]="'light'" name="dots"></ion-spinner>
+    <!-- <ion-button class="ion-text-start" fill="clear" expand="block"
+    (click)="verifyPhoneNumber()">SUBMIT</ion-button> -->
+  </div>
+
+
+</ion-content>

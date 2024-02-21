@@ -2,6 +2,8 @@ import { Component, OnInit, Injector } from '@angular/core';
 import { BasePage } from '../base-page/base-page';
 import { log } from 'console';
 import { AlertController } from '@ionic/angular';
+import { FirebService } from 'src/app/services/fireb.service';
+import { LoginOptVerificationComponent } from './login-opt-verification/login-opt-verification.component';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +13,20 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage extends BasePage implements OnInit {
   user: any;
   isLoading = false;
+  step = 1;
   obj: any = {
     phone_number: '',
     password: '',
     dial_code: '+92'
   };
-  constructor(injector: Injector, private alertController: AlertController) {
+
+  item: any = {
+    "name": "Pakistan",
+    "dial_code": "+92",
+    "code": "PK"
+  };
+
+  constructor(injector: Injector, private fb: FirebService, private alertController: AlertController) {
     super(injector)
 
   }
@@ -24,12 +34,60 @@ export class LoginPage extends BasePage implements OnInit {
   ngOnInit() {
 
   }
+
+  disableSubmit(){
+
+    if(this.isLoading){
+      return true;
+    }
+
+    if(this.step == 1){
+      return !this.obj.dial_code || !this.obj.phone_number
+    }
+
+    if(this.step == 2){
+      return !this.obj.password;
+    }
+
+    return true;
+  }
+
+  submit(){
+
+    if(this.step == 1){
+      this.verifyPhoneNumber()
+    }
+
+    if(this.step == 2){
+      this.login()
+    }
+  }
+
+  async verifyPhoneNumber(){
+
+    if(!this.obj.dial_code){
+      return;
+    }
+
+    if(!this.obj.phone_number){
+      return;
+    }
+
+    this.isLoading = true;
+    const res = await this.fb.verifyPhoneNumber(this.obj.dial_code, this.obj.phone_number)
+    this.isLoading = false;
+
+    const m = await this.modals.present(LoginOptVerificationComponent, {item: this.obj}, '', 0.75 )
+    this.step = 2;
+
+  }
+
   onDialCodeSelected(dialCode: string) {
     this.obj.dial_code = dialCode;
   }
 
   result(event: any, type: any) {
-    this.obj[type] = event
+    this.obj[type] = event ? event : null
   }
 
   async login() {
@@ -37,7 +95,9 @@ export class LoginPage extends BasePage implements OnInit {
       console.error('Please fill in all the required fields.');
       return;
     }
+    this.isLoading = true;
     let res = await this.users.login(this.obj) as any
+    this.isLoading = false;
 
     if (res == null) {
       return
