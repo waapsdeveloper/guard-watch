@@ -14,18 +14,19 @@
     </ion-card-header>
 
     <ion-card-content>
-      <app-phone-input (valueChanged)="result($event, 'phone_number')"></app-phone-input>
+      <app-phone-input [phone]="obj.phone_number" (valueChanged)="result($event, 'phone_number')"></app-phone-input>
     </ion-card-content>
   </ion-card>
 
   <ion-card *ngIf="step == 2">
     <ion-card-header>
-      <ion-card-title class="hb-with-flag"><strong>Password</strong></ion-card-title>
-      <ion-card-subtitle>{{obj.phone_number}}</ion-card-subtitle>
+      <ion-card-title class="hb-with-flag"><strong>Enter PIN</strong></ion-card-title>
+      <ion-card-subtitle class="sidewise-elem-67895768" (click)="changePhoneNumber()"><div>{{obj.phone_number}}</div><ion-icon name="pencil-outline"></ion-icon></ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <app-input-box (valueChanged)="result($event, 'password')"  placeholder="Password" type="password"></app-input-box>
+      <app-pin-input [pinLength]="4" (valueChanged)="result($event, 'password')"></app-pin-input>
+      <!-- <app-input-box (valueChanged)="result($event, 'password')"  placeholder="Password" type="password"></app-input-box> -->
     </ion-card-content>
   </ion-card>
 

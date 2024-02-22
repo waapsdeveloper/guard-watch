@@ -1,3 +1,9 @@
-<p>
-  pin-input works!
-</p>
+<div class="phone-input-outer">
+  <form autocomplete="off">
+
+    <div class="pi-box" *ngFor="let inp of phoneInputs; let i = index">
+      <input autocomplete="false"  autofill="off" [id]="'phone-input-' + inp.index" name="phone-input-{{inp.index}}" type="number" #pinInputRef (keyup)="checkInput($event, inp.index)" max="1" maxlength="1" [(ngModel)]="inp.value" />
+    </div>
+
+  </form>
+</div>

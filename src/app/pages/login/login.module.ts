@@ -11,6 +11,7 @@ import { InputBoxModule } from 'src/app/components/input-box/input-box.module';
 import { CountrySelectionBoxModule } from 'src/app/components/country-selection-box/country-selection-box.module';
 import { PhoneInputModule } from 'src/app/components/phone-input/phone-input.module';
 import { LoginOptVerificationModule } from './login-opt-verification/login-opt-verification.module';
+import { PinInputModule } from 'src/app/components/pin-input/pin-input.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { LoginOptVerificationModule } from './login-opt-verification/login-opt-v
     InputBoxModule,
     CountrySelectionBoxModule,
     PhoneInputModule,
+    PinInputModule,
     LoginOptVerificationModule
   ],
   declarations: [LoginPage]

@@ -1,4 +1,4 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Injector, AfterViewInit } from '@angular/core';
 import { BasePage } from '../base-page/base-page';
 import { log } from 'console';
 import { AlertController } from '@ionic/angular';
@@ -10,7 +10,7 @@ import { LoginOptVerificationComponent } from './login-opt-verification/login-op
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage extends BasePage implements OnInit {
+export class LoginPage extends BasePage implements OnInit, AfterViewInit {
   user: any;
   isLoading = false;
   step = 1;
@@ -31,9 +31,27 @@ export class LoginPage extends BasePage implements OnInit {
 
   }
 
+  ngAfterViewInit(): void {
+    let pn = localStorage.getItem("phone_number");
+    let dc = localStorage.getItem("dial_code");
+    dc = dc ? dc : this.item.dial_code
+    if(pn && dc){
+
+      this.obj.phone_number = pn;
+      this.obj.dial_code = dc;
+      this.verifyPhoneNumber()
+
+
+
+      // this.step = 2;
+    }
+  }
+
   ngOnInit() {
 
   }
+
+
 
   disableSubmit(){
 
@@ -55,7 +73,7 @@ export class LoginPage extends BasePage implements OnInit {
   submit(){
 
     if(this.step == 1){
-      this.verifyPhoneNumber()
+      // this.verifyPhoneNumber()
     }
 
     if(this.step == 2){
@@ -74,6 +92,23 @@ export class LoginPage extends BasePage implements OnInit {
     }
 
     this.isLoading = true;
+
+    // sudo logic is
+    // check if phone number exist in system and verified
+
+    const deviceId = "58966";
+
+
+    const ipeavod = await this.fb.isPhoneExistAndVerifiedOnDevice(this.obj.dial_code, this.obj.phone_number, deviceId )
+    console.log(ipeavod)
+
+
+    return;
+
+
+
+
+
     const res = await this.fb.verifyPhoneNumber(this.obj.dial_code, this.obj.phone_number)
     this.isLoading = false;
 
@@ -163,6 +198,11 @@ export class LoginPage extends BasePage implements OnInit {
     // this.showLogin = false;
     // this.showForgetPass = false;
     // this.showSignUp = true;
+  }
+
+  changePhoneNumber(){
+      this.step = 1;
+
   }
 
 }

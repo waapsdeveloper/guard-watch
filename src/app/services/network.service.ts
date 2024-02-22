@@ -23,6 +23,10 @@ export class NetworkService {
     return this.httpPostResponse('auth/register', data, null, true);
   }
 
+  isPhoneExistAndVerifiedOnDevice(data: any){
+    return this.httpPostResponse('auth/is-phone-exist-and-verified-on-device', data, null, false);
+  }
+
   /*
   * INVITES
   */

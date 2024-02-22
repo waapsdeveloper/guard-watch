@@ -36,8 +36,8 @@ export class LoginOptVerificationComponent  implements OnInit {
       return true;
     }
 
-    if(!this.obj.opt_string){
-      return true;
+    if(this.obj.opt_string){
+      return false;
     }
 
     return true;
